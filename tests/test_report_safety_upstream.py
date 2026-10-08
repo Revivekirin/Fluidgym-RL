@@ -14,7 +14,7 @@ from fluidgym_rl import safety
 from fluidgym_rl.upstream import lock, make_tdmpc2_workcopy, repo_root, third_party, upstream_status
 
 
-def test_report_statuses_and_visible_failures(tmp_path):
+def test_report_statuses_and_visible_failures(tmp_path, capsys):
     r = Report(tmp_path / "r.json", "t", planned=["ok", "bad", "boom", "never"])
     r.check("ok", lambda: {"x": 1})
     r.check("bad", lambda: (_ for _ in ()).throw(CheckFailure("nope", {"d": 2})))
@@ -24,6 +24,8 @@ def test_report_statuses_and_visible_failures(tmp_path):
     assert d["checks"]["ok"]["status"] == "passed" and d["checks"]["bad"]["details"] == {"d": 2}
     assert d["checks"]["boom"]["status"] == "error" and "ZeroDivisionError" in d["checks"]["boom"]["traceback"]
     assert d["checks"]["never"]["status"] == "skipped"
+    stderr = capsys.readouterr().err
+    assert "boom" in stderr and "ZeroDivisionError" in stderr and "nope" in stderr
 
 
 def test_all_pass_needed_for_passed_and_skips_are_incomplete(tmp_path):

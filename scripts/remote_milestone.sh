@@ -25,7 +25,7 @@ stage CUDA_tests      "$PY" -m pytest -q -m cuda -p no:cacheprovider --junitxml 
 # D: reuse existing Phase 0 evidence; only (re)run the simulator validation if it is absent or not passing
 "$PY" scripts/check_phase0_status.py --roots "$FGRL_OUT_DIR" --env-id "$FGRL_ENV_ID" >"$RUN/D0_phase0_status.json" 2>"$RUN/D0_phase0_status.err"; P0=$?; echo "D0_phase0_status $P0" >>"$RUN/stage_rc.txt"
 if [ $P0 -ne 0 ]; then stage D_phase0_validate "$PY" scripts/phase0_validate.py --env-id "$FGRL_ENV_ID" --out "$FGRL_OUT_DIR/phase0"
-  "$PY" scripts/check_phase0_status.py --roots "$FGRL_OUT_DIR" --env-id "$FGRL_ENV_ID" >"$RUN/D1_phase0_status.json" 2>/dev/null; P0=$?; fi
+  "$PY" scripts/check_phase0_status.py --roots "$FGRL_OUT_DIR" --env-id "$FGRL_ENV_ID" >"$RUN/D1_phase0_status.json" 2>"$RUN/D1_phase0_status.err"; P0=$?; echo "D1_phase0_status $P0" >>"$RUN/stage_rc.txt"; fi
 if [ $P0 -ne 0 ]; then
   for s in E_official_sac_dry E_official_sac_eval F_tdmpc2_smoke G_tdmpc2_eval; do skip $s "Phase 0 not passed (status rc=$P0)"; done
 else
@@ -36,9 +36,10 @@ else
   else skip E_official_sac_eval "contract/dry-run failed (see E_official_sac_dry.log; rc=3 = checkpoint incompatibility)"; fi
   if [ "${FGRL_SKIP_TRAIN_SMOKE:-0}" = "1" ]; then skip F_tdmpc2_smoke "FGRL_SKIP_TRAIN_SMOKE=1"; skip G_tdmpc2_eval "no smoke checkpoint"
   else
-    stage F_tdmpc2_smoke "$PY" scripts/tdmpc2_smoke_train.py --env-id "$FGRL_ENV_ID" --out-root "$FGRL_RESULTS_DIR/tdmpc2_smoke"
-    CK="$(ls -dt "$FGRL_RESULTS_DIR"/tdmpc2_smoke/*/checkpoints 2>/dev/null | head -1)"
-    if [ "$(rc_of F_tdmpc2_smoke)" = "0" ] && [ -n "$CK" ]; then
+    SMOKE="$FGRL_RESULTS_DIR/tdmpc2_smoke/$(basename "$RUN")_milestone"
+    stage F_tdmpc2_smoke "$PY" scripts/tdmpc2_smoke_train.py --env-id "$FGRL_ENV_ID" --out "$SMOKE"
+    CK="$SMOKE/checkpoints"
+    if [ "$(rc_of F_tdmpc2_smoke)" = "0" ] && [ -f "$CK/tdmpc2_smoke.pt" ]; then
       stage G_tdmpc2_eval_plan  "$PY" scripts/evaluate_checkpoint.py tdmpc2 --checkpoint "$CK/tdmpc2_smoke.pt" --episodes "$FGRL_TDMPC2_EVAL_EPISODES" --mode plan  --env-id "$FGRL_ENV_ID"
       stage G_tdmpc2_eval_actor "$PY" scripts/evaluate_checkpoint.py tdmpc2 --checkpoint "$CK/tdmpc2_smoke.pt" --episodes "$FGRL_TDMPC2_EVAL_EPISODES" --mode actor --env-id "$FGRL_ENV_ID"
     else skip G_tdmpc2_eval "smoke did not pass"; fi

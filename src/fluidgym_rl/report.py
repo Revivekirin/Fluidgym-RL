@@ -65,6 +65,10 @@ class Report:
         rec["seconds"] = round(time.time() - t0, 3)
         self.data["checks"][name] = rec
         self._flush()
+        if rec["status"] in ("failed", "error"):
+            print(f"[{self.data['name']}] {name}: {rec['error']}", file=sys.stderr)
+            if rec.get("traceback"):
+                print(rec["traceback"], file=sys.stderr, end="")
         if fatal and rec["status"] != "passed":
             self.data["fatal_stop"] = name
             self._flush()

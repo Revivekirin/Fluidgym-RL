@@ -36,3 +36,6 @@ Caveat from FluidGym README: published models were trained with v0.0.2 ⇒ use `
 ## Paper-internal inconsistencies noticed
 - Airfoil hard Reynolds number: Table 4 says 5×10³, App. C.3 text says 3×10⁵. (Not relevant to cylinders.)
 - Table 7 "#Algorithms" column holds non-integer values (runtime ratios), so "GPU hours" there is not simply steps×seeds×algos.
+
+## 2026-10-08 remote failure follow-up
+The supplied server logs show SAC loading blocked by missing `omegaconf` and TD-MPC2 trainer construction blocked by missing `hydra`. SAC's extra now declares OmegaConf; TD-MPC2 additionally requires `requirements/tdmpc2_extra.txt` (see the recovery commands in `docs/REMOTE_EXECUTION.md`). No training updates or checkpoint restoration were reached in that run. CUDA and patched-workcopy checks passed in the supplied smoke report; full smoke and independent evaluation remain blocked pending a successful server rerun. No upstream algorithm or patch was changed by this fix.

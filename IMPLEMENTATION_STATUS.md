@@ -33,3 +33,8 @@ Covered: contract/protocol semantics, determinism, clipping, scalar reward conve
 - Any remote results for P1/P2/P3; Phase 1 gate (`scripts/mark_gate.py phase1`) is deliberately manual after you review the SAC evaluation evidence.
 - Learning-curve reproduction from `fluidgym-experiments`; D-MPC; matched SAC-vs-TD-MPC2 study at real training budgets; full TD-MPC2 training (still blocked by `safety.py` gates).
 - Upgrading `torch.compile=false` smoke to the upstream-default compiled path.
+
+## 2026-10-08 remote failure follow-up
+The supplied server logs show SAC loading blocked by missing `omegaconf` and TD-MPC2 trainer construction blocked by missing `hydra`. SAC's extra now declares OmegaConf; TD-MPC2 additionally requires `requirements/tdmpc2_extra.txt` (see the recovery commands in `docs/REMOTE_EXECUTION.md`). No training updates or checkpoint restoration were reached in that run. CUDA and patched-workcopy checks passed in the supplied smoke report; full smoke and independent evaluation remain blocked pending a successful server rerun. No upstream algorithm or patch was changed by this fix.
+
+Follow-up validation on this Mac: Python compilation, `bash -n scripts/remote_milestone.sh`, and `git diff --check` passed. A standard-library-only regression run passed five Phase 0 recovery cases and one failure diagnostic/report check. The full pytest suite was **not_run**: pytest is absent and permission to download test dependencies was declined. These checks do not validate SAC loading or CUDA training.

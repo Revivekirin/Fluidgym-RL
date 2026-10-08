@@ -75,10 +75,15 @@ python scripts/tdmpc2_smoke_train.py  --out $FGRL_OUT_DIR/tdmpc2_smoke
 
 ## Milestone: official SAC evaluation + TD-MPC2 CUDA smoke (run on the GPU server)
 
-All commands assume the venv from `scripts/remote_setup.sh` is active, `pip install 'stable-baselines3[extra]>=2.7.0' 'huggingface_hub>=1.0.0'` has been done (the `sac` extra), and `FGRL_OUT_DIR` points where your Phase 0 report lives.
+All commands use the active CUDA environment (venv or conda). Install both the SAC extra and the TD-MPC2 requirements below; `.[dev,sac]` alone does not install TD-MPC2. Set `FGRL_OUT_DIR` to the root containing your existing Phase 0 evidence. The torch constraint preserves the installed CUDA build.
 
 ```bash
-git pull && pip install -e ".[dev,sac]"
+# After transferring the updated source, use the active CUDA environment.
+export FGRL_OUT_DIR="${FGRL_OUT_DIR:-$PWD/results}"
+python -c 'import torch; print("torch==" + torch.__version__)' > /tmp/fgrl-torch-constraint.txt
+python -m pip install -c /tmp/fgrl-torch-constraint.txt -e ".[dev,sac]" -r requirements/tdmpc2_extra.txt
+python -m pip check
+python -c 'import omegaconf, hydra, tensordict, torchrl; print("runtime imports OK")'
 # 0) what do we already know about Phase 0? (no simulator run; exit 0 passed, 4 not_run, 1 failed/invalid)
 python scripts/check_phase0_status.py --roots $FGRL_OUT_DIR
 # if it is not 'passed', confirm on the GPU:  python scripts/phase0_validate.py --out $FGRL_OUT_DIR/phase0
@@ -91,14 +96,26 @@ scripts/remote_milestone.sh                       # report: results/milestone/<s
 python scripts/evaluate_official_sac.py --train-seed 0 --dry-run          # download + contract check only (needs env creation, no episodes)
 python scripts/evaluate_official_sac.py --train-seed 0 --episodes 10      # official checkpoint, deterministic, test split
 python scripts/evaluate_official_sac.py --train-seed all --episodes 10    # all 5 official seeds + aggregate.json
-python scripts/tdmpc2_smoke_train.py                                      # bounded CUDA smoke -> results/tdmpc2_smoke/<stamp>/
-CK=$(ls -dt results/tdmpc2_smoke/*/checkpoints | head -1)
+SMOKE="$PWD/results/tdmpc2_smoke/$(date -u +%Y%m%dT%H%M%SZ)_manual"
+python scripts/tdmpc2_smoke_train.py --out "$SMOKE" || exit $?
+CK="$SMOKE/checkpoints"
+test -f "$CK/tdmpc2_smoke.pt" || exit 1
 python scripts/tdmpc2_ckpt_verify.py --ckpt-dir $CK                       # fresh-process reload check (also run inside the smoke)
 python scripts/evaluate_checkpoint.py tdmpc2 --checkpoint $CK/tdmpc2_smoke.pt --episodes 10 --mode plan
 python scripts/evaluate_checkpoint.py tdmpc2 --checkpoint $CK/tdmpc2_smoke.pt --episodes 10 --mode actor
-python scripts/evaluate_checkpoint.py compare results/official_sac_eval/<run> results/eval/<run>   # comparability class
+# Set these to actual directories printed by the successful evaluations.
+# Do not type angle-bracket placeholders: bash interprets them as redirections.
+python scripts/evaluate_checkpoint.py compare "$SAC_RUN_DIR" "$TDMPC2_RUN_DIR"
 ```
 Expected cost (estimates from the paper's ~2 s/step on an A100; measure with your Phase 0 numbers): SAC eval ≈ 10 episodes × 80 steps; TD-MPC2 smoke ≈ 400 steps plus ≈ 240 tiny updates; each TD-MPC2 evaluation additionally runs MPPI planning every step.
 Exit codes of `evaluate_official_sac.py`: 0 ok, 2 setup/download error, 3 checkpoint/contract incompatibility (diagnostics printed), 5 Phase 0 evidence missing/not passed. **Do not bypass exit 3** by reshaping observations — send the diagnostic instead.
 Same-contract comparison needs equal `--episodes`/`--base-seed`/`--protocol` (otherwise the comparison class is `non_comparable`).
 Setting the Phase 1 gate (required for any full training) stays manual: `python scripts/mark_gate.py phase1 --evidence <path to the reviewed official_sac_eval summary.json>`.
+
+## Reported 2026-10-08 setup failures
+
+- SAC `ModuleNotFoundError: omegaconf`: the published zip requires OmegaConf during deserialization. The `sac` extra now includes `omegaconf==2.3.0`. Reinstall from the updated source.
+- TD-MPC2 `build_trainer` / `No module named hydra`: install `requirements/tdmpc2_extra.txt` in the same Python environment. The import name is `hydra`, the distribution is `hydra-core`. This failure occurred before any learner updates.
+- Missing `/tdmpc2_smoke.pt`: smoke failed before saving; rerun smoke successfully before evaluating. The milestone runner now selects its own smoke checkpoint.
+- Failed checks now print tracebacks to stderr and the milestone report includes smoke diagnostics. Initial Phase 0 failures remain visible as superseded when a later evidence check runs; the final check controls acceptance.
+- A successful dependency installation does not establish checkpoint compatibility or CUDA training success. Keep those milestones pending until real evaluation reports pass.

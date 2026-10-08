@@ -17,6 +17,8 @@ def add(name, status, detail=""): rows.append((name, status, detail))
 for n in sorted(set(rc) | set(skipped)):
     if n in skipped: add(n, "skipped", skipped[n]); continue
     if n == "D0_phase0_status":
+        if "D1_phase0_status" in rc:
+            add(n, "superseded", f"initial rc={rc[n]}; final evidence: D1_phase0_status"); continue
         add(n, {"0": "passed", "4": "not_run (no evidence) -> validation was run"}.get(rc[n], "failed/invalid")); continue
     add(n, "passed" if rc[n] == "0" else f"failed (rc={rc[n]})")
 x = run / "cuda_tests.xml"
@@ -37,6 +39,9 @@ for d in newer("official_sac_eval"):
 for d in newer("tdmpc2_smoke"):
     if (d / "report.json").exists():
         r = jl(d / "report.json"); lines += [f"## TD-MPC2 smoke: `{d.name}` -> {r['status']}"] + [f"- {k}: {v['status']}" for k, v in r["checks"].items()] + [""]
+        for k, v in r["checks"].items():
+            if v.get("error"):
+                lines += [f"### {k} diagnostic", "", "```text", v.get("traceback") or v["error"], "```", ""]
 evs = newer("eval")
 for d in evs:
     if (d / "summary.json").exists():
@@ -50,6 +55,6 @@ if sac and evs:
     for d in evs:
         if (d / "run_manifest.json").exists():
             lines.append(f"- comparability SAC `{sac[0].name}` vs `{d.name}`: **{classify_comparison(jl(sac[0] / 'run_manifest.json'), jl(d / 'run_manifest.json'))['class']}**")
-overall = "PASSED" if rows and all(s == "passed" or s.startswith("not_run (no evidence) -> validation was run") for _, s, _ in rows) else "NOT PASSED"
+overall = "PASSED" if rows and all(s in ("passed", "superseded") for _, s, _ in rows) else "NOT PASSED"
 lines = [f"**Overall: {overall}** (only executed-and-passed stages count)", ""] + lines
 (run / "MILESTONE_REPORT.md").write_text("\n".join(lines) + "\n"); print("\n".join(lines)); sys.exit(0 if overall == "PASSED" else 1)
