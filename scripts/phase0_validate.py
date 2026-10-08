@@ -211,26 +211,31 @@ def flow_field_png():
 
 
 def episode_gif():
-    e = S["env"]; e.reset(seed=a.seed)
+    e = S["env"]
+    e.reset(seed=a.seed)
+
     for _ in range(e.episode_length):
-        e.step(e.sample_action()); e.render()
-    e.save_gif("episode.gif", output_path=out)
-    return verify_gif(out / "episode.gif")
+        e.step(e.sample_action())
+        e.render()
 
+    filename = "episode.gif"
+    e.save_gif(filename, output_path=out)
 
-try:
-    for name, fn, fatal in [("cuda_available", cuda_available, True), ("gpu_tensor_op", gpu_tensor_op, True), ("env_create", env_create, True),
-                            ("reset_obs_contract", reset_obs_contract, True), ("action_contract", action_contract, True),
-                            ("step_contract", step_contract, True), ("action_bounds_behavior", action_bounds_behavior, False),
-                            ("action_affects_state", action_affects_state, False), ("episode_termination", episode_termination, False),
-                            ("reproducibility", reproducibility, False), ("seed_sensitivity", seed_sensitivity, False),
-                            ("throughput_and_memory", throughput_and_memory, False), ("render_png", render_png, False),
-                            ("flow_field_png", flow_field_png, False), ("episode_gif", episode_gif, False)]:
-        rep.check(name, fn, fatal=fatal)
-except FatalStop:
-    pass
-status = rep.finalize()
-if status == "passed":
-    write_gate("phase0", out / "report.json")
-print(f"phase0 status: {status}  (report: {out / 'report.json'})")
-sys.exit(0 if status == "passed" else (2 if rep.data["checks"].get("cuda_available", {}).get("status") != "passed" else 1))
+    # FluidGym prefixes GIF names with their slice name.
+    gif_paths = sorted(out.glob(f"*_{filename}"))
+
+    if not gif_paths:
+        raise CheckFailure(
+            "FluidGym did not produce a slice-prefixed GIF",
+            {"expected_pattern": f"*_{filename}"}
+        )
+
+    details = {
+        "generated_gifs": []
+    }
+
+    for path in gif_paths:
+        result = verify_gif(path)
+        details["generated_gifs"].append(result)
+
+    return details
