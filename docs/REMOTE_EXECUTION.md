@@ -71,3 +71,34 @@ python scripts/tdmpc2_smoke_train.py  --out $FGRL_OUT_DIR/tdmpc2_smoke
 5. **GPU memory numbers.** FluidGym's CUDA kernels may allocate outside PyTorch's allocator; compare `torch_peak_alloc_MiB` with `device_used_MiB_delta_during_bench`.
 6. **Flow-field PNG axis order** is a heuristic (`orient()` in phase0). `render.png` (FluidGym's own renderer) is the authoritative picture; check both by eye — automated checks only prove non-blank.
 7. **Determinism.** `reproducibility` fails if same seed + same actions differ by more than 1e-5; GPU non-determinism would show up there rather than be hidden. Adjust `--repro-tol` deliberately, not silently.
+
+
+## Milestone: official SAC evaluation + TD-MPC2 CUDA smoke (run on the GPU server)
+
+All commands assume the venv from `scripts/remote_setup.sh` is active, `pip install 'stable-baselines3[extra]>=2.7.0' 'huggingface_hub>=1.0.0'` has been done (the `sac` extra), and `FGRL_OUT_DIR` points where your Phase 0 report lives.
+
+```bash
+git pull && pip install -e ".[dev,sac]"
+# 0) what do we already know about Phase 0? (no simulator run; exit 0 passed, 4 not_run, 1 failed/invalid)
+python scripts/check_phase0_status.py --roots $FGRL_OUT_DIR
+# if it is not 'passed', confirm on the GPU:  python scripts/phase0_validate.py --out $FGRL_OUT_DIR/phase0
+
+# 1) one-shot, in the required order (static -> CPU tests -> CUDA tests -> Phase 0 evidence -> official SAC -> TD-MPC2 smoke -> reload + eval -> report)
+scripts/remote_milestone.sh                       # report: results/milestone/<stamp>/MILESTONE_REPORT.md
+#   knobs: FGRL_SAC_SEEDS=all  FGRL_SAC_EPISODES=10  FGRL_TDMPC2_EVAL_EPISODES=10  FGRL_REVISION=<hf commit>  FGRL_SAC_CHECKPOINT=/path/ckpt_latest.zip  FGRL_SKIP_TRAIN_SMOKE=1
+
+# 2) or stage by stage
+python scripts/evaluate_official_sac.py --train-seed 0 --dry-run          # download + contract check only (needs env creation, no episodes)
+python scripts/evaluate_official_sac.py --train-seed 0 --episodes 10      # official checkpoint, deterministic, test split
+python scripts/evaluate_official_sac.py --train-seed all --episodes 10    # all 5 official seeds + aggregate.json
+python scripts/tdmpc2_smoke_train.py                                      # bounded CUDA smoke -> results/tdmpc2_smoke/<stamp>/
+CK=$(ls -dt results/tdmpc2_smoke/*/checkpoints | head -1)
+python scripts/tdmpc2_ckpt_verify.py --ckpt-dir $CK                       # fresh-process reload check (also run inside the smoke)
+python scripts/evaluate_checkpoint.py tdmpc2 --checkpoint $CK/tdmpc2_smoke.pt --episodes 10 --mode plan
+python scripts/evaluate_checkpoint.py tdmpc2 --checkpoint $CK/tdmpc2_smoke.pt --episodes 10 --mode actor
+python scripts/evaluate_checkpoint.py compare results/official_sac_eval/<run> results/eval/<run>   # comparability class
+```
+Expected cost (estimates from the paper's ~2 s/step on an A100; measure with your Phase 0 numbers): SAC eval ≈ 10 episodes × 80 steps; TD-MPC2 smoke ≈ 400 steps plus ≈ 240 tiny updates; each TD-MPC2 evaluation additionally runs MPPI planning every step.
+Exit codes of `evaluate_official_sac.py`: 0 ok, 2 setup/download error, 3 checkpoint/contract incompatibility (diagnostics printed), 5 Phase 0 evidence missing/not passed. **Do not bypass exit 3** by reshaping observations — send the diagnostic instead.
+Same-contract comparison needs equal `--episodes`/`--base-seed`/`--protocol` (otherwise the comparison class is `non_comparable`).
+Setting the Phase 1 gate (required for any full training) stays manual: `python scripts/mark_gate.py phase1 --evidence <path to the reviewed official_sac_eval summary.json>`.

@@ -21,8 +21,8 @@ Paper Table 2: ~2.01 s/step for CylinderJet2D on an A100 ⇒ **50 000 steps ≈ 
 ## Published-data availability
 | Item | Claimed location | Verified here? |
 |---|---|---|
-| Trained models | HF collection `safe-autonomous-systems/fluidgym-benchmark-models` | **No** — huggingface.co unreachable from the authoring sandbox; exact repo ids/file layout unknown. |
-| Experiment data (curves, test results) | HF dataset `safe-autonomous-systems/fluidgym-experiments` | **No** (same). |
+| Trained models | HF collection `safe-autonomous-systems/fluidgym-benchmark-models` | **Layout verified from the web pages (2026-10-08):** repo `safe-autonomous-systems/sac-CylinderJet2D-easy-v0`, per-seed `0..4/ckpt_latest.zip`, trained with fluidgym 0.0.2, `FlattenObservation` required. Files themselves not downloaded/hashed by the author. Model card lists per-seed mean reward 0.05/0.05/0.05/0.04/0.05 (std 0.39/0.40/0.37/0.38/0.39). |
+| Experiment data (curves, test results) | HF dataset `safe-autonomous-systems/fluidgym-experiments` | Exists (MIT, 7.91 GB, train/test splits); dataset viewer errors on CSV parsing; **file layout not inspected** -> curve reproduction not started. |
 | Initial domains | HF dataset `safe-autonomous-systems/fluidgym-data` | **No** (same). |
 | Training configs | paper Tables 5/6 + App. D | Yes (text only); no config files found in repo at pinned SHA. |
 Caveat from FluidGym README: published models were trained with v0.0.2 ⇒ use `FlattenObservation` (we do) or install v0.0.2. Whether v0.1.2 reproduces v0.0.2 numbers is itself something the evaluation must test.

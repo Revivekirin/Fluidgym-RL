@@ -9,7 +9,10 @@ import numpy as np
 from fluidgym_rl.artifacts import verify_gif, verify_png
 from fluidgym_rl.report import CheckFailure, FatalStop, Report, collect_metadata
 from fluidgym_rl.safety import write_gate
-from fluidgym_rl.device import resolve_device, same_device
+try:                                   # device.py imports torch at module level; keep the failure inside the JSON report instead of crashing
+    from fluidgym_rl.device import resolve_device, same_device
+except ImportError:
+    resolve_device = same_device = None
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--env-id", default="CylinderJet2D-easy-v0")
@@ -239,3 +242,23 @@ def episode_gif():
         details["generated_gifs"].append(result)
 
     return details
+
+
+# ---------------------------------------------------------------------------------------------------------------------------------
+# Runner (restored: the uploaded snapshot ended after episode_gif(), so the script executed no checks and wrote no report).
+try:
+    for name, fn, fatal in [("cuda_available", cuda_available, True), ("gpu_tensor_op", gpu_tensor_op, True), ("env_create", env_create, True),
+                            ("reset_obs_contract", reset_obs_contract, True), ("action_contract", action_contract, True),
+                            ("step_contract", step_contract, True), ("action_bounds_behavior", action_bounds_behavior, False),
+                            ("action_affects_state", action_affects_state, False), ("episode_termination", episode_termination, False),
+                            ("reproducibility", reproducibility, False), ("seed_sensitivity", seed_sensitivity, False),
+                            ("throughput_and_memory", throughput_and_memory, False), ("render_png", render_png, False),
+                            ("flow_field_png", flow_field_png, False), ("episode_gif", episode_gif, False)]:
+        rep.check(name, fn, fatal=fatal)
+except FatalStop:
+    pass
+status = rep.finalize()
+if status == "passed":
+    write_gate("phase0", out / "report.json")
+print(f"phase0 status: {status}  (report: {out / 'report.json'})")
+sys.exit(0 if status == "passed" else (2 if rep.data["checks"].get("cuda_available", {}).get("status") != "passed" else 1))

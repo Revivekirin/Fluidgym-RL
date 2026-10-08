@@ -1,32 +1,35 @@
-# IMPLEMENTATION_STATUS (updated 2026-10-08, after remote-execution refactor)
+# IMPLEMENTATION_STATUS (updated 2026-10-08, milestone: official SAC evaluation + TD-MPC2 CUDA smoke)
 
-**Scope rule:** local runs are CPU *interface* tests only. FluidGym simulation, evaluation, training, rendering and benchmarking run on a remote CUDA server. **No CUDA/FluidGym check has been executed yet**, so every GPU-dependent item below is "written, not run".
-Decisions in force: TD-MPC2 only (no TD-MPC v1); reproduce paper D-MPC (App. D.3), no learned DPC; no full training before Phase 0 CUDA validation + Phase 1 checkpoint evaluation.
+**Evidence rule:** a stage counts only if it executed and passed. `not_run` / `skipped` / `unverified` are never passes. This authoring environment has no GPU, no torch and no Hugging Face file access, so **nothing below marked "remote" has been executed by the code author**; the commands to produce that evidence are listed in `docs/REMOTE_EXECUTION.md` §Milestone.
 
-## Verified (executed locally, CPU, interface level only)
-- Upstream SHAs/licenses/deps recorded (`UPSTREAM.lock`, `docs/UPSTREAM_AUDIT.md`).
-- `patches/tdmpc2_fluidgym_task.patch` applies to the pinned TD-MPC2 SHA via `make_tdmpc2_workcopy`; exactly `tdmpc2/envs/__init__.py` changes; the pinned clone stays clean (`tests/test_report_safety_upstream.py`).
-- Adapter logic on a stand-in env: shapes/dtypes, `done = terminated or truncated`, true-terminal flag preserved, action clipping to bounds, metric pass-through, seeded reset.
-- Report machinery: failures/errors/skips are recorded and never counted as pass; overall `passed` requires every planned check to pass.
-- Safety gates: full training refused unless all conditions hold (`tdmpc2_train_full.py` exits 3 by default).
-- Without CUDA/torch, `phase0_validate.py` produces a `failed` report (exit 2) and writes no gate; a full local `remote_smoke.sh` run ends `NOT PASSED` (cuda_pytests counted as failed because 0 tests passed).
-- PNG/GIF verifier detects blank PNG, missing file, single-frame/static GIF.
+## Phase 0 (CUDA validation of `CylinderJet2D-easy-v0`)
+- Status in this snapshot: **`not_run` (no report.json present)** — *not* a failure. The repo owner reports Phase 0 was completed on the remote server after fixing the `cuda` vs `cuda:0` comparison (`src/fluidgym_rl/device.py`) and the slice-prefixed GIF check; that report was not part of the uploaded snapshot, so it is unconfirmed here.
+- Confirm without re-running the simulator: `python scripts/check_phase0_status.py --roots $FGRL_OUT_DIR` (exit 0 passed / 4 not_run / 1 failed or invalid; it validates that all 15 required checks are present and passed).
+- **Snapshot defect found and fixed:** the uploaded `scripts/phase0_validate.py` ended after `episode_gif()`: the runner block (execute checks, finalize report, write gate) was missing, so that file ran *no checks and exited 0 without a report*. The runner was restored verbatim from the earlier version; also its `fluidgym_rl.device` import is now guarded so a torch-less machine produces a visible `failed` report instead of a crash. If your remote copy already has the runner, keep yours and compare.
+- CUDA-alias normalization: reused the existing `fluidgym_rl/device.py` (resolves implicit `cuda` to `torch.cuda.current_device()`); regression tests added with a stand-in torch (alias equality, cpu-vs-cuda, distinct indices, current-device sensitivity, no-CUDA error) plus real-torch tests that skip without CUDA/multi-GPU.
 
-## Written but UNVERIFIED on GPU (will only be evidence after a remote run)
-- `scripts/remote_setup.sh`, `scripts/remote_smoke.sh` (bash syntax-checked only; setup never run).
-- `scripts/phase0_validate.py`: CUDA availability + GPU tensor op, reset/step/action/reward/termination/device contracts, out-of-range-action behavior, reproducibility, throughput + peak memory, render PNG, flow-field PNG, episode GIF, metadata (simulator version, git SHAs, GPU, driver, torch).
-- `scripts/integration_cuda.py`: adapter against the real env through the patched upstream `make_env` + `TensorWrapper`; device/dtype conversion; action clipping; full-episode termination.
-- `scripts/tdmpc2_smoke_train.py`: upstream `TDMPC2`/`Buffer`/`OnlineTrainer`/`Logger` for ~3 training + 2 eval episodes (harness-reduced `seed_steps/steps/eval_episodes/model_size/compile`), checkpoint save + load round-trip, post-train eval, metrics.
-- `tests/test_fluidgym_smoke.py` (`pytest -m cuda`).
-- Whether TD-MPC2 imports and runs under torch 2.9 with the unpinned tensordict/torchrl.
+## P1 official SAC evaluation — implemented, NOT executed
+- Official artifact located (verified from the HF model card, not guessed): repo `safe-autonomous-systems/sac-CylinderJet2D-easy-v0`, per training seed `0..4/ckpt_latest.zip`, trained with `fluidgym==0.0.2`, needs `FlattenObservation` on newer versions. The Hub commit SHA is resolved and recorded at run time.
+- `scripts/evaluate_official_sac.py` (+ `src/fluidgym_rl/{official_sac,evalcontract,run_eval}.py`): downloads/validates/evaluates; `--checkpoint-path` for offline use; `--dry-run` validates the observation/action contract on the real env without episodes; fails with exit 3 and a full diagnostic list on any mismatch (obs dim, structured Dict obs — refused, never flattened by guesswork —, action bounds, normalization artifacts such as vecnormalize, SB3 major-version drift). Writes `results/official_sac_eval/<run_id>/{resolved_config.yaml,episodes.csv,summary.json,run_manifest.json,evaluation.log}`; run dirs are never overwritten.
+- Evaluation protocol = what FluidGym's own `evaluate_model`/`EvalCallback` do at the pinned SHA (test split, episode 0 `randomize=False`, then `True`, deterministic inference, per-step `info['drag']`/`info['lift']`). **Whether the paper's published numbers used exactly this protocol is unverified** (docs/REPRODUCTION_AUDIT.md).
+- Physical metrics: only `drag` and `lift` as exposed by the env. Drag reduction is *not* inferred.
+- Published numbers are stored side by side (model-card per-seed values; paper Table 8) and the report states `claims_reproduction: false`; differences are reported, never forced. Comparability is classified (same checkpoint+contract / different simulator version / different training seed / cross-algorithm / non-comparable).
+- Not verified: field ordering of the flattened observation beyond dimension equality (recorded as UNVERIFIED in every manifest); `fluidgym-experiments` dataset layout (7.9 GB; its viewer is broken, file list not inspected) so no learning-curve reproduction yet.
 
-## Missing / not started
-- Any actual remote results (Phase 0 numbers, figures, GIF, integration verdict, smoke-train verdict).
-- Phase 1: published-checkpoint download and SAC evaluation, learning-curve reproduction from HF data, GPU/wall-clock tracking, published/reproduced/new tables. (HF repo layout still unknown.) The `phase1` gate can therefore not be set.
-- Phase 2: SAC-vs-TD-MPC2 matched evaluation (needs a test-split evaluator; upstream trains/evals on the train split), TD-MPC2 flow visualization during evaluation.
-- Phase 3: D-MPC implementation (`src/fluidgym_rl/dmpc/` is an empty, documented placeholder, deliberately independent of TD-MPC2); measurement of multi-step differentiable-rollout memory.
+## P2 TD-MPC2 integration — extended, NOT executed on GPU
+- `scripts/tdmpc2_smoke_train.py` now (on the real CUDA env, upstream trainer/agent/buffer unchanged, observed through delegating wrappers) checks: agent/simulator device match; real transitions & replay-episode counts; stored-episode layout (NaN first row convention, finite rest); sampled batches (shapes, finite, **no sequence spans two episodes**, using the episode ids of the very samples upstream draws); ≥1 real optimizer update with finite consistency/reward/value/pi/total losses; parameters actually changed; planned actions finite and within [-1,1]; post-train evaluation on the real simulator; checkpoint save; same-process reload with per-tensor SHA-256 equality; **fresh-process** reload (`scripts/tdmpc2_ckpt_verify.py`) with digest equality, deterministic actor-action equality and seeded-planning reproducibility.
+- Checkpoint semantics: upstream `TDMPC2.save()` stores **model weights only** → this is *inference restoration*. Optimizer state, step counters and RNG are not saved, so exact training resume is **not supported** and not claimed.
+- Planning (`mpc=True`) is stochastic; evaluation records the mode (`mpc_plan_seeded` = MPPI with torch RNG seeded per episode, or `actor_mean` = deterministic policy mean without planning).
+- Not verified: algorithm-semantics preservation is argued by construction (no upstream code modified except the 1-file env-registration patch; wrappers only record and delegate), plus the smoke checks above; it is not proven by diffing training curves against a reference implementation. `terminated` masking: FluidGym only truncates, so upstream's `cfg.episodic=False` path is exercised (termination masking is not).
+- Upstream trains/evals on the FluidGym **train** split; the new evaluator uses the **test** split with the common contract, so training-time eval numbers are not comparable to it.
 
-## Open items for the repo owner
-1. Commit/push the repo (sandbox copy has no git history) so the server can clone it.
-2. Run `scripts/remote_setup.sh` then `scripts/remote_smoke.sh` and send back `SUMMARY.md` + `report.json` files; see `docs/REMOTE_EXECUTION.md` §5 for risks that may need manual action (wheel-vs-SHA, HF access from compute nodes, tensordict/torchrl pins).
-3. Phase 1 evaluation design needs the HF model/dataset layout, which could only be checked from a machine with HF access.
+## P3 unified evaluation — implemented, NOT executed
+- `scripts/evaluate_checkpoint.py {sac|tdmpc2|compare}` shares `EvalContract` with the official evaluator (same env, split, reset protocol, seeds, metrics, writer). Algorithm-specific inference stays explicit and is recorded in manifests (`deterministic`/`stochastic` for SAC; `mpc_plan_seeded`/`actor_mean` for TD-MPC2). PPO and D-MPC can plug in via the `Policy` protocol (not implemented).
+
+## Tests (local, CPU) — 46 passed, 3 skipped
+Covered: contract/protocol semantics, determinism, clipping, scalar reward conversion, truncation vs termination, non-finite handling, missing-metric error, no-overwrite run dirs, comparability classes, checkpoint metadata validation (missing file, dimension/bounds/Dict/normalization/SB3 drift), replay-sequence validity incl. cross-episode and NaN-leak detection, non-finite loss detection, checkpoint digest round-trip/tamper detection, report-status correctness (`not_run` vs `failed`), CUDA alias normalization, adapter contract. **Skipped (not passes):** real-torch/CUDA tests (`tests/test_fluidgym_smoke.py`, device tests needing a GPU, patch-application test when `third_party/tdmpc2` is absent).
+
+## Still missing
+- Any remote results for P1/P2/P3; Phase 1 gate (`scripts/mark_gate.py phase1`) is deliberately manual after you review the SAC evaluation evidence.
+- Learning-curve reproduction from `fluidgym-experiments`; D-MPC; matched SAC-vs-TD-MPC2 study at real training budgets; full TD-MPC2 training (still blocked by `safety.py` gates).
+- Upgrading `torch.compile=false` smoke to the upstream-default compiled path.
