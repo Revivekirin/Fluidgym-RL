@@ -2,7 +2,7 @@
 
 FluidGym needs a CUDA GPU; the local development machine has none. **All simulation, evaluation, training, rendering and benchmarking happens on the remote CUDA server.** Locally you only edit code and run CPU *interface* tests (`pytest -m "not cuda"`), which prove nothing about FluidGym compatibility. This repo is independent of the existing DRL project: it shares no code, venv, or paths with it, and nothing here writes outside `FGRL_*` locations.
 
-Nothing below has been executed on a GPU yet; the first remote run is what produces the evidence.
+The user reports the CUDA smoke has passed all checks. New pilot/W&B code still requires its own server validation; local tests are not CUDA evidence.
 
 ## 0. Get the code onto the server
 Locally (the sandbox copy is not a git repo yet):
@@ -60,14 +60,14 @@ python scripts/tdmpc2_smoke_train.py  --out $FGRL_OUT_DIR/tdmpc2_smoke
 
 ## 4. Safety defaults
 - Every script defaults to smoke scale. `scripts/tdmpc2_smoke_train.py` never runs more than a few episodes.
-- Full training is `scripts/tdmpc2_train_full.py --mode full --allow-full-training --steps N` **and** `FGRL_ALLOW_FULL_TRAINING=1` **and** gate files `phase0` + `phase1` under `$FGRL_OUT_DIR/gates/`. `phase0` is written automatically by a passing `phase0_validate.py`; `phase1` only by `python scripts/mark_gate.py phase1 --evidence <file>` after you have reviewed published-checkpoint evaluation — which is **not implemented yet**, so full training is currently impossible by design. `--steps` has no default.
+- Full training is `scripts/tdmpc2_train_full.py --mode full --allow-full-training --steps N` **and** `FGRL_ALLOW_FULL_TRAINING=1` **and** gate files `phase0` + `phase1` under `$FGRL_OUT_DIR/gates/`. `phase0` is written automatically by a passing `phase0_validate.py`; `phase1` only by `python scripts/mark_gate.py phase1 --evidence <file>` after you have reviewed published-checkpoint evaluation. The SAC evaluator is implemented; the gate still requires review of its evidence. `--steps` has no default.
 - The pinned upstream clones are never edited: the TD-MPC2 patch is applied to a throw-away copy under `FGRL_WORK_DIR` (default `$TMPDIR/fgrl_work`), and the run verifies that exactly `tdmpc2/envs/__init__.py` differs.
 
 ## 5. Known risks / manual intervention
 1. **Wheel vs pinned SHA.** The simulator under test is the PyPI wheel `fluidgym==0.1.2`; `UPSTREAM.lock` pins git `50071140` (also version 0.1.2). That they are the same code is *unverified*; `preflight.json` records both. For an exact-source build see the FluidGym README ("Build from Source": conda CUDA toolkit 12.8 + gcc, `make install`) — needs a toolchain you may not have without sudo.
 2. **Hugging Face access.** FluidGym downloads initial domains on first `reset()`. If the compute node has no internet, pre-populate FluidGym's cache from a node that has (cache location not verified here) or set `HF_HOME` to shared storage.
 3. **Dependency resolution.** TD-MPC2 pins `tensordict==0.8.3`/`torchrl==0.8.1` for torch 2.7.1. We keep torch 2.9 and leave those unpinned under a torch constraint, so setup fails loudly if no compatible release exists. If it does, pin versions in a copy of `requirements/tdmpc2_extra.txt` and pass `FGRL_TDMPC2_REQS`.
-4. **TD-MPC2 harness assumptions (unverified).** The smoke test composes the upstream hydra config itself (needs `hydra-submitit-launcher`), sets `hydra.utils.get_original_cwd = os.getcwd`, and overrides `seed_steps`/`steps` after `make_env`. Upstream training evaluates once at step 0, and trains+evaluates on FluidGym's *train* split; SAC-vs-TD-MPC2 comparison on the *test* split needs a separate evaluator (not written).
+4. **TD-MPC2 harness assumptions (unverified).** The smoke test composes the upstream hydra config itself (needs `hydra-submitit-launcher`), sets `hydra.utils.get_original_cwd = os.getcwd`, and overrides `seed_steps`/`steps` after `make_env`. Upstream training evaluates once at step 0, and trains+evaluates on FluidGym's *train* split; SAC-vs-TD-MPC2 comparison on the *test* split uses `scripts/evaluate_checkpoint.py`.
 5. **GPU memory numbers.** FluidGym's CUDA kernels may allocate outside PyTorch's allocator; compare `torch_peak_alloc_MiB` with `device_used_MiB_delta_during_bench`.
 6. **Flow-field PNG axis order** is a heuristic (`orient()` in phase0). `render.png` (FluidGym's own renderer) is the authoritative picture; check both by eye — automated checks only prove non-blank.
 7. **Determinism.** `reproducibility` fails if same seed + same actions differ by more than 1e-5; GPU non-determinism would show up there rather than be hidden. Adjust `--repro-tol` deliberately, not silently.
@@ -186,3 +186,116 @@ PYTHONPATH=src python tests/test_tdmpc2_smoke_budget.py -v && python scripts/tdm
 
 Local budget regression: 3 tests passed. CUDA rerun remains pending. The
 reported server factory and meta-gradient tests passed before this fix.
+
+## Configurable W&B and bounded nominal pilot
+
+Use the same activated CUDA environment that passed smoke. Install the optional
+tracking dependency with `python -m pip install -e '.[dev,tracking]'` (use your
+existing torch constraint when installing other runtime dependencies). W&B is
+disabled by default; `--wandb-mode offline` writes local W&B records, and
+`--wandb-mode online` uses your existing W&B authentication. Do not put API keys
+in command-line arguments. `--wandb-entity` is optional; omission lets W&B choose
+the authenticated account's default entity.
+
+The supplied server evidence reports all CUDA smoke checks passed. These new
+pilot/logging changes still require server verification. First run CPU tests
+and validate the actual pinned Hydra config without creating a simulator:
+
+```bash
+PYTHONPATH=src python tests/test_pilot.py -v
+python scripts/tdmpc2_train_full.py --mode pilot --steps 2400 --wandb-mode offline --validate-only
+```
+
+The validation command must finish with `status.json` containing `validated`;
+this is not a completed experiment. The Hydra regression must not be skipped
+on the server. The script rejects unknown overrides through Hydra composition.
+
+Minimal offline pilot (1,040 training transitions; upstream warmup is unchanged):
+
+```bash
+python scripts/tdmpc2_train_full.py --mode pilot --steps 1040 --model-size 1 --eval-freq 1040 --save-freq 1040 --eval-episodes 1 --wandb-mode offline --wandb-project fluidgym-rl --wandb-group offline-check --wandb-tags nominal validation
+```
+
+A bounded nominal pilot with periodic evaluation and checkpointing:
+
+```bash
+python scripts/tdmpc2_train_full.py --mode pilot --steps 2400 --seed 1 --model-size 5 --eval-freq 800 --save-freq 800 --eval-episodes 2 --wandb-mode offline --wandb-project fluidgym-rl --wandb-group nominal-pilot --wandb-tags nominal tdmpc2
+```
+
+Pilot mode requires explicit steps and caps training at 5,000 transitions.
+For this 80-step environment, steps/evaluation/save intervals must be multiples
+of 80; the budget must exceed the upstream 1,000-step warmup. No Phase 1 gate
+is silently created. Pilot does not grant access to full training.
+Compilation defaults to off in pilot and on in full mode; `--compile` /
+`--no-compile` override that choice. This is an execution setting, not a change to the loss
+or planner. No dynamics shifts are applied.
+
+Full training still requires both existing evidence gates and both opt-ins.
+The following is a manual command only; do not run it until the pilot and
+baseline evidence have been reviewed. Change `--wandb-mode` to offline if needed:
+
+```bash
+FGRL_ALLOW_FULL_TRAINING=1 python scripts/tdmpc2_train_full.py --mode full --allow-full-training --steps 50000 --seed 1 --model-size 5 --compile --eval-freq 4000 --save-freq 4000 --eval-episodes 10 --wandb-mode online --wandb-project fluidgym-rl --wandb-group nominal-full --wandb-tags nominal tdmpc2
+```
+
+Run directories are unique under `results/tdmpc2_pilot/` or
+`results/tdmpc2_full/` (or `$FGRL_RESULTS_DIR`). `--out` selects an exact **new**
+directory; existing directories are refused. Each run has `launch.json`,
+`resolved_config.json`, `resolved_config.yaml`, `run_manifest.json`,
+`metrics.jsonl`, `checkpoints.json`, `evaluation.json`, `status.json`,
+`stdout.log`, `stderr.log`, and `exit_code.txt` as stages complete. Missing files
+or non-completed status must not be treated as success. The launcher propagates
+child failures and prints stderr with the complete traceback.
+
+Checkpoints live in `upstream/models/`, with an evaluator-compatible
+`run_config.json` sidecar. They contain upstream model weights, not optimizer,
+RNG, replay, or simulator state; exact training resume is not supported.
+Use the existing common test-split evaluator independently after training:
+
+```bash
+# Set RUN to the actual directory printed by the pilot launcher.
+python scripts/evaluate_checkpoint.py tdmpc2 --checkpoint "$RUN/upstream/models/final.pt" --episodes 10 --mode plan --train-seed 1
+```
+
+Periodic and final in-run evaluation retain upstream behavior: MPPI evaluation
+on the training environment's train split. They are explicitly labelled as
+such in the manifest and are not a substitute for test-split baseline results.
+The independent evaluator produces its own result directory; it does not
+retroactively attach results to the closed training W&B run.
+
+### Logging and budget details
+
+- Upstream `Logger.log` remains the only W&B scalar logging call. Existing
+  episode returns, consistency/reward/value/policy losses and exposed gradient
+  norms are preserved at upstream episode logging cadence (losses are the most
+  recent update, not an episode average or an every-update history).
+- `train/environment_steps` and `eval/environment_steps` are explicit chart
+  axes; `learner_updates` is a separate counter including warmup pretraining.
+  Evaluation simulator steps are counted separately and do not consume the
+  **training** step budget. Evaluation adds simulator cost to the pilot.
+- Evaluation adds per-step mean reward, mean drag and mean lift when those
+  physical fields are present. Missing values are omitted, never replaced by
+  zero. Non-finite numeric metrics fail the run.
+- Episode length counts transitions, excluding the reset row. Actual optimizer
+  parameter-group learning rates, simulator throughput, updates per wall second
+  and per update-call second, and PyTorch peak allocated GPU bytes are recorded.
+  Kernel allocations outside PyTorch are not included in that memory number.
+- Upstream has `eval_freq` and `save_agent`, but no checkpoint frequency option.
+  `--save-freq` calls upstream `save_agent()` at episode log boundaries; the
+  serializer and W&B model-artifact hook are reused. Final evaluation and the
+  checkpoint path are recorded locally and in W&B's summary.
+- Upstream's loop condition is inclusive (`_step <= cfg.steps`). The harness
+  passes `requested_steps - 1` as its internal limit, verifies the observed
+  count, and emits the last completed episode through the same logger. The
+  last episode is not inserted into replay after the upstream loop exits;
+  no additional learner update is performed. Pilot replay capacity retains
+  reset rows without altering upstream sampling; full mode retains its normal
+  buffer cap.
+- `patches/tdmpc2_logging.patch` applies only to the training workcopy. It makes
+  group/tags configurable and handles Hydra config serialization. The training
+  workcopy check permits only the existing environment/layers compatibility
+  changes plus `common/logger.py`; the pinned clone and learning code stay
+  unchanged. `UPSTREAM.lock` is unchanged.
+
+W&B API reference for custom axes and explicit failure completion:
+https://docs.wandb.ai/ref/python/experiments/run/

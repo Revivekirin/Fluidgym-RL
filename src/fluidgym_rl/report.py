@@ -119,7 +119,7 @@ def collect_metadata() -> dict:
             "env": {k: os.environ.get(k) for k in ("CUDA_VISIBLE_DEVICES", "HF_HOME", "FGRL_OUT_DIR", "FGRL_THIRD_PARTY")}}
     meta["upstream_pins"] = {n: {"expected_sha": sha, "local_clone": git_info(third_party() / n)} for n, (_, sha) in lock().items()}
     meta["dependency_versions"] = {}
-    for package in ("tensordict", "torchrl", "gymnasium", "hydra-core", "omegaconf"):
+    for package in ("tensordict", "torchrl", "gymnasium", "hydra-core", "omegaconf", "wandb", "numpy", "pandas"):
         try:
             meta["dependency_versions"][package] = metadata.version(package)
         except metadata.PackageNotFoundError:

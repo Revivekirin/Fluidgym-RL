@@ -38,3 +38,24 @@ Covered: contract/protocol semantics, determinism, clipping, scalar reward conve
 The supplied server logs show SAC loading blocked by missing `omegaconf` and TD-MPC2 trainer construction blocked by missing `hydra`. SAC's extra now declares OmegaConf; TD-MPC2 additionally requires `requirements/tdmpc2_extra.txt` (see the recovery commands in `docs/REMOTE_EXECUTION.md`). No training updates or checkpoint restoration were reached in that run. CUDA and patched-workcopy checks passed in the supplied smoke report; full smoke and independent evaluation remain blocked pending a successful server rerun. No upstream algorithm or patch was changed by this fix.
 
 Follow-up validation on this Mac: Python compilation, `bash -n scripts/remote_milestone.sh`, and `git diff --check` passed. A standard-library-only regression run passed five Phase 0 recovery cases and one failure diagnostic/report check. The full pytest suite was **not_run**: pytest is absent and permission to download test dependencies was declined. These checks do not validate SAC loading or CUDA training.
+
+## Nominal pilot and configurable W&B
+
+The user reports the CUDA smoke passed every validation check, including real
+updates and fresh-process checkpoint restoration. A bounded pilot launcher now
+supports disabled/offline/online W&B, project/entity/group/tags, upstream periodic
+evaluation and harness-scheduled saves via the upstream serializer. Full-training
+gates are unchanged. Environment transitions and learner updates have independent
+counters; manifests distinguish train-split in-run evaluation from independent
+test-split evaluation. No learning-algorithm code is changed.
+
+New pilot runtime and W&B CUDA validation remain **not_run locally** (Torch/CUDA
+unavailable). Hydra composition also requires the server's dependencies; use
+`--validate-only` before the offline pilot. No full training has been launched.
+
+Pilot change validation: `PYTHONPATH=src python tests/test_pilot.py -v` ->
+8 passed, 1 skipped (Hydra absent). Existing stdlib-compatible regressions:
+smoke budget 3 passed; supplied-source factory 1 passed / pinned-source factory
+1 skipped; real meta/gradient test 1 skipped (Torch absent). Total: 12 passed,
+3 skipped. Python syntax checks and CLI help passed; UPSTREAM.lock is unchanged.
+The full pytest suite was not run (local NumPy/pytest unavailable).

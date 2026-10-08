@@ -1,0 +1,18 @@
+# Relevant keys transcribed from the user-supplied pinned config.yaml.
+# No simulator is loaded by the Hydra composition regression.
+task: dog-run
+steps: 10000000
+seed: 1
+model_size: ???
+eval_freq: 50000
+eval_episodes: 10
+save_video: true
+save_agent: true
+save_csv: true
+enable_wandb: true
+wandb_project: ???
+wandb_entity: ???
+exp_name: default
+data_dir: ???
+checkpoint: ???
+compile: true

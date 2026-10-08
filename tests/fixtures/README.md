@@ -11,3 +11,8 @@ or cleanliness checks; it skips when the real checkout is absent.
 `tdmpc2_ensemble.py.txt` contains the supplied `Ensemble` class and imports
 from `common/layers.py`, for testing the meta-template movement fix. It is
 a source excerpt, not a full upstream file.
+
+`tdmpc2_logging_source.py.txt` is the user-supplied logger initialization excerpt;
+`tdmpc2_pilot_config.yaml` transcribes the relevant keys from the supplied Hydra
+config. They support offline patch/override regression, not verification of a
+complete upstream checkout. `--validate-only` composes the real pinned config.

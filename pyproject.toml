@@ -9,6 +9,7 @@ dependencies = ["numpy", "gymnasium"]
 gpu = ["fluidgym==0.1.2", "torch==2.9.*", "matplotlib>=3.9,<3.10", "imageio"]
 sac = ["stable-baselines3[extra]>=2.7.0", "huggingface_hub>=1.0.0", "omegaconf==2.3.0"]
 dev = ["pytest"]
+tracking = ["wandb"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
