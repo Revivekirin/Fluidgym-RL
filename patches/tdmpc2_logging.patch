@@ -1,12 +1,9 @@
 diff --git a/tdmpc2/common/logger.py b/tdmpc2/common/logger.py
 --- a/tdmpc2/common/logger.py
 +++ b/tdmpc2/common/logger.py
-@@ -1,2 +1,3 @@
- import dataclasses
-+from fluidgym_rl.training_logging import wandb_config
- import os
-@@ -114,3 +115,3 @@
+@@ -114,3 +114,4 @@
  		self._save_agent = cfg.save_agent
++		from fluidgym_rl.training_logging import wandb_config
 -		self._group = cfg_to_group(cfg)
 +		self._group = os.environ.get("WANDB_RUN_GROUP") or cfg_to_group(cfg)
  		self._seed = cfg.seed

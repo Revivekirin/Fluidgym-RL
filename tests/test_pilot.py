@@ -12,7 +12,7 @@ from unittest.mock import patch
 
 from fluidgym_rl.pilot import parser, blockers, hydra_overrides, wandb_environment
 from fluidgym_rl.training_logging import make_logger_class, scalar_metrics
-from fluidgym_rl.upstream import repo_root
+from fluidgym_rl.upstream import repo_root, third_party, upstream_status, make_tdmpc2_workcopy
 
 
 class PilotTests(unittest.TestCase):
@@ -41,17 +41,40 @@ class PilotTests(unittest.TestCase):
         self.assertEqual(scalar_metrics({'loss': 2.0, 'drag': None}), {'loss': 2.0})
         with self.assertRaises(ValueError): scalar_metrics({'loss': float('nan')})
 
-    def test_logging_patch_applies(self):
+    def test_logging_patch_applies(self, header_variant=False):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             source = root / 'tdmpc2/common/logger.py'
             source.parent.mkdir(parents=True)
-            source.write_text((repo_root() / 'tests/fixtures/tdmpc2_logging_source.py.txt').read_text())
+            content = (repo_root() / 'tests/fixtures/tdmpc2_logging_source.py.txt').read_text()
+            if header_variant:
+                content = '# Different file preamble/import order must not matter.\n' + content.replace('import dataclasses\nimport os', 'import os\nimport dataclasses')
+            source.write_text(content)
             subprocess.run(['git', 'init', '-q', str(root)], check=True)
             subprocess.run(['git', 'apply', '--check', str(repo_root() / 'patches/tdmpc2_logging.patch')], cwd=root, check=True)
             subprocess.run(['git', 'apply', str(repo_root() / 'patches/tdmpc2_logging.patch')], cwd=root, check=True)
             ast.parse(source.read_text())
             self.assertIn('config=wandb_config(cfg)', source.read_text())
+
+    def test_logging_patch_does_not_depend_on_file_header(self):
+        self.test_logging_patch_applies(header_variant=True)
+
+    @unittest.skipUnless((third_party() / 'tdmpc2' / '.git').exists(), 'pinned upstream checkout unavailable')
+    def test_logging_patch_on_pinned_workcopy(self):
+        before = upstream_status('tdmpc2')
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / 'work'
+            make_tdmpc2_workcopy(root)
+            subprocess.run(['git', 'init', '-q', str(root)], check=True)
+            logging_patch = str(repo_root() / 'patches/tdmpc2_logging.patch')
+            subprocess.run(['git', 'apply', '--check', logging_patch], cwd=root, check=True)
+            subprocess.run(['git', 'apply', logging_patch], cwd=root, check=True)
+            source = (root / 'tdmpc2/common/logger.py').read_text()
+            ast.parse(source)
+            self.assertIn('config=wandb_config(cfg)', source)
+        self.assertEqual(upstream_status('tdmpc2'), before)
+        self.assertTrue(before['matches'])
+        self.assertFalse(before['dirty'])
 
     def test_single_log_path_and_save_failure_propagation(self):
         with tempfile.TemporaryDirectory() as tmp:
