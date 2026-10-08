@@ -22,7 +22,3 @@ index 46f99a8..0998a08 100644
  			try:
  				env = fn(cfg)
  			except ValueError:
-
-@@ -66,1 +70,1 @@ def make_env(cfg):
--	gym.logger.set_level(40)
-+	gym.logger.min_level = gym.logger.ERROR
