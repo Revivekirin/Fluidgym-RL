@@ -1,0 +1,4 @@
+
+# Preserve literal CRLF source lines in this upstream patch and its fixture.
+patches/tdmpc2_logging.patch -text
+tests/fixtures/tdmpc2_logging_source.py.txt -text

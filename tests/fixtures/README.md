@@ -16,3 +16,7 @@ a source excerpt, not a full upstream file.
 `tdmpc2_pilot_config.yaml` transcribes the relevant keys from the supplied Hydra
 config. They support offline patch/override regression, not verification of a
 complete upstream checkout. `--validate-only` composes the real pinned config.
+
+The logger fixture now preserves the CRLF endings confirmed from the server
+(241/241 upstream lines). Use read_bytes/write_bytes when copying it; text I/O
+would hide the patch incompatibility this regression is intended to detect.

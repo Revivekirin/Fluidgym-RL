@@ -46,15 +46,31 @@ class PilotTests(unittest.TestCase):
             root = Path(tmp)
             source = root / 'tdmpc2/common/logger.py'
             source.parent.mkdir(parents=True)
-            content = (repo_root() / 'tests/fixtures/tdmpc2_logging_source.py.txt').read_text()
+            content = (repo_root() / 'tests/fixtures/tdmpc2_logging_source.py.txt').read_bytes()
+            self.assertEqual(content.count(b'\r\n'), content.count(b'\n'))
             if header_variant:
-                content = '# Different file preamble/import order must not matter.\n' + content.replace('import dataclasses\nimport os', 'import os\nimport dataclasses')
-            source.write_text(content)
+                content = b'# Different file preamble/import order must not matter.\r\n' + content.replace(b'import dataclasses\r\nimport os', b'import os\r\nimport dataclasses')
+            source.write_bytes(content)
             subprocess.run(['git', 'init', '-q', str(root)], check=True)
             subprocess.run(['git', 'apply', '--check', str(repo_root() / 'patches/tdmpc2_logging.patch')], cwd=root, check=True)
             subprocess.run(['git', 'apply', str(repo_root() / 'patches/tdmpc2_logging.patch')], cwd=root, check=True)
             ast.parse(source.read_text())
             self.assertIn('config=wandb_config(cfg)', source.read_text())
+            result = source.read_bytes()
+            self.assertEqual(result.count(b'\r\n'), result.count(b'\n'))
+
+    def test_lf_patch_reproduces_crlf_failure(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / 'tdmpc2/common/logger.py'
+            source.parent.mkdir(parents=True)
+            source.write_bytes((repo_root() / 'tests/fixtures/tdmpc2_logging_source.py.txt').read_bytes())
+            broken = root / 'normalized.patch'
+            broken.write_bytes((repo_root() / 'patches/tdmpc2_logging.patch').read_bytes().replace(b'\r\n', b'\n'))
+            subprocess.run(['git', 'init', '-q', str(root)], check=True)
+            result = subprocess.run(['git', 'apply', '--check', str(broken)], cwd=root, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('patch does not apply', result.stderr)
 
     def test_logging_patch_does_not_depend_on_file_header(self):
         self.test_logging_patch_applies(header_variant=True)

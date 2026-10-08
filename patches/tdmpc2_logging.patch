@@ -1,13 +1,13 @@
 diff --git a/tdmpc2/common/logger.py b/tdmpc2/common/logger.py
 --- a/tdmpc2/common/logger.py
 +++ b/tdmpc2/common/logger.py
-@@ -114,3 +114,4 @@
+@@ -113,3 +113,4 @@
  		self._save_agent = cfg.save_agent
 +		from fluidgym_rl.training_logging import wandb_config
 -		self._group = cfg_to_group(cfg)
 +		self._group = os.environ.get("WANDB_RUN_GROUP") or cfg_to_group(cfg)
  		self._seed = cfg.seed
-@@ -139,5 +140,5 @@
+@@ -134,5 +135,5 @@
  			group=self._group,
 -			tags=cfg_to_group(cfg, return_list=True) + [f"seed:{cfg.seed}"],
 +			tags=cfg_to_group(cfg, return_list=True) + [f"seed:{cfg.seed}"] + [t for t in os.environ.get("WANDB_TAGS", "").split(",") if t],

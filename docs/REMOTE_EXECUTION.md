@@ -306,10 +306,15 @@ The earlier logging patch inserted an import using a file-header hunk. That
 hunk failed on the server although the abbreviated logger fixture passed.
 The import now resides inside Logger.__init__, next to the patched group
 assignment, so it does not depend on the file's preamble or import ordering.
-The exact server header difference has not been established locally.
+The later byte diagnostic established the cause: the pinned logger uses CRLF on all 241 lines, while the initial patch/fixture used LF. The current patch preserves CRLF in context and replacement lines; tests use byte-preserving I/O, and `.gitattributes` prevents Git from normalizing those files.
 
 `tests/test_pilot.py` now also applies both compatibility patches to a real
 pinned workcopy when available, and checks that the upstream clone stays clean
 and unchanged. On the server, `test_logging_patch_on_pinned_workcopy` must pass,
 not skip, before relying on `--validate-only`. Local results for this change:
 9 passed, 2 skipped (Hydra and pinned checkout unavailable).
+
+CRLF regression: an LF-normalized patch reproduces the failure against the
+CRLF fixture; the byte-preserving patch applies successfully without changing
+source line endings. Local pilot tests: 10 passed, 2 skipped (Hydra and pinned
+checkout unavailable). Real pinned-workcopy validation remains a server check.
