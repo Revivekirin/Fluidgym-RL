@@ -40,3 +40,22 @@ diff --git a/tdmpc2/envs/__init__.py b/tdmpc2/envs/__init__.py
  	try: # Dict
  		cfg.obs_shape = {k: v.shape for k, v in env.observation_space.spaces.items()}
  	except: # Box
+diff --git a/tdmpc2/common/layers.py b/tdmpc2/common/layers.py
+--- a/tdmpc2/common/layers.py
++++ b/tdmpc2/common/layers.py
+@@ -22,6 +22,15 @@
+ 	def __len__(self):
+ 		return self._n
+ 
++	def _apply(self, fn, recurse=True):
++		# Keep the stateless meta template out of device/dtype traversal.
++		# Real weights live in params; restore registration for train/eval.
++		module = self._modules.pop("module")
++		try:
++			return super()._apply(fn, recurse=recurse)
++		finally:
++			self._modules["module"] = module
++
+ 	def _call(self, params, *args, **kwargs):
+ 		with params.to_module(self.module):
+ 			return self.module(*args, **kwargs)

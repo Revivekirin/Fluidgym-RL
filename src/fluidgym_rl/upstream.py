@@ -49,7 +49,7 @@ def _changed_files(a: Path, b: Path) -> list[str]:
 
 def make_tdmpc2_workcopy(dest: str | Path) -> dict:
     """Copy pinned tdmpc2 (without .git) to dest, apply patches/tdmpc2_fluidgym_task.patch, and verify that
-    exactly the expected file changed. Raises if the clone is not at the pinned SHA or is dirty."""
+    exactly the expected files changed. Raises if the clone is not at the pinned SHA or is dirty."""
     st = upstream_status("tdmpc2")
     if not st["matches"] or st["dirty"]:
         raise RuntimeError(f"third_party/tdmpc2 must be clean and at the pinned SHA: {st}")
@@ -62,6 +62,6 @@ def make_tdmpc2_workcopy(dest: str | Path) -> dict:
     subprocess.run(["git", "apply", str(patch)], cwd=dest, check=True)
     shutil.rmtree(dest / ".git")
     changed = _changed_files(src, dest)
-    if changed != ["tdmpc2/envs/__init__.py"]:
+    if changed != ["tdmpc2/common/layers.py", "tdmpc2/envs/__init__.py"]:
         raise RuntimeError(f"unexpected files changed by patch: {changed}")
     return {"workcopy": str(dest), "code_dir": str(dest / "tdmpc2"), "patch": str(patch), "changed_files": changed, "upstream": st}

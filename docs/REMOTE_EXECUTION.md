@@ -119,3 +119,32 @@ Setting the Phase 1 gate (required for any full training) stays manual: `python 
 - Missing `/tdmpc2_smoke.pt`: smoke failed before saving; rerun smoke successfully before evaluating. The milestone runner now selects its own smoke checkpoint.
 - Failed checks now print tracebacks to stderr and the milestone report includes smoke diagnostics. Initial Phase 0 failures remain visible as superseded when a later evidence check runs; the final check controls acceptance.
 - A successful dependency installation does not establish checkpoint compatibility or CUDA training success. Keep those milestones pending until real evaluation reports pass.
+
+## Meta-template failure during TD-MPC2 model construction
+
+The reported Torch 2.9.1+cu126 / TensorDict 0.14.2 / TorchRL 0.14.0 run failed
+in `WorldModel.to()`. Upstream `Ensemble.module` is a registered meta template;
+its real weights live separately in `Ensemble.params`. The persistent patch
+now overrides `Ensemble._apply` to temporarily exclude this template from
+device/dtype traversal, restoring registration in `finally`. Thus `.train()`
+and `.eval()` still propagate to it. This does not replace `.to()` with
+`.to_empty()`, reinitialize weights, or change losses, sampling, or target updates.
+The patch now changes exactly `tdmpc2/common/layers.py` and `tdmpc2/envs/__init__.py`.
+TensorDict/TorchRL versions are recorded in report metadata; version causality
+has not been established and the dependencies have not been downgraded.
+
+After transferring the updated patch, harness and tests, run each command on
+the server, proceeding only after successful tests:
+
+```bash
+PYTHONPATH=src python -m unittest discover -s tests -p test_tdmpc2_factory.py -v
+PYTHONPATH=src python -m unittest discover -s tests -p test_tdmpc2_meta.py -v
+python scripts/tdmpc2_smoke_train.py
+```
+
+The new meta test checks original outputs and weights, finite gradients, target
+ensemble construction, train/eval propagation, and registration restoration
+after an exception. It additionally checks CUDA movement if available.
+Local fixture patch application passed; the real Torch/TensorDict test and
+pinned-workcopy test skipped locally because their prerequisites are absent.
+Real smoke success remains pending.

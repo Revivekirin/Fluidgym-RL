@@ -62,7 +62,7 @@ class FactoryEpisodeLengthTests(FactoryAssertions, unittest.TestCase):
         before = upstream_status("tdmpc2")
         with tempfile.TemporaryDirectory() as directory:
             info = make_tdmpc2_workcopy(Path(directory) / "workcopy")
-            self.assertEqual(info["changed_files"], ["tdmpc2/envs/__init__.py"])
+            self.assertEqual(info["changed_files"], ["tdmpc2/common/layers.py", "tdmpc2/envs/__init__.py"])
             path = Path(info["code_dir"]) / "envs" / "__init__.py"
             self.check_factory(path, SimpleNamespace())
         self.assertEqual(upstream_status("tdmpc2"), before)
@@ -80,6 +80,9 @@ class SuppliedSourceTests(FactoryAssertions, unittest.TestCase):
             path = root / "tdmpc2/envs/__init__.py"
             path.parent.mkdir(parents=True)
             path.write_text(source.read_text())
+            layers = root / "tdmpc2/common/layers.py"
+            layers.parent.mkdir(parents=True)
+            layers.write_text((repo_root() / "tests/fixtures/tdmpc2_ensemble.py.txt").read_text())
             subprocess.run(["git", "init", "-q", str(root)], check=True)
             subprocess.run(["git", "apply", "--check", str(patch)], cwd=root, check=True)
             subprocess.run(["git", "apply", str(patch)], cwd=root, check=True)

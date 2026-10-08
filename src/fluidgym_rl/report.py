@@ -118,6 +118,12 @@ def collect_metadata() -> dict:
             "python": sys.version.split()[0], "repo": git_info(repo_root()),
             "env": {k: os.environ.get(k) for k in ("CUDA_VISIBLE_DEVICES", "HF_HOME", "FGRL_OUT_DIR", "FGRL_THIRD_PARTY")}}
     meta["upstream_pins"] = {n: {"expected_sha": sha, "local_clone": git_info(third_party() / n)} for n, (_, sha) in lock().items()}
+    meta["dependency_versions"] = {}
+    for package in ("tensordict", "torchrl", "gymnasium", "hydra-core", "omegaconf"):
+        try:
+            meta["dependency_versions"][package] = metadata.version(package)
+        except metadata.PackageNotFoundError:
+            meta["dependency_versions"][package] = None
     try:
         import torch
         meta["torch"] = {"version": torch.__version__, "cuda_runtime": torch.version.cuda, "cuda_available": torch.cuda.is_available()}

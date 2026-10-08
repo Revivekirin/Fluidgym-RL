@@ -7,3 +7,7 @@ The offline test applies the persistent patch to this fixture and executes
 its factory with a non-forwarding wrapper and fake environment. The separate
 pinned-checkout test invokes `make_tdmpc2_workcopy()` without mocking its SHA
 or cleanliness checks; it skips when the real checkout is absent.
+
+`tdmpc2_ensemble.py.txt` contains the supplied `Ensemble` class and imports
+from `common/layers.py`, for testing the meta-template movement fix. It is
+a source excerpt, not a full upstream file.

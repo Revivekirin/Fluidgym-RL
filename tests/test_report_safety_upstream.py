@@ -79,7 +79,7 @@ def test_phase0_without_cuda_is_visibly_not_passed(tmp_path):
 def test_workcopy_applies_patch_and_leaves_upstream_untouched(tmp_path):
     before = upstream_status("tdmpc2")
     info = make_tdmpc2_workcopy(tmp_path / "wc")
-    assert info["changed_files"] == ["tdmpc2/envs/__init__.py"]
+    assert info["changed_files"] == ["tdmpc2/common/layers.py", "tdmpc2/envs/__init__.py"]
     assert "make_fluidgym_env" in (Path(info["code_dir"]) / "envs" / "__init__.py").read_text()
     after = upstream_status("tdmpc2")
     assert after["head"] == before["head"] == lock()["tdmpc2"][1] and after["dirty"] is False
