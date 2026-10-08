@@ -41,6 +41,9 @@ def upstream_make_env():
     assert str(S["wc"]["code_dir"]) in os.path.abspath(envs.__file__), envs.__file__
     cfg = Cfg(task=f"fluidgym-{a.env_id}", multitask=False, obs="state", seed=0); S["cfg"] = cfg
     S["env"] = envs.make_env(cfg)
+    limit = S["env"].max_episode_steps
+    if type(limit) is not int or limit <= 0 or cfg.episode_length != limit:
+        raise CheckFailure("wrapped episode length contract violated", {"max_episode_steps": limit, "cfg_episode_length": cfg.episode_length})
     return {"cfg_obs_shape": {k: list(v) for k, v in cfg.obs_shape.items()}, "action_dim": cfg.action_dim, "episode_length": cfg.episode_length,
             "seed_steps": cfg.seed_steps, "env_class": type(S["env"]).__name__}
 

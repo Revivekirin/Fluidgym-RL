@@ -56,6 +56,9 @@ def build():
     from tdmpc2 import TDMPC2
     from trainer.online_trainer import OnlineTrainer
     env = make_env(cfg)
+    limit = env.max_episode_steps
+    if type(limit) is not int or limit <= 0 or cfg.episode_length != limit:
+        raise CheckFailure("wrapped episode length contract violated", {"max_episode_steps": limit, "cfg_episode_length": cfg.episode_length})
     S["upstream_seed_steps"] = cfg.seed_steps
     cfg.seed_steps = a.seed_episodes * cfg.episode_length                    # harness reduction (documented)
     cfg.steps = cfg.seed_steps + a.train_episodes * cfg.episode_length

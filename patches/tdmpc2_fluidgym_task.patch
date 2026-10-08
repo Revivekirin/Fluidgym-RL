@@ -1,19 +1,29 @@
 diff --git a/tdmpc2/envs/__init__.py b/tdmpc2/envs/__init__.py
-index 46f99a8..0998a08 100644
 --- a/tdmpc2/envs/__init__.py
 +++ b/tdmpc2/envs/__init__.py
-@@ -29,6 +29,10 @@ try:
- 	from envs.mujoco import make_env as make_mujoco_env
+@@ -31,6 +31,11 @@
  except:
  	make_mujoco_env = missing_dependencies
+ 
 +try:
 +	from fluidgym_rl.tdmpc2_adapter import make_env as make_fluidgym_env  # tasks named 'fluidgym-<EnvId>'
 +except:
 +	make_fluidgym_env = missing_dependencies
- 
++
  
  warnings.filterwarnings('ignore', category=DeprecationWarning)
-@@ -65,7 +69,7 @@ def make_env(cfg):
+ 
+@@ -60,13 +65,16 @@
+ 	"""
+ 	Make an environment for TD-MPC2 experiments.
+ 	"""
+-	gym.logger.set_level(40)
++	if hasattr(gym.logger, "set_level"):
++		gym.logger.set_level(40)
++	else:
++		gym.logger.min_level = 40
+ 	if cfg.multitask:
+ 		env = make_multitask_env(cfg)
  
  	else:
  		env = None
@@ -22,3 +32,11 @@ index 46f99a8..0998a08 100644
  			try:
  				env = fn(cfg)
  			except ValueError:
+@@ -74,6 +82,7 @@
+ 		if env is None:
+ 			raise ValueError(f'Failed to make environment "{cfg.task}": please verify that dependencies are installed and that the task exists.')
+ 		env = TensorWrapper(env)
++		env.max_episode_steps = env.unwrapped.max_episode_steps
+ 	try: # Dict
+ 		cfg.obs_shape = {k: v.shape for k, v in env.observation_space.spaces.items()}
+ 	except: # Box
