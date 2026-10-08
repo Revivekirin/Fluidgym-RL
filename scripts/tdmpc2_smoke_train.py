@@ -78,12 +78,16 @@ def build():
         return a_
     agent.update, agent.act = update, act
     S.update(cfg=cfg, rt=rt, env=env, agent=agent, TDMPC2=TDMPC2, torch=torch, digests_before=state_digests(agent.model.state_dict()))
-    S["trainer"] = OnlineTrainer(cfg=cfg, env=env, agent=agent, buffer=Buffer(cfg), logger=Logger(cfg))
-    rt.save_run_config(out / "run_config.json", cfg, S["overrides"], {"smoke": True})
+    replay_cfg = rt.smoke_replay_config(cfg)
+    buffer = Buffer(replay_cfg)
+    if buffer.capacity != replay_cfg.steps:
+        raise CheckFailure("smoke replay capacity does not cover complete episodes", {"capacity": buffer.capacity, "required_rows": replay_cfg.steps})
+    S["trainer"] = OnlineTrainer(cfg=cfg, env=env, agent=agent, buffer=buffer, logger=Logger(cfg))
+    rt.save_run_config(out / "run_config.json", cfg, S["overrides"], {"smoke": True, "training_steps": cfg.steps, "replay_capacity_rows": buffer.capacity})
     return {"episode_length": cfg.episode_length, "obs_shape": {k: list(v) for k, v in cfg.obs_shape.items()}, "action_dim": cfg.action_dim, "seed_steps_used": cfg.seed_steps,
             "upstream_default_seed_steps": S["upstream_seed_steps"], "steps": cfg.steps, "horizon": cfg.horizon, "batch_size": cfg.batch_size, "lr": cfg.lr,
-            "model_size": a.model_size, "compile": a.compile, "episodic": cfg.episodic, "work_dir": str(cfg.work_dir),
-            "note": "optimization hyperparameters = upstream defaults; reduced: seed_steps, steps, eval_episodes, model_size, compile"}
+            "model_size": a.model_size, "compile": a.compile, "episodic": cfg.episodic, "work_dir": str(cfg.work_dir), "replay_capacity_rows": buffer.capacity,
+            "note": "optimization hyperparameters = upstream defaults; reduced: seed_steps, steps, eval_episodes, model_size, compile; buffer-only capacity includes one reset row per episode"}
 
 
 def dev_match():
@@ -194,6 +198,7 @@ def metrics():
     (out / "loss_history.json").write_text(json.dumps(S["losses"]))
     f = out / "metrics.json"
     f.write_text(json.dumps({"eval": S.get("eval"), "train_seconds": S.get("train_seconds"), "env_steps": S["env_steps"], "learner_updates": S["updates"], "replay_episodes": S["trainer"].buffer.num_eps,
+                             "replay_capacity_rows": S["trainer"].buffer.capacity, "replay_stored_rows": len(S["trainer"].buffer._buffer),
                              "peak_torch_alloc_MiB": S.get("peak_alloc_MiB"), "checkpoint": str(S.get("ckpt")), "checkpoint_sha256": S.get("sha"), "upstream_csv_logs": str(S["cfg"].work_dir)}, indent=2))
     return {"path": str(f)}
 

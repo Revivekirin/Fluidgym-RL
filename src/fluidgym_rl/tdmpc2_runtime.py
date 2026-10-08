@@ -10,6 +10,23 @@ from pathlib import Path
 RUN_CONFIG = "run_config.json"
 
 
+def smoke_replay_config(cfg):
+    """Keep every smoke episode, including its reset row, without extending training.
+
+    Upstream Buffer caps capacity at min(buffer_size, steps). Pass only Buffer
+    this independent config; the agent/trainer retain the real step budget.
+    """
+    from copy import deepcopy
+    length, steps = cfg.episode_length, cfg.steps
+    if type(length) is not int or length <= 0 or type(steps) is not int or steps <= 0 or steps % length:
+        raise ValueError("smoke replay requires positive integer steps comprising complete episodes")
+    rows = steps + steps // length
+    replay_cfg = deepcopy(cfg)
+    replay_cfg.steps = rows
+    replay_cfg.buffer_size = max(cfg.buffer_size, rows)
+    return replay_cfg
+
+
 def default_overrides(env_id: str, *, model_size: int, seed: int, eval_episodes: int, compile: bool, exp_name: str = "smoke") -> list[str]:
     return [f"task=fluidgym-{env_id}", f"model_size={model_size}", f"seed={seed}", "enable_wandb=false", "save_video=false", f"compile={str(compile).lower()}",
             f"eval_episodes={eval_episodes}", f"exp_name={exp_name}", "wandb_project=none", "wandb_entity=none", "data_dir=none", "checkpoint=none"]

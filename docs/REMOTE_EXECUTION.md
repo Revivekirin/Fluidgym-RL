@@ -166,3 +166,23 @@ application and syntax checks pass; real Torch/TensorDict execution remains
 pending on the server. No dependency downgrade or global monkey-patch is used.
 The old stashed `upstream.py` logging string replacement is superseded by the
 persistent logging patch and should not be reapplied automatically.
+
+### Smoke replay capacity: 240 transitions versus 243 stored rows
+
+The server completed the bounded 240-step loop, but replay validation found
+240 rows instead of 243. Each 80-step episode stores 81 rows (including the
+reset observation). Upstream Buffer caps storage at `min(buffer_size, steps)`,
+so using the trainer's 240-step config evicts three rows.
+
+The smoke harness now gives Buffer an independent config with capacity for
+all complete episodes. Trainer/agent still use 240 steps and 160 seed steps;
+sampling and the strict episode validation are unchanged. The capacity and
+stored-row count are recorded in outputs. This is a smoke-only retention
+choice, not a change to upstream replay or full training.
+
+```bash
+PYTHONPATH=src python tests/test_tdmpc2_smoke_budget.py -v && python scripts/tdmpc2_smoke_train.py
+```
+
+Local budget regression: 3 tests passed. CUDA rerun remains pending. The
+reported server factory and meta-gradient tests passed before this fix.
