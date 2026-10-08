@@ -42,6 +42,8 @@ def blockers(a):
         errors.append('enabled W&B requires a project other than none')
     if any(',' in tag for tag in a.wandb_tags):
         errors.append('tags must not contain commas; pass separate space-delimited tags')
+    if any(not tag.strip() or len(tag) > 64 for tag in a.wandb_tags):
+        errors.append('each W&B tag must contain 1–64 characters and not be blank')
     if a.mode == 'pilot':
         if a.steps > PILOT_MAX_STEPS:
             errors.append(f'pilot is limited to {PILOT_MAX_STEPS} environment steps')
@@ -50,9 +52,14 @@ def blockers(a):
     return errors
 
 
-def wandb_environment(a):
-    return {'WANDB_MODE': a.wandb_mode, 'WANDB_RUN_GROUP': a.wandb_group,
-            'WANDB_TAGS': ','.join(a.wandb_tags)}
+def wandb_environment(a, inherited=None):
+    """CLI tags replace inherited tags; an omitted list must not become ['']."""
+    environment = dict(inherited or {})
+    environment.pop('WANDB_TAGS', None)
+    environment.update(WANDB_MODE=a.wandb_mode, WANDB_RUN_GROUP=a.wandb_group)
+    if a.wandb_tags:
+        environment['WANDB_TAGS'] = ','.join(a.wandb_tags)
+    return environment
 
 
 def string_override(key, value):

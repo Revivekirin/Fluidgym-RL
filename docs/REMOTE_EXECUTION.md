@@ -318,3 +318,13 @@ CRLF regression: an LF-normalized patch reproduces the failure against the
 CRLF fixture; the byte-preserving patch applies successfully without changing
 source line endings. Local pilot tests: 10 passed, 2 skipped (Hydra and pinned
 checkout unavailable). Real pinned-workcopy validation remains a server check.
+
+### Empty W&B tags
+
+Omitting `--wandb-tags` now removes `WANDB_TAGS` from the child environment,
+including any inherited empty/stale value. The earlier launcher passed an
+empty string, which W&B parsed as an invalid empty tag during initialization.
+Explicit tags replace inherited tags; blank tags, comma-containing tags and
+tags longer than 64 characters are rejected before launch. Upstream's automatic
+task/experiment/seed tags are preserved. Local regression: 13 passed, 2 skipped
+(Hydra and pinned checkout absent); real W&B startup requires server verification.

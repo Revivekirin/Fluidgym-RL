@@ -41,6 +41,25 @@ class PilotTests(unittest.TestCase):
         self.assertEqual(scalar_metrics({'loss': 2.0, 'drag': None}), {'loss': 2.0})
         with self.assertRaises(ValueError): scalar_metrics({'loss': float('nan')})
 
+    def test_omitted_tags_remove_inherited_value_without_mutating_parent(self):
+        for tags in ('', 'stale-tag'):
+            inherited = {'WANDB_TAGS': tags, 'PATH': '/bin'}
+            result = wandb_environment(self.args('--wandb-mode', 'offline'), inherited)
+            self.assertNotIn('WANDB_TAGS', result)
+            self.assertEqual(result['PATH'], '/bin')
+            self.assertEqual(inherited['WANDB_TAGS'], tags)
+        self.assertNotIn('WANDB_TAGS', wandb_environment(self.args('--wandb-tags')))
+
+    def test_explicit_tags_replace_inherited_tags(self):
+        result = wandb_environment(self.args('--wandb-tags', 'nominal', 'pilot'), {'WANDB_TAGS': ''})
+        self.assertEqual(result['WANDB_TAGS'], 'nominal,pilot')
+
+    def test_invalid_tags_rejected_before_launch(self):
+        for tag in ('', '   ', 'x' * 65, 'one,two'):
+            with self.subTest(tag=tag):
+                self.assertTrue(blockers(self.args('--wandb-tags', tag)))
+        self.assertEqual(blockers(self.args('--wandb-tags', 'x' * 64)), [])
+
     def test_logging_patch_applies(self, header_variant=False):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

@@ -45,7 +45,7 @@ def main():
                 'checkpoint_semantics': 'model weights only; not exact training resume'}
         (out / 'launch.json').write_text(json.dumps(spec, indent=2, default=str))
         command = [sys.executable, str(repo_root() / 'scripts/tdmpc2_pilot_worker.py'), str(out / 'launch.json')]
-        environment = {**os.environ, **wandb_environment(a), 'PYTHONUNBUFFERED': '1',
+        environment = {**wandb_environment(a, os.environ), 'PYTHONUNBUFFERED': '1',
                        'PYTHONPATH': os.pathsep.join([str(repo_root() / 'src'), wc['code_dir'], os.environ.get('PYTHONPATH', '')])}
         print('Run directory:', out, flush=True)
         with (out / 'stdout.log').open('w') as stdout, (out / 'stderr.log').open('w') as stderr:
