@@ -148,3 +148,21 @@ after an exception. It additionally checks CUDA movement if available.
 Local fixture patch application passed; the real Torch/TensorDict test and
 pinned-workcopy test skipped locally because their prerequisites are absent.
 Real smoke success remains pending.
+
+### TensorDict functional ensemble gradients
+
+The server regression then passed device movement but failed backward with
+`element 0 of tensors does not require grad and does not have a grad_fn`.
+TensorDict's newer `to_module` default preserves destination Parameter state;
+its documented historical replacement behavior requires
+`preserve_module_state=False`. The layers patch now selects that behavior for
+ensemble template construction and functional calls when the option exists
+(signature checked once at import); older APIs keep the original call.
+Reference: https://docs.pytorch.org/tensordict/stable/reference/generated/tensordict.TensorDictBase.html
+
+The regression now compares ensemble gradients with individual networks and
+checks target input gradients without trainable target weights. Local patch
+application and syntax checks pass; real Torch/TensorDict execution remains
+pending on the server. No dependency downgrade or global monkey-patch is used.
+The old stashed `upstream.py` logging string replacement is superseded by the
+persistent logging patch and should not be reapplied automatically.

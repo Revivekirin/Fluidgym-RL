@@ -43,7 +43,35 @@ diff --git a/tdmpc2/envs/__init__.py b/tdmpc2/envs/__init__.py
 diff --git a/tdmpc2/common/layers.py b/tdmpc2/common/layers.py
 --- a/tdmpc2/common/layers.py
 +++ b/tdmpc2/common/layers.py
-@@ -22,6 +22,15 @@
+@@ -1,8 +1,17 @@
+ import torch
+ import torch.nn as nn
+ import torch.nn.functional as F
+-from tensordict import from_modules
++from tensordict import from_modules, TensorDict
++from inspect import signature
+ from copy import deepcopy
++
++
++# New TensorDict defaults preserve destination Parameter state, which breaks
++# the functional ensemble's autograd links. Retain upstream replacement semantics.
++_TO_MODULE_KWARGS = (
++    {"preserve_module_state": False}
++    if "preserve_module_state" in signature(TensorDict.to_module).parameters else {}
++)
+ 
+ 
+ class Ensemble(nn.Module):
+@@ -14,7 +23,7 @@
+ 		super().__init__()
+ 		# combine_state_for_ensemble causes graph breaks
+ 		self.params = from_modules(*modules, as_module=True)
+-		with self.params[0].data.to("meta").to_module(modules[0]):
++		with self.params[0].data.to("meta").to_module(modules[0], **_TO_MODULE_KWARGS):
+ 			self.module = deepcopy(modules[0])
+ 		self._repr = str(modules[0])
+ 		self._n = len(modules)
+@@ -22,8 +31,17 @@
  	def __len__(self):
  		return self._n
  
@@ -57,5 +85,8 @@ diff --git a/tdmpc2/common/layers.py b/tdmpc2/common/layers.py
 +			self._modules["module"] = module
 +
  	def _call(self, params, *args, **kwargs):
- 		with params.to_module(self.module):
+-		with params.to_module(self.module):
++		with params.to_module(self.module, **_TO_MODULE_KWARGS):
  			return self.module(*args, **kwargs)
+ 
+ 	def forward(self, *args, **kwargs):

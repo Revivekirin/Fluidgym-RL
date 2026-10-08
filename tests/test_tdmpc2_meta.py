@@ -49,8 +49,22 @@ class EnsembleMoveTests(unittest.TestCase):
                 torch.testing.assert_close(a, b, rtol=0, atol=0)
             torch.testing.assert_close(ensemble(x), expected)
             torch.testing.assert_close(target(x), expected)
-            ensemble(x).sum().backward()
+            output = ensemble(x)
+            self.assertTrue(output.requires_grad, "functional ensemble output lost its autograd connection")
+            output.sum().backward()
             self.assertTrue(all(p.grad is not None and torch.isfinite(p.grad).all() for p in ensemble.params.parameters()))
+            # Check actual gradient values, not just their existence or finiteness.
+            expected.sum().backward()
+            for index, module in enumerate(modules):
+                for name, parameter in module.named_parameters():
+                    stacked = ensemble.params[tuple(name.split('.'))]
+                    torch.testing.assert_close(stacked.grad[index], parameter.grad)
+            # Detached/target parameters must still allow gradients with respect
+            # to inputs (policy update), without gradients into target weights.
+            target_input = x.detach().clone().requires_grad_(True)
+            target(target_input).sum().backward()
+            self.assertTrue(torch.isfinite(target_input.grad).all())
+            self.assertTrue(all(not p.requires_grad for p in target_params.values(True, True)))
             self.assertTrue(all(p.is_meta for p in ensemble.module.parameters()))
             ensemble.train()
             self.assertTrue(ensemble.module.training)
