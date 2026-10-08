@@ -9,6 +9,7 @@ import numpy as np
 from fluidgym_rl.artifacts import verify_gif, verify_png
 from fluidgym_rl.report import CheckFailure, FatalStop, Report, collect_metadata
 from fluidgym_rl.safety import write_gate
+from fluidgym_rl.device import resolve_device, same_device
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--env-id", default="CylinderJet2D-easy-v0")
@@ -70,7 +71,11 @@ def reset_obs_contract():
     if obs.ndim != 1: raise CheckFailure("expected flat 1-D obs (FlattenObservation)", d)
     if tuple(obs.shape) != tuple(e.observation_space.shape): raise CheckFailure("obs shape != observation_space.shape", d)
     if obs.device.type != "cuda": raise CheckFailure("obs not on CUDA", d)
-    if obs.device != e.cuda_device: raise CheckFailure("obs device != env.cuda_device", d)
+    d["resolved_obs_device"] = str(resolve_device(obs.device))
+    d["resolved_env_device"] = str(resolve_device(e.cuda_device))
+    d["cuda_current_device"] = torch.cuda.current_device()
+    if not same_device(obs.device, e.cuda_device):
+        raise CheckFailure("obs device != env.cuda_device", d)
     if not torch.isfinite(obs).all(): raise CheckFailure("non-finite obs after reset", d)
     return d
 
@@ -79,7 +84,11 @@ def action_contract():
     e = S["env"]; act = e.sample_action(); sp = e.action_space
     d = {"shape": list(act.shape), "dtype": str(act.dtype), "device": str(act.device), "low": sp.low.tolist(), "high": sp.high.tolist()}
     if tuple(act.shape) != tuple(sp.shape): raise CheckFailure("sample_action shape != action_space.shape", d)
-    if act.device != e.cuda_device: raise CheckFailure("sample_action not on env.cuda_device", d)
+    d["resolved_action_device"] = str(resolve_device(act.device))
+    d["resolved_env_device"] = str(resolve_device(e.cuda_device))
+
+    if not same_device(act.device, e.cuda_device):
+        raise CheckFailure("sample_action not on env.cuda_device", d)
     lo, hi = torch.as_tensor(sp.low, device=act.device), torch.as_tensor(sp.high, device=act.device)
     if not ((act >= lo) & (act <= hi)).all(): raise CheckFailure("sampled action outside action_space bounds", d)
     S["zero"] = torch.zeros_like(act)
