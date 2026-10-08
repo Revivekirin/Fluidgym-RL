@@ -1,0 +1,4 @@
+# Pinned upstream references (shallow clones live in third_party/, not vendored).
+fluidgym  https://github.com/safe-autonomous-systems/fluidgym  50071140b73a2a917fb96d33522a769f903f8c27  (2026-09-29, MIT, v0.1.2)
+tdmpc     https://github.com/nicklashansen/tdmpc               f4d85eca7419039b71bab2234ffc8aca378dd313  (2023-11-25, MIT)
+tdmpc2    https://github.com/nicklashansen/tdmpc2              e9f59321933cbc8e11a002b842adc7d4ffae8ff1  (2026-07-13, MIT)

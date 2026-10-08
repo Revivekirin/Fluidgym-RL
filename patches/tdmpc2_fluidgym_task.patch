@@ -1,0 +1,24 @@
+diff --git a/tdmpc2/envs/__init__.py b/tdmpc2/envs/__init__.py
+index 46f99a8..0998a08 100644
+--- a/tdmpc2/envs/__init__.py
++++ b/tdmpc2/envs/__init__.py
+@@ -29,6 +29,10 @@ try:
+ 	from envs.mujoco import make_env as make_mujoco_env
+ except:
+ 	make_mujoco_env = missing_dependencies
++try:
++	from fluidgym_rl.tdmpc2_adapter import make_env as make_fluidgym_env  # tasks named 'fluidgym-<EnvId>'
++except:
++	make_fluidgym_env = missing_dependencies
+ 
+ 
+ warnings.filterwarnings('ignore', category=DeprecationWarning)
+@@ -65,7 +69,7 @@ def make_env(cfg):
+ 
+ 	else:
+ 		env = None
+-		for fn in [make_dm_control_env, make_maniskill_env, make_metaworld_env, make_myosuite_env, make_mujoco_env]:
++		for fn in [make_dm_control_env, make_maniskill_env, make_metaworld_env, make_myosuite_env, make_mujoco_env, make_fluidgym_env]:
+ 			try:
+ 				env = fn(cfg)
+ 			except ValueError:

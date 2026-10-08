@@ -1,0 +1,18 @@
+[project]
+name = "fluidgym-rl"
+version = "0.0.1"
+description = "Reproduction + TD-MPC integration harness around FluidGym (upstream code is not vendored or modified)"
+requires-python = ">=3.10,<3.14"
+dependencies = ["numpy", "gymnasium"]
+
+[project.optional-dependencies]
+gpu = ["fluidgym==0.1.2", "torch==2.9.*", "matplotlib>=3.9,<3.10", "imageio"]
+sac = ["stable-baselines3[extra]>=2.7.0", "huggingface_hub>=1.0.0"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["cuda: needs a CUDA GPU and the fluidgym package"]

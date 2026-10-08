@@ -1,0 +1,15 @@
+# TD-MPC2 runtime deps that do not conflict with FluidGym's torch pin. Pins follow tdmpc2/docker/environment.yaml
+# where the package is torch-independent; tensordict/torchrl are left unpinned because the upstream pins (0.8.3/0.8.1)
+# were built for torch 2.7.1 while FluidGym needs torch 2.9. remote_setup.sh installs with a torch constraint so pip
+# fails loudly instead of replacing torch. Override the whole file with FGRL_TDMPC2_REQS=/path/to/file.
+hydra-core==1.3.2
+hydra-submitit-launcher==1.2.0
+submitit==1.5.1
+omegaconf==2.3.0
+termcolor==2.4.0
+tqdm
+pandas
+tensordict
+torchrl
+imageio
+imageio-ffmpeg
