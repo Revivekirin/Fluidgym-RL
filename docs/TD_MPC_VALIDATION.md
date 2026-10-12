@@ -54,3 +54,31 @@ Skipped / not executed:
 No new runtime failure occurred in executed CPU tests. The full traceback of any future
 remote failure is retained in that command's `stderr.log` and `summary.json`.
 See `TD_MPC_NOMINAL.md` for the exact remote validation/smoke/full/evaluation workflow.
+
+## W&B integration verification — 2026-10-12
+
+After adding optional original TD-MPC tracking, the same CPU suite command reported
+**86 passed, 8 skipped, 20 subtests passed** (4.93 s). The additional default skip is
+the opt-in real SDK test. Tracking tests cover missing metrics, separate counters,
+shared environment-step axis, empty inherited tags, disabled mode without the SDK,
+CSV-to-W&B record forwarding, training failure and finalization failure propagation.
+
+W&B 0.30.0 was installed under `/tmp/fgrl-tdmpc-wandb-test` for a separate CPU-only
+SDK check, without changing the existing Python environment. The test required
+permission to open the SDK's local service socket outside the sandbox. It created
+an offline run, logged train/validation metrics, saved summary evidence, and finished
+successfully. No online upload, CUDA initialization or CFD training was performed.
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 FGRL_TEST_WANDB_OFFLINE=1 \
+PYTHONPATH=src:/tmp/fgrl-tdmpc-wandb-test \
+/Users/jihyekim/miniconda3/envs/basilisk-rl/bin/python \
+  -m pytest tests/test_tdmpc_tracking.py -q -rs
+```
+
+Result: **6 passed, 2 subtests passed** (1.09 s). The initial real-SDK test's
+post-finish summary lookup was corrected: W&B clears that live view after finish;
+the test now inspects the summary at finish and verifies the offline run file.
+Online authentication/connectivity and the newly instrumented CUDA run remain
+server-side checks. The user already reported successful original TD-MPC CUDA
+validation and smoke before this logging-only change.

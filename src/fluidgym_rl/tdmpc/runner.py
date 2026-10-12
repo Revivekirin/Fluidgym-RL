@@ -38,7 +38,7 @@ def finite_update(agent, buffer, step):
     return metrics
 
 
-def run_training(cfg, agent, helper, env, out, manifest, *, budget, smoke=False):
+def run_training(cfg, agent, helper, env, out, manifest, *, budget, smoke=False, tracker=None):
     if budget % cfg.episode_length:
         raise ValueError('budget must consist of whole episodes')
     # Native ring requires whole-episode capacity. Keep an unused episode for small
@@ -99,6 +99,8 @@ def run_training(cfg, agent, helper, env, out, manifest, *, budget, smoke=False)
         if str(cfg.device).startswith('cuda'):
             row['gpu_peak_memory_bytes']=torch.cuda.max_memory_allocated(cfg.device)
         append_csv(out/'train.csv',TRAIN_FIELDS,row)
+        if tracker:
+            tracker.log('train',row)
         print(f'train env_steps={steps}/{budget} updates={updates} return={episode.cumulative_reward:.4f}',flush=True)
         if steps >= next_eval or steps == budget:
             result = evaluate(env,Policy(agent,steps),cfg,out/'validation'/f'step_{steps}',
@@ -110,16 +112,23 @@ def run_training(cfg, agent, helper, env, out, manifest, *, budget, smoke=False)
                 checkpoint = str(out/'checkpoints/best.pt')
                 save_checkpoint(agent,checkpoint,cfg,steps,manifest)
             values = result['metrics_per_step_mean']
-            append_csv(out/'eval.csv',EVAL_FIELDS,dict(environment_steps=steps,learner_updates=updates,split='val',episodes=result['n_episodes'],
+            eval_row=dict(environment_steps=steps,learner_updates=updates,split='val',episodes=result['n_episodes'],
                        mean_reward_per_step=score,episode_return=result['episode_return']['mean'],checkpoint=checkpoint,
-                       **{m:values[m]['mean'] for m in ('drag','lift','abs_lift')}))
+                       **{m:values[m]['mean'] for m in ('drag','lift','abs_lift')})
+            append_csv(out/'eval.csv',EVAL_FIELDS,eval_row)
+            if tracker:
+                tracker.log('val',{**eval_row,'episode_length':result['episode_length']['mean']})
             validations.append(dict(step=steps,score=score))
             next_eval = (steps//cfg.eval_freq+1)*cfg.eval_freq
         if steps >= next_save and steps != budget:
             # Single rolling periodic file avoids large duplicate artifact sets.
             save_checkpoint(agent,out/'checkpoints/latest.pt',cfg,steps,manifest)
+            if tracker:
+                tracker.log('checkpoint',dict(environment_steps=steps,path=str(out/'checkpoints/latest.pt')))
             next_save = (steps//cfg.save_freq+1)*cfg.save_freq
     save_checkpoint(agent,out/'checkpoints/final.pt',cfg,steps,manifest)
+    if tracker:
+        tracker.log('checkpoint',dict(environment_steps=steps,path=str(out/'checkpoints/final.pt')))
     if updates == 0:
         raise RuntimeError('no learner updates; experiment incomplete')
     if smoke:

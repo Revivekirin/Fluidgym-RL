@@ -42,6 +42,11 @@ def parser():
     p.add_argument('--reference',type=Path,help='uncontrolled evaluation directory for drag reduction')
     p.add_argument('--split',choices=['val','test'],default='test')
     p.add_argument('--episodes',type=int,default=10)
+    p.add_argument('--wandb-mode',choices=['disabled','offline','online'],default='disabled')
+    p.add_argument('--wandb-project',default='fluidgym-rl')
+    p.add_argument('--wandb-entity')
+    p.add_argument('--wandb-group',default='tdmpc-nominal')
+    p.add_argument('--wandb-tags',default='',help='comma-separated tags')
     return p
 
 
@@ -69,14 +74,14 @@ def run(args, data, out):
         raise RuntimeError('remote_required: FluidGym requires CUDA; CPU algorithm tests are in tests/test_tdmpc.py')
     seed_all(cfg.seed)
     versions={'python':platform.python_version(),'torch':torch.__version__,'cuda_runtime':torch.version.cuda}
-    for name in ('fluidgym','gymnasium','numpy'):
+    for name in ('fluidgym','gymnasium','numpy','wandb'):
         try: versions[name]=metadata.version(name)
         except metadata.PackageNotFoundError: versions[name]=None
     git=lambda *a:subprocess.check_output(['git',*a],cwd=repo_root(),text=True).strip()
     manifest=dict(algorithm='tdmpc',repository_sha=git('rev-parse','HEAD'),repository_dirty=bool(git('status','--porcelain')),
                   versions=versions,environment_contract=CONTRACT,seed=cfg.seed,parameter_provenance=data['provenance'],
                   evaluation_selection='validation only; test evaluations require separate CLI invocation',
-                  run_id=out.name,mode=args.mode,
+                  run_id=out.name,mode=args.mode,tracking=data['tracking'],
                   requested_environment_steps=args.smoke_steps if args.mode=='smoke' else cfg.train_steps,
                   training_reset_protocol='seed=train_seed+episode_index, randomize=True; train split',
                   checkpoint_semantics='inference only: online+target weights')
@@ -90,7 +95,7 @@ def run(args, data, out):
         work=Path(tmp)/'upstream'
         manifest['upstream']=make_workcopy(work)
         Agent,helper=load_algorithm(work)
-        (out/'resolved_config.yaml').write_text(json.dumps(dict(parameters=vars(cfg),provenance=data['provenance']),indent=2))
+        (out/'resolved_config.yaml').write_text(json.dumps(dict(parameters=vars(cfg),provenance=data['provenance'],tracking=data['tracking']),indent=2))
         (out/'run_manifest.json').write_text(json.dumps(manifest,indent=2))
         if args.verify_checkpoint:
             if not args.checkpoint:
@@ -115,8 +120,11 @@ def run(args, data, out):
                 sc=load_checkpoint(agent,args.checkpoint)
                 return dict(status='evaluated',evaluation=evaluate(env,Policy(agent,sc['environment_steps']),cfg,out/'evaluation',split=args.split,
                     episodes=args.episodes,seed=cfg.seed,checkpoint=args.checkpoint,manifest=manifest,reference=args.reference))
+            from fluidgym_rl.tdmpc.tracking import Tracker
+            args._tracker = Tracker(out)
+            args._tracker.start(data['tracking'],vars(cfg),manifest)
             budget=args.smoke_steps if args.mode=='smoke' else cfg.train_steps
-            result=run_training(cfg,agent,helper,env,out,manifest,budget=budget,smoke=args.mode=='smoke')
+            result=run_training(cfg,agent,helper,env,out,manifest,budget=budget,smoke=args.mode=='smoke',tracker=args._tracker)
             if args.mode=='smoke':
                 load_checkpoint(Agent(cfg),out/'checkpoints/final.pt')
                 cmd=[sys.executable,str(Path(__file__).resolve()),'--checkpoint',str(out/'checkpoints/final.pt'),
@@ -133,8 +141,12 @@ def run(args, data, out):
 def main(argv=None):
     args=parser().parse_args(argv)
     data=read_config(args.config,seed=args.seed,device=args.device)
+    from fluidgym_rl.tdmpc.tracking import options
+    data['tracking']=options(args)
     if args.print_config:
         print(json.dumps(data,indent=2)); return 0
+    if args.wandb_mode != 'disabled' and (args.mode == 'validate' or args.checkpoint or args.uncontrolled or args.verify_checkpoint):
+        raise ValueError('W&B tracking is supported for --mode smoke/full training only')
     if args.checkpoint:
         args.checkpoint=args.checkpoint.resolve()
     if args.verify_checkpoint and not args.checkpoint:
@@ -165,6 +177,15 @@ def main(argv=None):
                 code=130 if isinstance(e,KeyboardInterrupt) else 1
             finally:
                 (out/'summary.json').write_text(json.dumps(result,indent=2))
+                tracker=getattr(args,'_tracker',None)
+                if tracker is not None:
+                    try:
+                        tracker.finish(result,code)
+                    except BaseException as e:
+                        traceback.print_exc()
+                        result.update(status='failed',tracking_error=repr(e),tracking_traceback=traceback.format_exc())
+                        code=code or 1
+                        (out/'summary.json').write_text(json.dumps(result,indent=2))
                 (out/'exit_code.txt').write_text(str(code)+'\n')
     print(f'Exit code: {code} | evidence: {out}',flush=True)
     return code

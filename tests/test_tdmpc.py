@@ -8,7 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 import numpy as np
 import torch
 from gymnasium.spaces import Box
@@ -219,7 +219,14 @@ class AlgorithmTests(unittest.TestCase):
         agent=self.Agent(cfg)
         with tempfile.TemporaryDirectory() as tmp:
             out=Path(tmp)
-            result=run_training(cfg,agent,self.h,CheckedEnv(FakeEnv(),cfg),out,{},budget=160,smoke=True)
+            tracker=Mock()
+            result=run_training(cfg,agent,self.h,CheckedEnv(FakeEnv(),cfg),out,{},budget=160,smoke=True,tracker=tracker)
+            calls=tracker.log.call_args_list
+            self.assertEqual([c.args[0] for c in calls],['train','train','val','checkpoint'])
+            self.assertEqual(calls[0].args[1]['learner_updates'],0)
+            self.assertNotIn('value_loss',calls[0].args[1])
+            self.assertEqual(calls[1].args[1]['learner_updates'],100)
+            self.assertEqual(calls[2].args[1]['environment_steps'],160)
             self.assertEqual(result['environment_steps'],160)
             self.assertEqual(result['learner_updates'],100)
             self.assertTrue((out/'checkpoints/best.pt').exists())

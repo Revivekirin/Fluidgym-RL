@@ -214,7 +214,7 @@ tail -n 80 "$SMOKE/stderr.log"
 
 Only after smoke succeeds, run full training. Existing phase0/phase1 gates must already
 have valid evidence; do not fabricate or bypass them. The environment variable and CLI
-flag are both required. No W&B dependency is introduced for this original TD-MPC runner.
+flag are both required. W&B is optional and disabled by default; see the online command below.
 
 ```bash
 FGRL_ALLOW_FULL_TRAINING=1 python -u scripts/tdmpc_train.py \
@@ -271,3 +271,64 @@ python scripts/package_tdmpc_results.py "$RUN" "$SMOKE" "$BASE" "$BEST" "$FINAL"
 See `TD_MPC_VALIDATION.md` for executed commands, dependencies, pass/skip results and
 remote-only checks. Nothing in this change asserts a completed nominal CFD training run,
 a measured speedup, or reproduced test performance.
+
+
+## Optional W&B tracking for original TD-MPC
+
+The CLI accepts `--wandb-mode disabled|offline|online`, `--wandb-project`
+(default `fluidgym-rl`), optional `--wandb-entity`, `--wandb-group` (default
+`tdmpc-nominal`), and comma-separated `--wandb-tags`. These settings are saved in
+resolved config and the run manifest. Empty inherited `WANDB_TAGS` is excluded
+while starting the SDK, avoiding the earlier empty-tag Settings error.
+
+W&B uses the same records as the existing CSV writer. It adds no optimizer or model
+hooks. `environment_steps` is the explicit chart axis; `learner_updates` is a separate
+counter. Training records appear after each 80-step episode, including returns,
+reward/step, episode length, last-update losses and gradient norm, learning rate,
+environment/learner throughput and GPU peak allocated memory. Losses are the latest
+update in that episode, not an average over updates. Before updates begin they are
+absent, not zero. Validation records include reward/step, episodic return, drag,
+signed/absolute lift, split, episode count and best-checkpoint path. Validation runs
+at the configured evaluation cadence, not every training episode.
+
+The original pinned upstream logger is not used: it belongs to the unused DMC training
+entry point. This sink attaches to this integration's existing CSV records so there is
+one metrics collection path. Training/evaluation records at the same environment step
+use separate SDK history indices; no records are dropped by a decreasing SDK step.
+
+Configuration includes seed, provenance, source/patch hashes, versions and environment
+contract. `wandb_run.json` stores the SDK run ID/URL. Final config, manifest, CSV and
+summary files are saved to W&B; model binaries remain local. Checkpoint paths are
+logged, but W&B artifact upload of weights is not enabled. Checkpoint semantics remain
+inference-only. A failure, interruption, or failed fresh-process smoke verification
+finishes tracking with a nonzero exit code. Logging errors are propagated rather than
+silently claiming a fully recorded run. Disabled mode does not import the SDK.
+
+W&B is enabled only for smoke/full training. Independent evaluation and environment
+validation retain their local evidence output. Online mode requires working server
+credentials/connectivity; offline mode writes an unsynced local W&B run.
+
+After pulling the changes and activating the existing server environment:
+
+```bash
+cd /nfs4/jhkim/repos/Fluidgym-RL
+python -m pip install -e '.[dev,tracking]'
+python scripts/tdmpc_train.py --mode full --wandb-mode online --print-config
+
+# Optional bounded check of the new logging integration:
+python -u scripts/tdmpc_train.py --mode smoke --smoke-steps 240 --device cuda:0 \
+  --wandb-mode offline --wandb-project fluidgym-rl --wandb-group tdmpc-logging-smoke \
+  --output-root results/tdmpc_smoke
+
+# 50k training with online logging (full-training gates remain required):
+FGRL_ALLOW_FULL_TRAINING=1 python -u scripts/tdmpc_train.py \
+  --config configs/tdmpc/cylinderjet2d_easy.yaml \
+  --mode full --allow-full-training --seed 1 --device cuda:0 \
+  --wandb-mode online --wandb-project fluidgym-rl \
+  --wandb-group tdmpc-nominal-full --wandb-tags tdmpc,nominal,seed1 \
+  --output-root results/tdmpc_full
+```
+
+The SDK prints the run URL after initialization. Expect the first training point only
+after the first 80-step episode, and the first losses after the update block at step 160.
+No full training or online run was started during implementation.
