@@ -37,6 +37,12 @@ class CheckedEnv:
     def __getattr__(self, key):
         return getattr(self.env, key)
 
+    def close(self):
+        """FluidGym does not require close(); forward it when provided."""
+        close = getattr(self.env, 'close', None)
+        if callable(close):
+            close()
+
     def _obs(self, obs):
         obs = to_np(obs)
         if obs.shape != tuple(self.cfg.obs_shape) or obs.dtype != np.float32 or not np.isfinite(obs).all():

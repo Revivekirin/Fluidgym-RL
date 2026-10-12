@@ -33,10 +33,28 @@ class FakeEnv:
     def step(self,a):
         self.t+=1
         return np.full(302,self.t/80,np.float32),0.1,False,self.t==80,dict(drag=3.1,lift=(-1)**self.t*.2)
-    def close(self): pass
 
 
 class ContractTests(unittest.TestCase):
+    def test_close_is_optional_and_preserves_original_failure(self):
+        env=CheckedEnv(FakeEnv(),namespace(read_config(device='cpu')))
+        env.close()
+        with self.assertRaisesRegex(RuntimeError,'original failure'):
+            try:
+                raise RuntimeError('original failure')
+            finally:
+                env.close()
+
+    def test_close_forwards_and_does_not_swallow_cleanup_failure(self):
+        raw=FakeEnv()
+        env=CheckedEnv(raw,namespace(read_config(device='cpu')))
+        with patch.object(raw,'close',create=True) as close:
+            env.close()
+            close.assert_called_once_with()
+        with patch.object(raw,'close',create=True,side_effect=RuntimeError('cleanup failure')):
+            with self.assertRaisesRegex(RuntimeError,'cleanup failure'):
+                env.close()
+
     def test_config_and_no_cuda_print(self):
         data=read_config(device='cpu',seed=9)
         self.assertEqual(data['parameters']['horizon_schedule'],'linear(1,20,50000)')
