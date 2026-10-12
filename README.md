@@ -3,6 +3,8 @@ Reproduction + TD-MPC2 integration harness for [FluidGym](https://github.com/saf
 
 **FluidGym only runs on a remote CUDA server.** Local machine = editing + CPU interface tests. Read `docs/REMOTE_EXECUTION.md` and `IMPLEMENTATION_STATUS.md` first.
 
+Shared TD-MPC / TD-MPC2 checkpoint evaluation and comparison: [nominal comparison workflow](docs/NOMINAL_COMPARISON.md). Includes independent split-safe evaluation, validation-only selection, CSV/Parquet exports, and a local dashboard without retraining.
+
 ```bash
 # local (no GPU): interface tests only -- NOT evidence of FluidGym compatibility
 pip install -e ".[dev]" pillow && pytest -m "not cuda"
