@@ -23,3 +23,11 @@ Bounded nominal training and optional W&B logging are available through
 Pilot training is capped at 5,000 environment transitions; full training retains
 all existing gates. See `docs/REMOTE_EXECUTION.md` under "Configurable W&B and
 bounded nominal pilot" for installation, validation, periodic saves and evaluation.
+
+## Original TD-MPC (Hansen et al., 2022)
+
+The separate original TD-MPC integration is documented in
+[TD_MPC_NOMINAL.md](docs/TD_MPC_NOMINAL.md), including configuration provenance,
+CPU verification, bounded CUDA smoke, full-training safety gates, independent
+checkpoint evaluation and exact server commands. It leaves TD-MPC2 unchanged.
+Use `python scripts/tdmpc_train.py --print-config` to inspect settings without training.

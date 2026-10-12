@@ -1,0 +1,44 @@
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /home/jhkim/.netrc.
+wandb: Currently logged in as: rvqilin26 (rvqilin26-unist) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run 6nyqxfhh
+wandb: Tracking run with wandb version 0.30.0
+wandb: Run data is saved locally in /nfs4/jhkim/repos/Fluidgym-RL/results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/wandb/run-20261008_214304-6nyqxfhh
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run 1
+wandb: ⭐️ View project at https://wandb.ai/rvqilin26-unist/fluidgym-rl
+wandb: 🚀 View run at https://wandb.ai/rvqilin26-unist/fluidgym-rl/runs/6nyqxfhh
+W1008 22:08:50.918000 626963 site-packages/torch/_logging/_internal.py:1199] [5/0] Profiler function <class 'torch.autograd.profiler.record_function'> will be ignored
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log
+wandb: 
+wandb: Run history:
+wandb:                              eval/drag ▃▅▇█▅█▆▆▄▄▃▁▆▂
+wandb:                      eval/elapsed_time ▁▂▂▃▃▄▄▅▅▆▇▇██
+wandb:                 eval/environment_steps ▁▂▂▃▃▄▄▅▅▆▇▇██
+wandb: eval/environment_steps_per_wall_second ▁▇▇███████████
+wandb:                           eval/episode ▁▂▂▃▃▄▄▅▅▆▇▇██
+wandb:                   eval/episode_horizon ▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                    eval/episode_length ▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                    eval/episode_reward ▁▇▆▅▇▆▇▇▇▇▇█▅█
+wandb:                   eval/episode_success ▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:      eval/evaluation_environment_steps ▁▂▂▃▃▄▄▅▅▆▆▇▇█
+wandb:                                    +51 ...
+wandb: 
+wandb: Run summary:
+wandb:                        checkpoint_path /nfs4/jhkim/repos/Fl...
+wandb:                              eval/drag 3.22833
+wandb:                      eval/elapsed_time 49368.06802
+wandb:                 eval/environment_steps 50000
+wandb: eval/environment_steps_per_wall_second 1.0128
+wandb:                           eval/episode 624
+wandb:                   eval/episode_horizon 80
+wandb:                    eval/episode_length 80
+wandb:                    eval/episode_reward -7.14338
+wandb:                   eval/episode_success 0
+wandb:                                    +54 ...
+wandb: 
+wandb: 🚀 View run 1 at: https://wandb.ai/rvqilin26-unist/fluidgym-rl/runs/6nyqxfhh
+wandb: ⭐️ View project at: https://wandb.ai/rvqilin26-unist/fluidgym-rl
+wandb: Synced 5 W&B file(s), 0 media file(s), 26 artifact file(s) and 0 other file(s)
+wandb: Find logs at: /nfs4/jhkim/repos/Fluidgym-RL/results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/wandb/run-20261008_214304-6nyqxfhh/logs

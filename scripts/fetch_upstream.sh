@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Clone upstream repos at the pinned SHAs in UPSTREAM.lock. TD-MPC (v1) is audit-only and not fetched by default.
+# Clone upstream repos at the pinned SHAs in UPSTREAM.lock. Original TD-MPC is opt-in: FGRL_UPSTREAMS=tdmpc.
 # Env: FGRL_THIRD_PARTY (dest dir, default <repo>/third_party), FGRL_UPSTREAMS (default "fluidgym tdmpc2")
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"

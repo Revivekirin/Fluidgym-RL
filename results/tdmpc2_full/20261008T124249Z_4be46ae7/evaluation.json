@@ -1,0 +1,12 @@
+{
+  "episode_reward": -7.143381595611572,
+  "episode_success": 0.0,
+  "episode_length": 80.0,
+  "mean_reward_per_step": -0.08929227780317887,
+  "drag": 3.228326434791088,
+  "lift": 0.006748959680244297,
+  "step": 50000,
+  "episode": 624,
+  "elapsed_time": 49368.068022966385,
+  "steps_per_second": 1.0128004194277895
+}
