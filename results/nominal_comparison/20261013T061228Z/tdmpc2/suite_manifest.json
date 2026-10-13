@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "algorithm": "tdmpc2",
+  "training_run": "/nfs4/jhkim/repos/Fluidgym-RL/results/tdmpc2_full/20261008T124249Z_4be46ae7",
+  "selection_sha256": "552800ba3e89a85eeabd74ad93169e14ba96c49e80791f1471a0f6ca635240ce",
+  "evaluations": [
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0000",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0001",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0002",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0003",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0004",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0005",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0006",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0007",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0008",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0009",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0010",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0011",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0012",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/test_best",
+    "/nfs4/jhkim/repos/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/test_final"
+  ]
+}

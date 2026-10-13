@@ -1,0 +1,12 @@
+{
+  "contract": {
+    "env_id": "CylinderJet2D-easy-v0",
+    "split": "train",
+    "n_episodes": 10,
+    "protocol": "seeded",
+    "base_seed": 0,
+    "flatten_observation": true,
+    "version": 1
+  },
+  "inference_config": null
+}

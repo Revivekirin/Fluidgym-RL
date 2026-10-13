@@ -1,0 +1,70 @@
+{
+  "n_episodes": 10,
+  "mean_reward_per_step": {
+    "mean": -0.05054765801876784,
+    "std": 0.015262387049564544,
+    "median": -0.05067065018229187,
+    "iqm": -0.0524208123019586,
+    "min": -0.06862703165970743,
+    "max": -0.02374379485845566
+  },
+  "episode_return": {
+    "mean": -4.043812641501427,
+    "std": 1.2209909639651637,
+    "median": -4.053652014583349,
+    "iqm": -4.193664984156688,
+    "min": -5.490162532776594,
+    "max": -1.8995035886764526
+  },
+  "episode_length": {
+    "mean": 80.0,
+    "std": 0.0,
+    "median": 80.0,
+    "iqm": 80.0,
+    "min": 80.0,
+    "max": 80.0
+  },
+  "metrics_per_step_mean": {
+    "abs_lift": {
+      "mean": 0.2590236238289475,
+      "std": 0.018844201073131228,
+      "median": 0.25512961538072143,
+      "iqm": 0.2584645155372745,
+      "min": 0.22658820301876403,
+      "max": 0.28881908113553434
+    },
+    "drag": {
+      "mean": 3.119679551720619,
+      "std": 0.013418956632568459,
+      "median": 3.1203044235706328,
+      "iqm": 3.1182581583658853,
+      "min": 3.1051049768924712,
+      "max": 3.141707342863083
+    },
+    "lift": {
+      "mean": 0.06481471834546426,
+      "std": 0.06728157419561769,
+      "median": 0.09619775445003143,
+      "iqm": 0.075606192463502,
+      "min": -0.04232833519708947,
+      "max": 0.13051443074364216
+    }
+  },
+  "action": {
+    "mean": -0.02163938069716096,
+    "std_within_episode": 0.26228622496128084,
+    "abs_max": 1.0,
+    "clipped_step_fraction": 0.0
+  },
+  "terminated_episodes": 0,
+  "truncated_episodes": 10,
+  "eval_wall_seconds": 703.5686329193413,
+  "claims_reproduction": false,
+  "policy": {
+    "algorithm": "tdmpc",
+    "inference_mode": "mpc_plan"
+  },
+  "abs_lift_definition": "mean(abs(control-interval mean lift)); solver-substep abs lift unavailable",
+  "drag_reduction_percent": null,
+  "drag_reduction_note": "requires matched uncontrolled training-split reference; not inferred from reward"
+}

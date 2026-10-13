@@ -1,0 +1,32 @@
+{
+  "status": "completed",
+  "checkpoint": "/nfs4/jhkim/repos/Fluidgym-RL/results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/final.pt",
+  "evaluation": {
+    "episode_reward": -7.143381595611572,
+    "episode_success": 0.0,
+    "episode_length": 80.0,
+    "mean_reward_per_step": -0.08929227780317887,
+    "drag": 3.228326434791088,
+    "lift": 0.006748959680244297,
+    "step": 50000,
+    "episode": 624,
+    "elapsed_time": 49368.068022966385,
+    "steps_per_second": 1.0128004194277895
+  },
+  "environment_steps": 50000,
+  "learner_updates": 49999,
+  "evaluation_environment_steps": 11200,
+  "environment_steps_per_wall_second": 1.0128000643804191,
+  "learner_updates_per_wall_second": 1.0127798083791315,
+  "episode_horizon": 80,
+  "gpu_peak_allocated_bytes": 225788928,
+  "simulator_steps_per_second": 1.2782103467186794,
+  "learner_updates_per_update_second": 85.04401535783356,
+  "learning_rate/optim/0": 8.999999999999999e-05,
+  "learning_rate/optim/1": 0.0003,
+  "learning_rate/optim/2": 0.0003,
+  "learning_rate/optim/3": 0.0003,
+  "learning_rate/optim/4": 0.0003,
+  "learning_rate/optim/5": 0.0003,
+  "learning_rate/pi_optim/0": 0.0003
+}

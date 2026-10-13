@@ -1,0 +1,25 @@
+{"time":"2026-10-12T15:07:33.659750251+09:00","level":"INFO","msg":"main: starting server","port-filename":"/tmp/tmptafp6rmf/port-2550545.txt","pid":2550545,"detached":false,"idle-timeout":600000000000,"log-level":0,"disable-analytics":false,"shutdown-on-parent-exit":false,"enable-dcgm-profiling":false}
+{"time":"2026-10-12T15:07:33.660243707+09:00","level":"INFO","msg":"server: will exit if parent process dies","ppid":2550545}
+{"time":"2026-10-12T15:07:33.660236506+09:00","level":"INFO","msg":"server: accepting connections","addr":{"Name":"/tmp/wandb-2550545-2550693-4273795892/socket","Net":"unix"}}
+{"time":"2026-10-12T15:07:33.842937347+09:00","level":"INFO","msg":"connection: ManageConnectionData: new connection created","id":"1(@)"}
+{"time":"2026-10-12T15:07:34.233902185+09:00","level":"INFO","msg":"handleInformInit: received","streamId":"gwtbjl5e","id":"1(@)"}
+{"time":"2026-10-12T15:07:34.277164918+09:00","level":"INFO","msg":"handleInformInit: stream started","streamId":"gwtbjl5e","id":"1(@)"}
+{"time":"2026-10-12T15:07:40.692391963+09:00","level":"INFO","msg":"connection: cancelling request","id":"1(@)","requestId":"9nf0p9pu0jzw"}
+{"time":"2026-10-13T02:48:39.237294461+09:00","level":"ERROR","msg":"analytics: failed to send telemetry to backend proxy","error":"failed to upload metrics: reader collect and export timeout: retry-able request failure: Post \"https://api.wandb.ai/sdk/otel/v1/metrics\": context deadline exceeded"}
+{"time":"2026-10-13T02:57:38.855098393+09:00","level":"ERROR","msg":"analytics: failed to send telemetry to backend proxy","error":"failed to upload metrics: reader collect and export timeout: retry-able request failure: Post \"https://api.wandb.ai/sdk/otel/v1/metrics\": context deadline exceeded"}
+{"time":"2026-10-13T02:57:38.855167475+09:00","level":"ERROR","msg":"analytics: failed to send telemetry to backend proxy","error":"failed to upload metrics: reader collect and export timeout: retry-able request failure: Post \"https://api.wandb.ai/sdk/otel/v1/metrics\": context deadline exceeded"}
+{"time":"2026-10-13T02:57:39.237128517+09:00","level":"ERROR","msg":"analytics: failed to send telemetry to backend proxy","error":"failed to upload metrics: reader collect and export timeout: retry-able request failure: Post \"https://api.wandb.ai/sdk/otel/v1/metrics\": context deadline exceeded"}
+{"time":"2026-10-13T04:10:39.238797436+09:00","level":"ERROR","msg":"analytics: failed to send telemetry to backend proxy","error":"failed to upload metrics: reader collect and export timeout: retry-able request failure: Post \"https://api.wandb.ai/sdk/otel/v1/metrics\": context deadline exceeded"}
+{"time":"2026-10-13T07:46:01.640130796+09:00","level":"INFO","msg":"connection: cancelling request","id":"1(@)","requestId":"9nf0p9pu0jzw"}
+{"time":"2026-10-13T07:46:03.553925413+09:00","level":"INFO","msg":"connection: cancelling request","id":"1(@)","requestId":"9nf0p9pu0jzw"}
+{"time":"2026-10-13T07:46:03.565500118+09:00","level":"INFO","msg":"handleInformFinish: finish message received","streamId":"gwtbjl5e","id":"1(@)"}
+{"time":"2026-10-13T07:46:03.759424886+09:00","level":"INFO","msg":"handleInformFinish: stream closed","streamId":"gwtbjl5e","id":"1(@)"}
+{"time":"2026-10-13T07:46:03.759485999+09:00","level":"INFO","msg":"handleInformTeardown: server teardown initiated","id":"1(@)"}
+{"time":"2026-10-13T07:46:03.759518419+09:00","level":"INFO","msg":"handleInformTeardown: server shutdown complete","id":"1(@)"}
+{"time":"2026-10-13T07:46:03.759550147+09:00","level":"INFO","msg":"processOutgoingData: finished","id":"1(@)"}
+{"time":"2026-10-13T07:46:03.759582626+09:00","level":"INFO","msg":"server: is shutting down"}
+{"time":"2026-10-13T07:46:03.759545647+09:00","level":"INFO","msg":"connection: closing","id":"1(@)"}
+{"time":"2026-10-13T07:46:03.759721615+09:00","level":"INFO","msg":"connection: closed successfully","id":"1(@)"}
+{"time":"2026-10-13T07:46:03.75994399+09:00","level":"INFO","msg":"server: listener closed","addr":{"Name":"/tmp/wandb-2550545-2550693-4273795892/socket","Net":"unix"}}
+{"time":"2026-10-13T07:46:03.944770287+09:00","level":"INFO","msg":"connection: ManageConnectionData: connection closed","id":"1(@)"}
+{"time":"2026-10-13T07:46:03.94490021+09:00","level":"INFO","msg":"server: all connections closed"}

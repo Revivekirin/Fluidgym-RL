@@ -1,0 +1,5 @@
+{
+  "status": "verified",
+  "checkpoint": "/nfs4/jhkim/repos/Fluidgym-RL/results/tdmpc_full/20261012T060719Z_full/checkpoints/final.pt",
+  "check": "fresh-process inference probe"
+}
