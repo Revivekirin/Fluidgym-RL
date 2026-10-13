@@ -16,17 +16,32 @@ def aggregate_seeds(frame):
     keys=['algorithm','cohort','experiment','split','role','metric','environment_steps']
     rows=[]
     for group,data in valid.groupby(keys,dropna=False):
-        if data.train_seed.isna().any() or data.train_seed.duplicated().any():
+        if data.train_seed.isna().any():
             raise ValueError('repeated or unknown training seed at the same metric/step/role; do not count repeated runs as independent seeds')
+        if data.train_seed.duplicated().any():
+            # Saved best/final candidates can occupy the same training step.
+            # Preserve each checkpoint, without averaging them or choosing by
+            # performance. This ambiguous group has no across-seed estimate.
+            if (data.checkpoint_sha256.isna().any() or
+                    data.duplicated(['train_seed','checkpoint_sha256']).any()):
+                raise ValueError('repeated or unknown training seed at the same metric/step/role; do not count repeated runs as independent seeds')
+            for _,record in data.iterrows():
+                rows.append(dict(zip(keys,group),mean=float(record.value),n_seeds=1,
+                                 ci_low=None,ci_high=None,
+                                 series=f'checkpoint:{record.checkpoint_sha256}',
+                                 uncertainty='unavailable: multiple checkpoints at one seed/step; displayed individually',
+                                 training_wall_hours=record.training_wall_hours))
+            continue
         values=data.value.to_numpy(float); n=len(values)
         lo=hi=None
         if n>=3:
             draws=np.random.default_rng(2026).choice(values,(4000,n),replace=True).mean(axis=1)
             lo,hi=[float(x) for x in np.quantile(draws,[.025,.975])]
         rows.append(dict(zip(keys,group),mean=float(values.mean()),n_seeds=n,ci_low=lo,ci_high=hi,
+                         series='seed_mean',
                          uncertainty='95% percentile bootstrap over training seeds' if n>=3 else 'unavailable: fewer than 3 independent training seeds',
                          training_wall_hours=float(data.training_wall_hours.mean()) if data.training_wall_hours.notna().all() else None))
-    return pd.DataFrame(rows,columns=keys+['mean','n_seeds','ci_low','ci_high','uncertainty','training_wall_hours'])
+    return pd.DataFrame(rows,columns=keys+['mean','n_seeds','ci_low','ci_high','series','uncertainty','training_wall_hours'])
 
 
 def render_figures(frame,stats,out):
@@ -66,9 +81,11 @@ def render_figures(frame,stats,out):
                 if set(subset.role)!= {'best_validation','final'}:
                     reason='Partial evidence: best-validation or final test result missing'
             else:
-                for (algorithm,experiment,split_name,role),group in subset.groupby(['algorithm','experiment','split','role']):
+                for (algorithm,experiment,split_name,role,series),group in subset.groupby(['algorithm','experiment','split','role','series']):
                     group=group.sort_values(x)
-                    ax.plot(group[x],group['mean'],marker='o',label=f'{algorithm} / {str(experiment)[:8]} / {split_name} / {role}')
+                    label=f'{algorithm} / {str(experiment)[:8]} / {split_name} / {role}'
+                    if series!='seed_mean': label+=f' / {series[:23]}'
+                    ax.plot(group[x],group['mean'],marker='o',linestyle='-' if series=='seed_mean' else 'None',label=label)
                     ci=group[group.ci_low.notna()]
                     if not ci.empty: ax.fill_between(ci[x].to_numpy(float),ci.ci_low.to_numpy(float),ci.ci_high.to_numpy(float),alpha=.18)
                 ax.set_xlabel('Real training environment steps' if x=='environment_steps' else 'Recorded training wall-clock hours')

@@ -143,6 +143,24 @@ class ComparisonTests(unittest.TestCase):
         self.assertEqual(set(split_stats.split),{'train','val'})
 
     @unittest.skipUnless(all(importlib.util.find_spec(p) for p in ('pandas','matplotlib','pyarrow')), 'requires comparison extra')
+    def test_report_distinct_checkpoints_at_same_seed_and_step(self):
+        from fluidgym_rl.comparison.report import build_report
+        import pandas as pd
+        first=self.root/'best'; second=self.root/'final'
+        fixture(first,step=50000,reward=1.)
+        fixture(second,step=50000,reward=3.)
+        before={str(p):file_hash(p) for root in (first,second) for p in root.iterdir()}
+        build_report([first,second],[],self.root/'report')
+        stats=pd.read_csv(self.root/'report/seed_summary.csv')
+        rewards=stats[stats.metric.str.endswith('/mean_reward_per_step')]
+        self.assertEqual(set(rewards['mean']),{1.,3.})
+        self.assertTrue((rewards.n_seeds==1).all())
+        self.assertTrue(rewards.ci_low.isna().all())
+        self.assertEqual(rewards.series.nunique(),2)
+        self.assertEqual(len(pd.read_parquet(self.root/'report/comparison.parquet')),24)
+        self.assertEqual(before,{str(p):file_hash(p) for root in (first,second) for p in root.iterdir()})
+
+    @unittest.skipUnless(all(importlib.util.find_spec(p) for p in ('pandas','matplotlib','pyarrow')), 'requires comparison extra')
     def test_report_exports_preserve_sources(self):
         from fluidgym_rl.comparison.report import build_report
         import pandas as pd

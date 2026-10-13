@@ -1,0 +1,83 @@
+{
+  "cuda_available": false,
+  "checks": [
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/final.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_12000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_16000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_20000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_24000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_28000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_32000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_36000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_4000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_40000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_44000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_48000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    },
+    {
+      "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_8000.pt",
+      "tensors": 72,
+      "finite": true,
+      "status": "CPU deserialization only; not model restoration"
+    }
+  ]
+}

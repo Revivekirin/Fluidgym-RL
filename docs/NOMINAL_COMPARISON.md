@@ -194,6 +194,16 @@ missing best/final or train/val evidence is labeled. Old training logs remain in
 export as historical/incompatible and never replace independent evaluations.
 Sparse TD-MPC saved checkpoints necessarily give sparse independent curves.
 
+Distinct saved candidates (for example best and final) can have the same training
+seed and real step. In that case the summary preserves checkpoint-specific rows
+with `series=checkpoint:<sha256>`, `n_seeds=1`, and no confidence interval. They
+appear as separate points, not an average or a performance-selected point. Other
+unambiguous steps still support normal seed aggregation. Duplicate evaluations of
+the same checkpoint/seed remain rejected rather than counted as independent seeds.
+If reporting fails after both evaluation suites completed, reuse their
+`suite_manifest.json` evaluation lists and run only `compare_nominal.py report`
+with a new output directory; do not rerun simulation or overwrite the failed report.
+
 To publish **new derived runs** (original runs remain untouched), use a new output
 path and append `--wandb-mode online --wandb-project fluidgym-compare` to `report`.
 For an offline SDK check use `--wandb-mode offline`. Unique explicit run IDs prevent

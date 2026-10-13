@@ -1,0 +1,37 @@
+algorithm,original_metric,comparison_metric,unit,reduction,original_axis,actual_split,status,reason
+tdmpc,train/mean_reward_per_step,compare/train/mean_reward_per_step,reward/step,one exploratory training episode mean,environment_steps,train,incompatible,"training rollout, not frozen-policy independent evaluation"
+tdmpc,train/episode_return,compare/train/episode_return,reward/episode,sum in one training episode,environment_steps,train,incompatible,training rollout
+tdmpc,val/mean_reward_per_step,compare/val/mean_reward_per_step,reward/step,mean of episode means,environment_steps,val,incompatible,legacy official_callback seeds differ from shared seeded contract
+tdmpc,val/episode_return,compare/val/episode_return,reward/episode,mean episode returns,environment_steps,val,incompatible,re-evaluate under shared contract
+tdmpc,val/drag,compare/val/drag,Cd,mean steps then episodes,environment_steps,val,incompatible,re-evaluate under shared contract
+tdmpc,val/abs_lift,compare/val/abs_lift,|Cl|,mean abs control-interval Cl,environment_steps,val,incompatible,re-evaluate under shared contract
+tdmpc2,train/episode_reward,compare/train/episode_return,reward/episode,completed training episode sum,train/environment_steps,train,incompatible,exploration/training rollout
+tdmpc2,eval/episode_reward,compare/train/episode_return,reward/episode,mean evaluation returns,eval/environment_steps,train,incompatible,upstream evaluation does not switch to val/test
+tdmpc2,eval/mean_reward_per_step,compare/train/mean_reward_per_step,reward/step,mean over evaluation control steps,eval/environment_steps,train,incompatible,cannot relabel eval as validation
+tdmpc2,eval/drag,compare/train/drag,Cd,mean evaluation control steps,eval/environment_steps,train,incompatible,legacy reset protocol not shared contract
+tdmpc2,eval/lift,compare/train/lift,Cl,SIGNED mean evaluation control steps,eval/environment_steps,train,incompatible,cannot convert signed mean to mean absolute lift
+tdmpc2,not recorded,compare/train/abs_lift,|Cl|,requires per-step absolute values,eval/environment_steps,train,unavailable,abs(mean lift) is not mean(abs lift)
+both,not recorded,compare/{split}/drag_reduction_percent,percent,100*(1-mean drag/reference drag),real environment_steps,explicit,unavailable,requires measured matched uncontrolled training reference
+tdmpc,train/wall_seconds,training_wall_hours,hours,wall seconds /3600,environment_steps,train,available,"unit conversion only; includes evaluations, excludes setup"
+tdmpc2,train/elapsed_time,training_wall_hours,hours,elapsed seconds /3600,train/environment_steps,train,available,"unit conversion only; includes evaluations, excludes setup"
+tdmpc,"train/*loss,train/grad_norm",diagnostics/tdmpc/*,objective-specific,last optimizer update in episode,environment_steps,train,diagnostic,original scalar TOLD losses; no cross-algorithm magnitude comparison
+tdmpc2,"train/*loss,train/grad_norm",diagnostics/tdmpc2/*,objective-specific,latest exposed update,train/environment_steps,train,diagnostic,TD-MPC2 distributional/latent objectives; no cross-algorithm magnitude comparison
+both,learner_updates (tdmpc2: train/learner_updates),diagnostic counter,optimizer calls,cumulative actual calls,real environment_steps,train,diagnostic,includes seed-data pretraining; not environment interactions
+tdmpc,train/learning_rate,diagnostics/tdmpc/learning_rate,optimizer LR,configured optimizer LR,environment_steps,train,diagnostic,different optimizers/objectives
+tdmpc2,train/learning_rate/{optimizer}/{group},diagnostics/tdmpc2/learning_rate,optimizer LR,actual optimizer param-group LR,train/environment_steps,train,diagnostic,keep optimizer/group identity
+tdmpc,train/environment_steps_per_second,resource only,steps/second,training steps / action-selection plus simulator seconds,environment_steps,train,incompatible,does not include evaluation steps; timing scope differs
+tdmpc2,train/simulator_steps_per_second,resource only,steps/second,training + evaluation steps / simulator seconds,train/environment_steps,train,incompatible,timing scope differs from TD-MPC
+tdmpc,train/learner_updates_per_second,resource only,updates/second,updates / update seconds,environment_steps,train,diagnostic,update costs depend on algorithm/model/batch
+tdmpc2,train/learner_updates_per_update_second,resource only,updates/second,updates / update seconds,train/environment_steps,train,diagnostic,update costs depend on algorithm/model/batch
+tdmpc2,"train/environment_steps_per_wall_second,train/learner_updates_per_wall_second",resource only,count/second,cumulative counts / observer wall seconds,train/environment_steps,train,diagnostic,not isolated simulator or optimizer throughput
+tdmpc,train/gpu_peak_memory_bytes,resource only,bytes,CUDA peak allocated memory,environment_steps,train,diagnostic,not total device memory; hardware dependent
+tdmpc2,train/gpu_peak_allocated_bytes,resource only,bytes,CUDA peak allocated memory,train/environment_steps,train,diagnostic,not total device memory; hardware dependent
+both,train/episode_length,compare/train/episode_length,control steps,completed training episode horizon,real environment_steps,train,incompatible,historical rollout not independent evaluation
+tdmpc2,"eval/episode_length,train/episode_horizon",compare/train/episode_length,control steps,evaluation mean horizon / configured horizon,eval/environment_steps or train/environment_steps,train,incompatible,eval namespace is still training split
+tdmpc,train/action_clipped_fraction,compare/train/action_clipped_fraction,fraction,clipped steps / training episode length,environment_steps,train,incompatible,training exploration differs from frozen evaluation
+both,not consistently recorded,"compare/{split}/action_mean,action_std,action_abs_max",normalized action,independent evaluation only,real environment_steps,explicit,unavailable,requires per-step executed actions
+both,checkpoint paths / artifacts,checkpoint identity,SHA-256,checkpoint bytes + sidecar/config,real environment_steps,not applicable,available,read-only file hashing; weights-only inference restoration
+sac,train/*,historical training rollout,reward/step or episode,one exploratory episode,compare/environment_steps,train,incompatible,not a frozen independent evaluation
+sac,compare/val/*,compare/val/*,metric-specific; see schema.METRICS,shared seeded episode aggregation,compare/environment_steps,val,available,shared independent contract; validation-only selection
+sac,compare/test/*,compare/test/*,metric-specific; see schema.METRICS,shared seeded episode aggregation,compare/environment_steps,test,available,separate post-training evaluation only
+sac,diagnostics/sac/*loss,diagnostics/sac/*loss,objective-specific,latest SB3 update,compare/environment_steps,train,diagnostic,SB3 SAC losses; never compare magnitude with planning/latent losses
