@@ -29,7 +29,7 @@ class NominalEnv(CheckedEnv):
 def training_identity(algorithm, root, checkpoint, declared_steps=None):
     root,checkpoint=Path(root).resolve(),Path(checkpoint).resolve()
     checkpoint.relative_to(root)  # Prevent accidentally associating a different run.
-    if algorithm=='tdmpc':
+    if algorithm in ('tdmpc','sac'):
         sidecar=read_json(checkpoint.with_suffix('.json'))
         steps=sidecar['environment_steps']; seed=sidecar['parameters']['seed']
         if sidecar['sha256']!=file_hash(checkpoint): raise ValueError('checkpoint sidecar hash mismatch')
@@ -58,13 +58,14 @@ def training_identity(algorithm, root, checkpoint, declared_steps=None):
             raise ValueError('real environment steps unavailable in original artifacts; cannot certify this checkpoint for comparison')
     if type(steps) is not int or steps<=0: raise ValueError('invalid checkpoint environment steps')
     if declared_steps is not None and steps!=declared_steps: raise ValueError('declared steps contradict checkpoint evidence')
-    wall=None; wall_source=None
-    path=root/('train.csv' if algorithm=='tdmpc' else 'metrics.jsonl')
-    if path.exists():
+    wall=sidecar.get('training_wall_hours') if algorithm=='sac' else None
+    wall_source={'path':step_source,'sha256':file_hash(step_source)} if wall is not None else None
+    path=root/('train.csv' if algorithm in ('tdmpc','sac') else 'metrics.jsonl')
+    if path.exists() and algorithm!='sac':
         records=list(csv.DictReader(path.open())) if path.suffix=='.csv' else [json.loads(x) for x in path.read_text().splitlines()]
         for row in records:
             if row.get('category','train')=='train' and int(float(row.get('environment_steps',-1)))==steps:
-                value=row.get('wall_seconds' if algorithm=='tdmpc' else 'elapsed_time')
+                value=row.get('wall_seconds' if algorithm in ('tdmpc','sac') else 'elapsed_time')
                 if value not in (None,''):
                     wall=float(value)/3600; wall_source={'path':str(path),'sha256':file_hash(path)}
     return dict(algorithm=algorithm,training_run_id=run_id,train_seed=int(seed),environment_steps=steps,step_source=step_source,
@@ -80,6 +81,12 @@ def load_policy(algorithm, checkpoint, identity, device):
     from fluidgym_rl.tdmpc.evaluation import Policy, ZeroPolicy, load_checkpoint
     if algorithm=='uncontrolled':
         yield ZeroPolicy(),{},None
+        return
+    if algorithm=='sac':
+        from fluidgym_rl.sac.runtime import load_checkpoint as load_sac
+        from fluidgym_rl.official_sac import SB3Policy
+        model,sidecar=load_sac(checkpoint,device)
+        yield SB3Policy(model),{'sb3_version':metadata.version('stable-baselines3')},{**sidecar['config'],'sb3_version':sidecar['sb3_version']}
         return
     cwd=Path.cwd()
     with tempfile.TemporaryDirectory(prefix='fgrl_compare_') as tmp:
@@ -205,7 +212,7 @@ def evaluate_to_directory(args, out):
         if not args.selection: raise ValueError('--selection required for best_validation reporting')
         validate_selection(args.selection,identity)
     if args.role=='final' and (checkpoint is None or checkpoint.stem!='final'):
-        raise ValueError('final role requires the saved final.pt; do not relabel a selected checkpoint')
+        raise ValueError('final role requires the saved final checkpoint; do not relabel a selected checkpoint')
     if args.split=='test' and args.role not in ('best_validation','final'):
         raise ValueError('test is reserved for final or frozen best-validation checkpoints')
     cfg=SimpleNamespace(task=contract.env_id,obs_shape=[302],action_dim=1,episode_length=80,device=args.device)
@@ -213,13 +220,15 @@ def evaluate_to_directory(args, out):
         env=NominalEnv(make_fluid_env(contract.env_id,mode=contract.split,cuda_device=torch.device(args.device)),cfg)
         try:
             physics=physics_manifest(env)
+            if args.algorithm=='sac' and identity['source_config']['physics']!=physics:
+                raise ValueError('SAC training and evaluation physics/dataset differ')
             reference=check_reference(args.reference,contract,physics) if args.reference else None
             records=run_evaluation(env,policy,contract,metric_names=['drag','lift','abs_lift'],action_low=env.action_space.low,action_high=env.action_space.high)
             summary=aggregate(records,reference)
         finally:
             env.close()
     versions={}
-    for name in ('torch','numpy','gymnasium','fluidgym','hydra-core','tensordict'):
+    for name in ('torch','numpy','gymnasium','fluidgym','hydra-core','tensordict','stable-baselines3'):
         try: versions[name]=metadata.version(name)
         except metadata.PackageNotFoundError: versions[name]=None
     manifest={**identity,'algorithm':args.algorithm,'schema_version':VERSION,'status':'completed',

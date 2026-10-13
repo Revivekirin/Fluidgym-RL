@@ -205,3 +205,7 @@ compatibility patch hash, checkpoint SHA/config/step evidence, inference semanti
 FluidGym source/dataset versions, explicit seeds/split/budget, physical settings,
 reference/selection identity and result hashes. Checkpoints restore inference only;
 optimizer, replay and RNG resume are not claimed. No original files are modified.
+
+## Fresh SAC baseline
+
+The same evaluation/select/report CLI accepts `--algorithm sac` for the new nominal SB3 `.zip` checkpoints and hashed JSON sidecars. Training, reference differences and exact remote commands are in [SAC_NOMINAL.md](SAC_NOMINAL.md). Public checkpoints without this provenance are not silently converted. Original TD-MPC and TD-MPC2 loading behavior remains unchanged.

@@ -14,7 +14,7 @@ from fluidgym_rl.comparison.schema import file_hash, write_json
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--algorithm',choices=['tdmpc','tdmpc2'],required=True)
+    ap.add_argument('--algorithm',choices=['tdmpc','tdmpc2','sac'],required=True)
     ap.add_argument('--training-run',type=Path,required=True)
     ap.add_argument('--reference',type=Path,required=True)
     ap.add_argument('--out',type=Path,required=True)
@@ -23,13 +23,14 @@ def main():
     ap.add_argument('--device',default='cuda:0')
     ap.add_argument('--include-train',action='store_true',help='also evaluate frozen candidates on train split')
     a=ap.parse_args(); root=a.training_run.resolve(); out=a.out.resolve()
-    status=root/('summary.json' if a.algorithm=='tdmpc' else 'status.json')
+    status=root/('summary.json' if a.algorithm in ('tdmpc','sac') else 'status.json')
     if json.loads(status.read_text()).get('status')!='completed':
         raise ValueError('batch evaluation requires a completed training run')
-    directory=root/('checkpoints' if a.algorithm=='tdmpc' else 'upstream/models')
-    final=directory/'final.pt'
+    directory=root/('checkpoints' if a.algorithm in ('tdmpc','sac') else 'upstream/models')
+    suffix='.zip' if a.algorithm=='sac' else '.pt'
+    final=directory/('final'+suffix)
     if not final.is_file(): raise FileNotFoundError(final)
-    candidates=sorted(directory.glob('*.pt'))
+    candidates=sorted(directory.glob('*'+suffix))
     from fluidgym_rl.comparison.evaluate import training_identity
     seen=set(); checkpoints=[]
     for ck in candidates:

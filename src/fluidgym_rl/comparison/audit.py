@@ -29,26 +29,27 @@ def audit_run(root):
     root=Path(root).resolve()
     if not root.is_dir(): return {'path':str(root),'status':'unavailable','reason':'directory absent'}
     files={}
-    for name in ('run_manifest.json','summary.json','status.json','resolved_config.json','resolved_config.yaml','metrics.jsonl','train.csv','eval.csv','wandb_run.json'):
+    for name in ('run_manifest.json','summary.json','status.json','resolved_config.json','resolved_config.yaml','metrics.jsonl','train.csv','eval.csv','val.csv','diagnostics.jsonl','wandb_run.json'):
         p=root/name
         if p.is_file(): files[name]={'sha256':file_hash(p),'bytes':p.stat().st_size}
     status_path=next((root/n for n in ('status.json','summary.json') if (root/n).exists()),None)
     status=read_json(status_path).get('status','unknown') if status_path else 'unknown'
     algorithm='tdmpc2' if (root/'metrics.jsonl').exists() else 'tdmpc' if (root/'train.csv').exists() else 'unknown'
-    checkpoints=[{'path':str(p.relative_to(root)),'bytes':p.stat().st_size,'sha256':file_hash(p)} for p in sorted(root.glob('**/*.pt'))]
+    if (root/'run_manifest.json').exists() and read_json(root/'run_manifest.json').get('algorithm')=='sac': algorithm='sac'
+    checkpoints=[{'path':str(p.relative_to(root)),'bytes':p.stat().st_size,'sha256':file_hash(p)} for p in sorted([*root.glob('**/*.pt'),*root.glob('checkpoints/*.zip')])]
     return dict(path=str(root),algorithm=algorithm,status=status,files=files,checkpoints=checkpoints,
-                periodic_split='train' if algorithm=='tdmpc2' else 'val' if algorithm=='tdmpc' else 'unknown',
+                periodic_split='train' if algorithm=='tdmpc2' else 'val' if algorithm in ('tdmpc','sac') else 'unknown',
                 note='local artifact audit only; existing W&B runs are never accessed or modified')
 
 
 def legacy_rows(root):
     root=Path(root).resolve(); audit=audit_run(root); algorithm=audit.get('algorithm')
-    if algorithm not in ('tdmpc','tdmpc2'): return []
+    if algorithm not in ('tdmpc','tdmpc2','sac'): return []
     config_path=root/('resolved_config.json' if algorithm=='tdmpc2' else 'resolved_config.yaml')
     config=read_json(config_path) if config_path.exists() else {}
     seed=config.get('parameters',config).get('seed')
     outputs=[]
-    for name in (('metrics.jsonl',) if algorithm=='tdmpc2' else ('train.csv','eval.csv')):
+    for name in (('metrics.jsonl',) if algorithm=='tdmpc2' else ('train.csv',) if algorithm=='sac' else ('train.csv','eval.csv')):
         path=root/name
         if not path.exists(): continue
         source_hash=file_hash(path)
@@ -76,6 +77,13 @@ def legacy_rows(root):
                     outputs.append({**meta,'metric':f'diagnostics/{algorithm}/{loss}','value':float(row[loss]),'status':'diagnostic' if audit['status']=='completed' else 'incompatible',
                                     'unit':'objective-specific','reduction':'latest logged update; not a cross-algorithm quantity',
                                     'reason':'separate algorithm diagnostic only'})
+    if algorithm=='sac' and (root/'diagnostics.jsonl').exists():
+        path=root/'diagnostics.jsonl'
+        for line in path.read_text().splitlines():
+            row=json.loads(line)
+            for key,value in row.items():
+                if key.startswith('diagnostics/sac/') and 'loss' in key:
+                    outputs.append(dict(algorithm='sac',run_id=root.name,train_seed=seed,split='train',kind='diagnostic',role='historical',environment_steps=row['environment_steps'],cohort='legacy:sac',source=str(path),source_sha256=file_hash(path),metric=key,value=value,status='diagnostic',unit='SAC objective-specific',reduction='latest SB3 update',reason='not comparable to TD-MPC losses'))
     return outputs
 
 
@@ -103,4 +111,11 @@ MAPPING.extend([
  ('tdmpc','train/action_clipped_fraction','compare/train/action_clipped_fraction','fraction','clipped steps / training episode length','environment_steps','train','incompatible','training exploration differs from frozen evaluation'),
  ('both','not consistently recorded','compare/{split}/action_mean,action_std,action_abs_max','normalized action','independent evaluation only','real environment_steps','explicit','unavailable','requires per-step executed actions'),
  ('both','checkpoint paths / artifacts','checkpoint identity','SHA-256','checkpoint bytes + sidecar/config','real environment_steps','not applicable','available','read-only file hashing; weights-only inference restoration'),
+])
+
+MAPPING.extend([
+ ('sac','train/*','historical training rollout','reward/step or episode','one exploratory episode','compare/environment_steps','train','incompatible','not a frozen independent evaluation'),
+ ('sac','compare/val/*','compare/val/*','metric-specific; see schema.METRICS','shared seeded episode aggregation','compare/environment_steps','val','available','shared independent contract; validation-only selection'),
+ ('sac','compare/test/*','compare/test/*','metric-specific; see schema.METRICS','shared seeded episode aggregation','compare/environment_steps','test','available','separate post-training evaluation only'),
+ ('sac','diagnostics/sac/*loss','diagnostics/sac/*loss','objective-specific','latest SB3 update','compare/environment_steps','train','diagnostic','SB3 SAC losses; never compare magnitude with planning/latent losses'),
 ])

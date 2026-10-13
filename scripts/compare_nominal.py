@@ -15,7 +15,7 @@ def main():
     audit.add_argument('--training-runs', nargs='+', type=Path, required=True)
     audit.add_argument('--out', type=Path, required=True)
     ev = sub.add_parser('evaluate')
-    ev.add_argument('--algorithm', choices=['tdmpc', 'tdmpc2', 'uncontrolled'], required=True)
+    ev.add_argument('--algorithm', choices=['tdmpc', 'tdmpc2', 'sac', 'uncontrolled'], required=True)
     ev.add_argument('--training-run', type=Path)
     ev.add_argument('--checkpoint', type=Path)
     ev.add_argument('--split', choices=['train', 'val', 'test'], required=True)

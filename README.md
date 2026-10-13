@@ -33,3 +33,5 @@ The separate original TD-MPC integration is documented in
 CPU verification, bounded CUDA smoke, full-training safety gates, independent
 checkpoint evaluation and exact server commands. It leaves TD-MPC2 unchanged.
 Use `python scripts/tdmpc_train.py --print-config` to inspect settings without training.
+
+Fresh SB3 SAC nominal training (remote CUDA), smoke checks and shared checkpoint comparison: [SAC nominal workflow](docs/SAC_NOMINAL.md).
