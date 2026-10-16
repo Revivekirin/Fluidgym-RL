@@ -1,0 +1,15 @@
+{
+  "observation": "FlattenObservation: velocity only, sensor-major [vx,vy], 151 sensors",
+  "normalization": "none",
+  "frame_stack": 1,
+  "actuator_state_augmented": false,
+  "partial_observation": "smoothed actuator memory is not observed",
+  "reward": "Cd_ref - mean_substep(Cd) - abs(mean_substep(Cl)); scale=1",
+  "control_timestep": 0.25,
+  "nominal_solver_dt": 0.01,
+  "adaptive_cfl": 0.8,
+  "smoothing": "upstream alpha=0.1 each solver step; no adapter changes",
+  "upstream_fluidgym_sha": "50071140b73a2a917fb96d33522a769f903f8c27",
+  "abs_lift": "mean over control steps of abs(control-interval mean Cl), not solver-substep mean abs Cl",
+  "termination": "unexpected physical termination rejected; horizon truncation bootstraps as upstream"
+}

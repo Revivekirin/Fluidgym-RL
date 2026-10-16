@@ -1,0 +1,130 @@
+[
+  {
+    "path": "IMPLEMENTATION_STATUS.md",
+    "sha256": "d55d2481d82370f5b8b25ccb828a61074492eafce978567b4cf2ffd1b5687e62"
+  },
+  {
+    "path": "README.md",
+    "sha256": "e350f788333daff4aae2b831348071abaa1b30a93c433e888165fbced5a2b31d"
+  },
+  {
+    "path": "UPSTREAM.lock",
+    "sha256": "c4379409da43ffde1dc1dfb48ae1d66e2f6bdfb8149f95d072a7cc85c13aadda"
+  },
+  {
+    "path": "configs/environments/cylinderjet2d_nominal.json",
+    "sha256": "d872576e8c23237ee34de05a3174c6850546db0067a830412ae820dbd5799630"
+  },
+  {
+    "path": "configs/sac_nominal.json",
+    "sha256": "73689456b0e593825810da525477f16ef0a667a5d1db71fc58641c168a243f14"
+  },
+  {
+    "path": "configs/tdmpc/cylinderjet2d_easy.yaml",
+    "sha256": "7e9d1debd4a107a53ac88d98c6061ccd7a4a0f6384b29bbc123971aeef607dba"
+  },
+  {
+    "path": "docs/DEPENDENCY_MAP.md",
+    "sha256": "4cf0d004ebe46f5eb44877ee89820990694ab4458a50e29eeb1bedf54d51e88c"
+  },
+  {
+    "path": "docs/DIAGNOSTIC_CLEANUP.md",
+    "sha256": "2d49a81cc9b794ea149342667edaa5cb4ae6703a92f1e09fad2f27d1fcd3ee5d"
+  },
+  {
+    "path": "docs/NOMINAL_COMPARISON.md",
+    "sha256": "83d0b4784f5e0e0250f90360bcc4e82b76cdabc0a4e7b1aeb94ccd61fe6e5365"
+  },
+  {
+    "path": "docs/PHYSICAL_SHIFT_PREPARATION.md",
+    "sha256": "6754a867abb592a6fbaa608ae717d50c0592e5e400a4c44f768b5dcf58c3e9ce"
+  },
+  {
+    "path": "docs/REFACTOR_AUDIT.md",
+    "sha256": "29cff576d467741bad82e06ecbeeeabaf4b6a89d0e440a58e7fa06896a3ed4a0"
+  },
+  {
+    "path": "docs/REMOTE_EXECUTION.md",
+    "sha256": "291b9f1a7e2e34617208fd1f18fab00fd5059aa1a199cda12877d5054ea09b15"
+  },
+  {
+    "path": "docs/REPRODUCTION_AUDIT.md",
+    "sha256": "a3954843bf16e8c54032b16fc826366d7984a20743180fc7884a81e0e48100d6"
+  },
+  {
+    "path": "docs/SAC_NOMINAL.md",
+    "sha256": "18409e86795d138217deff5e088901d2428c7cf57ccbf10a9e5784de5a728061"
+  },
+  {
+    "path": "docs/SCRIPT_INVENTORY.md",
+    "sha256": "13e8880f2fb98fee3aca00a49da1df6f979d44a7c6a922bfd94339fd4b495ea7"
+  },
+  {
+    "path": "docs/TD_MPC_NOMINAL.md",
+    "sha256": "af566fcace9284b026e1072b3306292beb6480a4d53b9c1a88f592b80d62eb89"
+  },
+  {
+    "path": "docs/TD_MPC_VALIDATION.md",
+    "sha256": "c332e754692449ffc5d0da445d553d0ef33a98bb51be0cc93942b5a702b7bdba"
+  },
+  {
+    "path": "docs/UPSTREAM_AUDIT.md",
+    "sha256": "436e34bc4ccbe25c962e12d89e3401386590fb572dacc29fd418c195697bd8ca"
+  },
+  {
+    "path": "patches/tdmpc2_fluidgym_task.patch",
+    "sha256": "8d316df494cc2b52ee46eea997d7fd52e26d79926f1b0604e70485b29dfeeb59"
+  },
+  {
+    "path": "patches/tdmpc2_logging.patch",
+    "sha256": "aa502244bd07d4d9a3dd9357a91088a3dea1f37b591d937b6860b40501b68a92"
+  },
+  {
+    "path": "patches/tdmpc_device.patch",
+    "sha256": "ffc9aab87a54e7245c90a517a71102f967791b8bdb7951536635ed5a80c60aa6"
+  },
+  {
+    "path": "pyproject.toml",
+    "sha256": "abdd7f21707b4c953eb6c9f8beb5e7ec2db41e45d6a23aa15fa274166bfe3772"
+  },
+  {
+    "path": "requirements/tdmpc2_extra.txt",
+    "sha256": "d683febaa7c5beead4077a0b42199f561390bbd9f9b7c35a2fcdbd644f7a4a93"
+  },
+  {
+    "path": "scripts/fetch_upstream.sh",
+    "sha256": "db5d164004dfdad3dc4b25903de97b692d3d22d0f5c0698419af605b63149874"
+  },
+  {
+    "path": "scripts/remote_milestone.sh",
+    "sha256": "c8809587e50d7ccb712d9dd668dd9d890a340f8bc1d0b95968707e05bc4a421c"
+  },
+  {
+    "path": "scripts/remote_setup.sh",
+    "sha256": "30cc0dc62eac6490729b51733a0e0fad7b42e2c71a524e10d91f69728981dd52"
+  },
+  {
+    "path": "scripts/remote_smoke.sh",
+    "sha256": "35e8879a0de2927f51871f367916a4d448c13c656204cc291bd221fe863e1db3"
+  },
+  {
+    "path": "tests/fixtures/README.md",
+    "sha256": "16e2441b758715a9b77a8bda4453ef58f1a0e7a5e1ebac67b776e7494e57e85f"
+  },
+  {
+    "path": "tests/fixtures/tdmpc2_ensemble.py.txt",
+    "sha256": "31c16ea3490c9765692f2f5ddec8bab6e81ad49df5ec6a231af499c9f426190f"
+  },
+  {
+    "path": "tests/fixtures/tdmpc2_envs_init.py.txt",
+    "sha256": "de07ef1a5cde4642fa7c3c4f81cd7f258ba1dfcf718b8dd58f81c59a3595f4b4"
+  },
+  {
+    "path": "tests/fixtures/tdmpc2_logging_source.py.txt",
+    "sha256": "131e5e49997061429f553ff435798fed510ab1c9a1efabed7fa3701d8a5d1391"
+  },
+  {
+    "path": "tests/fixtures/tdmpc2_pilot_config.yaml",
+    "sha256": "b6760830ba26838319eef7f2d00f7349ba0eefaba6d71b83bbb752739257d7bc"
+  }
+]

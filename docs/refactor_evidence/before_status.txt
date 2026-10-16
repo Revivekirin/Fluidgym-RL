@@ -1,0 +1,4 @@
+ M .DS_Store
+?? configs/.DS_Store
+?? src/.DS_Store
+?? tests/.DS_Store

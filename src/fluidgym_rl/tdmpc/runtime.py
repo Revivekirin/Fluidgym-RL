@@ -12,11 +12,22 @@ import sys
 from types import SimpleNamespace
 
 from fluidgym_rl.upstream import lock, repo_root, third_party
+from fluidgym_rl.environment_contract import resolve_environment, validate_tdmpc_parameters
 
 DEFAULT_CONFIG = repo_root() / 'configs/tdmpc/cylinderjet2d_easy.yaml'
 
+# Legacy agent/config schema; independent of user-editable configuration files.
+PARAMETER_KEYS = frozenset((
+    'task modality action_repeat discount episode_length train_steps iterations num_samples '
+    'num_elites mixture_coef min_std temperature momentum batch_size max_buffer_size horizon '
+    'reward_coef value_coef consistency_coef rho kappa lr std_schedule horizon_schedule per_alpha '
+    'per_beta grad_clip_norm seed_steps update_freq tau enc_dim mlp_dim latent_dim seed eval_freq '
+    'eval_episodes save_freq device obs_shape action_dim '
+).split())
 
-def read_config(path=DEFAULT_CONFIG, *, seed=None, device=None):
+
+
+def read_config(path=DEFAULT_CONFIG, *, seed=None, device=None, environment_config=None):
     # JSON is YAML 1.2; accept normal YAML when PyYAML is installed as well.
     text = Path(path).read_text()
     try:
@@ -25,19 +36,23 @@ def read_config(path=DEFAULT_CONFIG, *, seed=None, device=None):
         import yaml
         data = yaml.safe_load(text)
     p = data['parameters']
+    # Keep the legacy parameter/provenance payload intact. Physics belongs to a
+    # separate specification and must never leak into the upstream agent config.
+    unknown = set(data) - {'parameters', 'provenance', 'tracking'}
+    unknown_parameters = set(p) - PARAMETER_KEYS
+    if unknown or unknown_parameters:
+        raise ValueError(f'unsupported config keys: {sorted(unknown | unknown_parameters)}; use --environment-config for the environment contract')
+    environment = resolve_environment(environment_config)
     if set(p) != set(data['provenance']):
         raise ValueError('every configuration parameter must have provenance')
     for key, value in [('seed', seed), ('device', device)]:
         if value is not None:
             p[key] = value
             data['provenance'][key] = dict(classification='FluidGym-specific adaptation', source='CLI override')
-    if p['task'] != 'CylinderJet2D-easy-v0' or p['modality'] != 'state' or p['action_repeat'] != 1:
-        raise ValueError('only nominal CylinderJet2D state observations, action_repeat=1 are supported')
+    validate_tdmpc_parameters(p, environment)
     for key in ('train_steps','episode_length','horizon','batch_size','num_samples','num_elites','iterations','eval_freq','eval_episodes','save_freq','max_buffer_size','update_freq'):
         if type(p[key]) is not int or p[key] <= 0:
             raise ValueError(f'{key} must be a positive integer')
-    if p['episode_length'] != 80 or p['obs_shape'] != [302] or p['action_dim'] != 1:
-        raise ValueError('nominal contract requires horizon 80, observation 302, action 1')
     if not 0 <= p['seed_steps'] < p['train_steps'] or not 0 < p['horizon'] < p['episode_length']:
         raise ValueError('invalid seed steps or replay horizon')
     if p['train_steps'] % p['episode_length'] or p['max_buffer_size'] < p['train_steps']:

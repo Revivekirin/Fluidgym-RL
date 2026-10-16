@@ -1,0 +1,13 @@
+..................................................... [ 44%]
+..s....s.............s.............s......s............s.s.......s.                                                          [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_fluidgym_smoke.py:7: could not import 'fluidgym': No module named 'fluidgym'
+SKIPPED [1] tests/test_pilot.py:135: Hydra not installed
+SKIPPED [1] tests/test_pilot.py:97: pinned upstream checkout unavailable
+SKIPPED [1] tests/test_report_safety_upstream.py:78: third_party/tdmpc2 not fetched
+SKIPPED [1] tests/test_status_and_device.py:83: CUDA required (skipped != passed)
+SKIPPED [1] tests/test_tdmpc.py:97: remote_required: real FluidGym CUDA creation, CFD episode and CUDA aliases; run --mode validate then --mode smoke
+SKIPPED [1] tests/test_tdmpc2_factory.py:61: pinned TD-MPC2 checkout unavailable
+SKIPPED [1] tests/test_tdmpc2_meta.py:15: Torch and TensorDict required
+SKIPPED [1] tests/test_tdmpc_tracking.py:90: opt-in real W&B offline SDK test
+112 passed, 9 skipped, 39 subtests passed in 11.25s

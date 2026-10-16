@@ -1,0 +1,155 @@
+[
+  {
+    "path": "scripts/audit_sac_checkpoint.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/check_phase0_status.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/compare_nominal.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/compare_nominal_run.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/evaluate_checkpoint.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/evaluate_official_sac.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/integration_cuda.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/mark_gate.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/package_sac_results.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/package_tdmpc_results.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/phase0_validate.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/sac_train.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/tdmpc2_ckpt_verify.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/tdmpc2_pilot_worker.py",
+    "check": "--help",
+    "status": "FAILED",
+    "exit_code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"/Users/jihyekim/Desktop/Fluidgym-RL/scripts/tdmpc2_pilot_worker.py\", line 197, in <module>\n    main()\n  File \"/Users/jihyekim/Desktop/Fluidgym-RL/scripts/tdmpc2_pilot_worker.py\", line 99, in main\n    spec = json.loads(Path(sys.argv[1]).read_text())\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jihyekim/miniconda3/envs/basilisk-rl/lib/python3.11/pathlib.py\", line 1058, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jihyekim/miniconda3/envs/basilisk-rl/lib/python3.11/pathlib.py\", line 1044, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '--help'\n"
+  },
+  {
+    "path": "scripts/tdmpc2_smoke_train.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/tdmpc2_train_full.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/tdmpc_train.py",
+    "check": "--help",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/fetch_upstream.sh",
+    "check": "bash -n (not execution)",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/remote_milestone.sh",
+    "check": "bash -n (not execution)",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/remote_setup.sh",
+    "check": "bash -n (not execution)",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "path": "scripts/remote_smoke.sh",
+    "check": "bash -n (not execution)",
+    "status": "PASSED",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "check": "real FluidGym/CUDA smoke",
+    "status": "SKIPPED",
+    "cuda_available": false,
+    "fluidgym_installed": false
+  }
+]

@@ -1,0 +1,1424 @@
+[
+  {
+    "path": "scripts/audit_sac_checkpoint.py",
+    "sha256": "c2980a7fec53543e0252fda84d07edb203d7bb5a8bc634cd4b4a4831eb8837b4",
+    "imports": [
+      "argparse",
+      "fluidgym_rl.comparison.schema",
+      "fluidgym_rl.official_sac",
+      "gymnasium.spaces",
+      "json",
+      "numpy",
+      "pathlib",
+      "stable_baselines3",
+      "sys",
+      "traceback",
+      "types"
+    ],
+    "symbols": []
+  },
+  {
+    "path": "scripts/check_phase0_status.py",
+    "sha256": "bbf68384620062f1c6a207c4fc6fff6e52b64b268a78c235c348451a53ced9a5",
+    "imports": [
+      "argparse",
+      "fluidgym_rl.status",
+      "json",
+      "os",
+      "sys"
+    ],
+    "symbols": []
+  },
+  {
+    "path": "scripts/compare_nominal.py",
+    "sha256": "51a0e26e5571ab3e3f12a944f079593027e50d035921a2d72248bfcf0f38c3ae",
+    "imports": [
+      "argparse",
+      "fluidgym_rl.comparison.audit",
+      "fluidgym_rl.comparison.evaluate",
+      "fluidgym_rl.comparison.report",
+      "fluidgym_rl.comparison.schema",
+      "pathlib",
+      "sys",
+      "traceback"
+    ],
+    "symbols": [
+      "main"
+    ]
+  },
+  {
+    "path": "scripts/compare_nominal_run.py",
+    "sha256": "711389fe5cd33f305037b25eaf78ddead784d4df79c3eb86968edd9ac3f8cadd",
+    "imports": [
+      "argparse",
+      "fluidgym_rl.comparison.evaluate",
+      "fluidgym_rl.comparison.schema",
+      "json",
+      "pathlib",
+      "subprocess",
+      "sys"
+    ],
+    "symbols": [
+      "main"
+    ]
+  },
+  {
+    "path": "scripts/consolidate_milestone.py",
+    "sha256": "46e97b7e81d93bfe34a50daea60d842780dfece9f121e5670bc249ff537621b1",
+    "imports": [
+      "fluidgym_rl.evalcontract",
+      "json",
+      "pathlib",
+      "sys",
+      "xml.etree.ElementTree"
+    ],
+    "symbols": [
+      "newer",
+      "jl",
+      "add"
+    ]
+  },
+  {
+    "path": "scripts/evaluate_checkpoint.py",
+    "sha256": "021f09fff8b10a7147bcf097eed1df557ffde38c75a14278bd6512b7de563e4e",
+    "imports": [
+      "argparse",
+      "fluidgym_rl.device",
+      "fluidgym_rl.envs",
+      "fluidgym_rl.evalcontract",
+      "fluidgym_rl.official_sac",
+      "fluidgym_rl.run_eval",
+      "fluidgym_rl.tdmpc2_runtime",
+      "fluidgym_rl.upstream",
+      "json",
+      "os",
+      "pathlib",
+      "stable_baselines3",
+      "sys",
+      "tempfile"
+    ],
+    "symbols": []
+  },
+  {
+    "path": "scripts/evaluate_official_sac.py",
+    "sha256": "5a24495bab6e929743a6f0bcdc8458386d839efdf5ad16ef3a2da5c8550ef3ca",
+    "imports": [
+      "argparse",
+      "fluidgym_rl.envs",
+      "fluidgym_rl.evalcontract",
+      "fluidgym_rl.official_sac",
+      "fluidgym_rl.run_eval",
+      "fluidgym_rl.status",
+      "json",
+      "numpy",
+      "os",
+      "pathlib",
+      "stable_baselines3",
+      "sys",
+      "traceback"
+    ],
+    "symbols": []
+  },
+  {
+    "path": "scripts/integration_cuda.py",
+    "sha256": "49075d4ac7f73628fde5458f479286c712183ae77a2bf29b402fdfbef4ab993d",
+    "imports": [
+      "argparse",
+      "envs",
+      "fluidgym_rl.report",
+      "fluidgym_rl.upstream",
+      "numpy",
+      "os",
+      "pathlib",
+      "sys",
+      "tempfile",
+      "torch",
+      "types"
+    ],
+    "symbols": [
+      "Cfg",
+      "cuda",
+      "workcopy",
+      "upstream_make_env",
+      "conversion",
+      "clipping",
+      "tw",
+      "episode"
+    ]
+  },
+  {
+    "path": "scripts/mark_gate.py",
+    "sha256": "c889b5ca0780d81002db97fa0b2d94ad02f7de90ac5e898d48c2fdf25d7e7e77",
+    "imports": [
+      "argparse",
+      "fluidgym_rl.safety"
+    ],
+    "symbols": []
+  },
+  {
+    "path": "scripts/package_sac_results.py",
+    "sha256": "cb12ba2e00fa08a830618c29aea119da1341a82d7dbe78339ac6eb9f9954b73c",
+    "imports": [
+      "argparse",
+      "fluidgym_rl.comparison.schema",
+      "io",
+      "json",
+      "pathlib",
+      "sys",
+      "tarfile"
+    ],
+    "symbols": []
+  },
+  {
+    "path": "scripts/package_tdmpc_results.py",
+    "sha256": "1c166421d7e6232ed20f60f97610aa802f76fd41320cf0480a6c3ed58c297930",
+    "imports": [
+      "argparse",
+      "pathlib",
+      "tarfile"
+    ],
+    "symbols": []
+  },
+  {
+    "path": "scripts/phase0_validate.py",
+    "sha256": "058412e25313dd3b5fffd4853b62b4c6c053bd107764f2665ce9678db7ba9d2a",
+    "imports": [
+      "argparse",
+      "fluidgym",
+      "fluidgym_rl.artifacts",
+      "fluidgym_rl.device",
+      "fluidgym_rl.envs",
+      "fluidgym_rl.report",
+      "fluidgym_rl.safety",
+      "matplotlib",
+      "matplotlib.image",
+      "matplotlib.pyplot",
+      "numpy",
+      "os",
+      "pathlib",
+      "sys",
+      "time",
+      "torch"
+    ],
+    "symbols": [
+      "cuda_available",
+      "gpu_tensor_op",
+      "env_create",
+      "reset_obs_contract",
+      "action_contract",
+      "step_contract",
+      "action_bounds_behavior",
+      "action_affects_state",
+      "episode_termination",
+      "_roll",
+      "reproducibility",
+      "seed_sensitivity",
+      "throughput_and_memory",
+      "render_png",
+      "flow_field_png",
+      "episode_gif"
+    ]
+  },
+  {
+    "path": "scripts/sac_train.py",
+    "sha256": "b480e889d3ff64d3a382a942491aa757e800173cf47d6fc96d4d89c311a6ff15",
+    "imports": [
+      "argparse",
+      "contextlib",
+      "fluidgym_rl.comparison.evaluate",
+      "fluidgym_rl.comparison.schema",
+      "fluidgym_rl.envs",
+      "fluidgym_rl.evalcontract",
+      "fluidgym_rl.run_eval",
+      "fluidgym_rl.sac.environment",
+      "fluidgym_rl.sac.runtime",
+      "fluidgym_rl.sac.training",
+      "fluidgym_rl.safety",
+      "fluidgym_rl.tdmpc.evaluation",
+      "fluidgym_rl.tdmpc.tracking",
+      "fluidgym_rl.upstream",
+      "json",
+      "os",
+      "pathlib",
+      "stable_baselines3",
+      "stable_baselines3.common.env_checker",
+      "subprocess",
+      "sys",
+      "torch",
+      "traceback"
+    ],
+    "symbols": [
+      "Tee",
+      "parser",
+      "run",
+      "main"
+    ]
+  },
+  {
+    "path": "scripts/summarize_remote.py",
+    "sha256": "a7053b0f98dafff6c7d684a7583e71b12dfbd8ff7ef93a554175dfdb9ebc0c45",
+    "imports": [
+      "json",
+      "pathlib",
+      "sys",
+      "xml.etree.ElementTree"
+    ],
+    "symbols": []
+  },
+  {
+    "path": "scripts/tdmpc2_ckpt_verify.py",
+    "sha256": "832c34e464ff4094c2a9b1bf1e4abdfbb9655cd69c338a7b7caa5b981dbdfc03",
+    "imports": [
+      "argparse",
+      "fluidgym_rl.tdmpc2_checks",
+      "fluidgym_rl.tdmpc2_runtime",
+      "fluidgym_rl.upstream",
+      "json",
+      "numpy",
+      "pathlib",
+      "sys",
+      "tempfile",
+      "torch",
+      "traceback"
+    ],
+    "symbols": []
+  },
+  {
+    "path": "scripts/tdmpc2_pilot_worker.py",
+    "sha256": "911d0e7a7af63b2547f35e8b5359da39a749d7ee0527d7f8791d4bbab24bd0e4",
+    "imports": [
+      "argparse",
+      "common.buffer",
+      "common.logger",
+      "copy",
+      "envs",
+      "fluidgym_rl.pilot",
+      "fluidgym_rl.tdmpc2_checks",
+      "fluidgym_rl.tdmpc2_runtime",
+      "fluidgym_rl.training_logging",
+      "json",
+      "os",
+      "pathlib",
+      "sys",
+      "tdmpc2",
+      "time",
+      "torch",
+      "traceback",
+      "trainer.online_trainer",
+      "yaml"
+    ],
+    "symbols": [
+      "Observer",
+      "main"
+    ]
+  },
+  {
+    "path": "scripts/tdmpc2_smoke_train.py",
+    "sha256": "c21f238bec1fed12c56c5c33513770fbaf90e0af9485d73f8774182ba96b4831",
+    "imports": [
+      "argparse",
+      "common.buffer",
+      "common.logger",
+      "envs",
+      "fluidgym_rl",
+      "fluidgym_rl.device",
+      "fluidgym_rl.evalcontract",
+      "fluidgym_rl.official_sac",
+      "fluidgym_rl.report",
+      "fluidgym_rl.tdmpc2_checks",
+      "fluidgym_rl.tdmpc2_runtime",
+      "fluidgym_rl.upstream",
+      "json",
+      "math",
+      "os",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "tdmpc2",
+      "tempfile",
+      "time",
+      "torch",
+      "trainer.online_trainer"
+    ],
+    "symbols": [
+      "cuda",
+      "workcopy",
+      "build",
+      "dev_match",
+      "train",
+      "real_transitions",
+      "replay_valid",
+      "batch_valid",
+      "updates_finite",
+      "params_changed",
+      "actions_legal",
+      "post_eval",
+      "ckpt_save",
+      "ckpt_same_proc",
+      "ckpt_fresh",
+      "metrics"
+    ]
+  },
+  {
+    "path": "scripts/tdmpc2_train_full.py",
+    "sha256": "aa49d5ef5cfd8827858dce4ab80622aaabab71c5c37d7e0a5eecdcfde4a588ec",
+    "imports": [
+      "datetime",
+      "fluidgym_rl.pilot",
+      "fluidgym_rl.report",
+      "fluidgym_rl.upstream",
+      "hashlib",
+      "json",
+      "os",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "uuid"
+    ],
+    "symbols": [
+      "main"
+    ]
+  },
+  {
+    "path": "scripts/tdmpc_train.py",
+    "sha256": "86d06f46ac69f1fae3b45d01e51b837b0e646adedff14007ab0b072627316319",
+    "imports": [
+      "__future__",
+      "argparse",
+      "contextlib",
+      "fluidgym.envs.cylinder.cylinder_env_base",
+      "fluidgym.wrappers.flatten_obs",
+      "fluidgym_rl.environment_contract",
+      "fluidgym_rl.evalcontract",
+      "fluidgym_rl.safety",
+      "fluidgym_rl.tdmpc.environment",
+      "fluidgym_rl.tdmpc.evaluation",
+      "fluidgym_rl.tdmpc.runner",
+      "fluidgym_rl.tdmpc.runtime",
+      "fluidgym_rl.tdmpc.tracking",
+      "importlib",
+      "inspect",
+      "json",
+      "pathlib",
+      "platform",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "torch",
+      "traceback"
+    ],
+    "symbols": [
+      "Tee",
+      "parser",
+      "run",
+      "main"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/__init__.py",
+    "sha256": "b172e1ee0dca0b84021717191814e91b6b1c47b866981b0c8eae8ba91a6d9118",
+    "imports": [],
+    "symbols": []
+  },
+  {
+    "path": "src/fluidgym_rl/artifacts.py",
+    "sha256": "f1f485a843ffe44e73c59b3ccbd725d8d8c41ed3d3fd53f2a7b1374c31a8561d",
+    "imports": [
+      "PIL",
+      "__future__",
+      "fluidgym_rl.report",
+      "numpy",
+      "pathlib"
+    ],
+    "symbols": [
+      "verify_png",
+      "verify_gif"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/comparison/__init__.py",
+    "sha256": "a854b09b5b02089043f2e3bea22a8508226ec672b64ebe97527d84c7870c9362",
+    "imports": [],
+    "symbols": []
+  },
+  {
+    "path": "src/fluidgym_rl/comparison/audit.py",
+    "sha256": "20088f137be50d328f1d10bcf53ffaa8d3a6cbb0b3edcf0d43b53b3238a09d8e",
+    "imports": [
+      "csv",
+      "fluidgym_rl.comparison.schema",
+      "json",
+      "pathlib"
+    ],
+    "symbols": [
+      "audit_run",
+      "legacy_rows",
+      "write_mapping"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/comparison/evaluate.py",
+    "sha256": "bf25d677d242e687de69528cc72c1c953e96f200d933b93f5fc95229cc8ff0c6",
+    "imports": [
+      "contextlib",
+      "csv",
+      "dataclasses",
+      "fluidgym",
+      "fluidgym.config",
+      "fluidgym_rl.comparison.schema",
+      "fluidgym_rl.device",
+      "fluidgym_rl.envs",
+      "fluidgym_rl.evalcontract",
+      "fluidgym_rl.official_sac",
+      "fluidgym_rl.sac.runtime",
+      "fluidgym_rl.tdmpc.environment",
+      "fluidgym_rl.tdmpc.evaluation",
+      "fluidgym_rl.tdmpc.runtime",
+      "fluidgym_rl.tdmpc2_runtime",
+      "fluidgym_rl.training_logging",
+      "fluidgym_rl.upstream",
+      "importlib",
+      "json",
+      "math",
+      "numpy",
+      "os",
+      "pathlib",
+      "random",
+      "subprocess",
+      "tempfile",
+      "torch",
+      "types"
+    ],
+    "symbols": [
+      "NominalEnv",
+      "training_identity",
+      "load_policy",
+      "physics_manifest",
+      "aggregate",
+      "check_reference",
+      "validate_selection",
+      "evaluate_to_directory"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/comparison/report.py",
+    "sha256": "e3946fd36668f5ee66bf92c1ae3fb1612f305425a528c74ddbb0a6bb0526b702",
+    "imports": [
+      "fluidgym_rl.comparison.audit",
+      "fluidgym_rl.comparison.schema",
+      "html",
+      "json",
+      "matplotlib",
+      "matplotlib.pyplot",
+      "numpy",
+      "os",
+      "pandas",
+      "pathlib",
+      "uuid",
+      "wandb"
+    ],
+    "symbols": [
+      "aggregate_seeds",
+      "render_figures",
+      "publish",
+      "build_report"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/comparison/schema.py",
+    "sha256": "1f32f78ff9591c1b2bdf8c649ff9fb63be32d7835c8964daec2aa9e1d6607da3",
+    "imports": [
+      "hashlib",
+      "json",
+      "math",
+      "pathlib"
+    ],
+    "symbols": [
+      "digest",
+      "file_hash",
+      "read_json",
+      "write_json",
+      "verify_result",
+      "metric_rows",
+      "independent_rows",
+      "select_best"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/device.py",
+    "sha256": "56f446a5b26bc6154c705c114ca389bd0d0db770a2db50ce12809d06a336ab6a",
+    "imports": [
+      "torch"
+    ],
+    "symbols": [
+      "resolve_device",
+      "same_device"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/environment_contract.py",
+    "sha256": "f59146e7fe4117a85ea80443a310d036574414b3d1535ad50d8e503d847c1bda",
+    "imports": [
+      "__future__",
+      "copy",
+      "json",
+      "numpy",
+      "pathlib"
+    ],
+    "symbols": [
+      "resolve_environment",
+      "validate_tdmpc_parameters",
+      "validate_physics",
+      "validate_creation_kwargs"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/envs.py",
+    "sha256": "2b457d8ccfedffc9cc8e5bd2353c96dd4a0e2b8beb97c8896586dc882155ff6b",
+    "imports": [
+      "__future__",
+      "fluidgym",
+      "fluidgym.wrappers"
+    ],
+    "symbols": [
+      "make_fluid_env"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/evalcontract.py",
+    "sha256": "37c2cef2bdceec2e88ace9215fb740707462bef8be4875f9f6b8d768095ceaa1",
+    "imports": [
+      "__future__",
+      "csv",
+      "dataclasses",
+      "datetime",
+      "hashlib",
+      "json",
+      "logging",
+      "math",
+      "numpy",
+      "pathlib",
+      "time",
+      "torch",
+      "typing"
+    ],
+    "symbols": [
+      "EvaluationError",
+      "to_np",
+      "scalar",
+      "EvalContract",
+      "Policy",
+      "EpisodeRecord",
+      "_EnvIO",
+      "run_evaluation",
+      "iqm",
+      "summarize",
+      "new_run_dir",
+      "attach_run_log",
+      "write_run",
+      "classify_comparison",
+      "compare_to_reference"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/official_sac.py",
+    "sha256": "1e928ad99b9ccca9b3e2f3a172312b4304e7f0d1d560ff2131ce3d759618bc16",
+    "imports": [
+      "__future__",
+      "hashlib",
+      "huggingface_hub",
+      "numpy",
+      "pathlib",
+      "torch",
+      "zipfile"
+    ],
+    "symbols": [
+      "CheckpointContractError",
+      "sha256_file",
+      "official_repo_id",
+      "resolve_official_checkpoint",
+      "local_checkpoint",
+      "inspect_zip",
+      "validate_contract",
+      "SB3Policy"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/pilot.py",
+    "sha256": "a68e05f65a739d34d8fdc08e94dbcbca10b107659b146f0e06ee0a0061d24898",
+    "imports": [
+      "__future__",
+      "argparse",
+      "fluidgym_rl.safety",
+      "json"
+    ],
+    "symbols": [
+      "parser",
+      "blockers",
+      "wandb_environment",
+      "string_override",
+      "hydra_overrides"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/report.py",
+    "sha256": "17bb49a3b04e035a9d54c7a8bde93763216d661b6845de527d29b896c6ec00b7",
+    "imports": [
+      "__future__",
+      "datetime",
+      "fluidgym",
+      "fluidgym_rl.upstream",
+      "importlib",
+      "json",
+      "os",
+      "pathlib",
+      "platform",
+      "subprocess",
+      "sys",
+      "time",
+      "torch",
+      "traceback"
+    ],
+    "symbols": [
+      "CheckFailure",
+      "FatalStop",
+      "_now",
+      "Report",
+      "_run",
+      "git_info",
+      "collect_metadata"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/run_eval.py",
+    "sha256": "199c6a1783c4eb305d533439f09f3f76bb78fbe349fa39d6c0934dc4204ed8ce",
+    "imports": [
+      "__future__",
+      "dataclasses",
+      "fluidgym_rl.envs",
+      "fluidgym_rl.evalcontract",
+      "fluidgym_rl.report",
+      "importlib",
+      "json",
+      "logging",
+      "pathlib",
+      "platform",
+      "sys"
+    ],
+    "symbols": [
+      "_ver",
+      "environment_versions",
+      "evaluate_and_write"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/sac/__init__.py",
+    "sha256": "9b629df2d910b89856503c097f092c61cf48b1d1a86e3265dd6a433adb16af13",
+    "imports": [],
+    "symbols": []
+  },
+  {
+    "path": "src/fluidgym_rl/sac/environment.py",
+    "sha256": "41905741eb1a060b46de9c02646fa3af23b7f6b7d08b475a8f2a7f2472b401f2",
+    "imports": [
+      "fluidgym_rl.comparison.evaluate",
+      "gymnasium",
+      "numpy",
+      "types"
+    ],
+    "symbols": [
+      "SACEnv"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/sac/runtime.py",
+    "sha256": "996fb8551209a5eceaae5eced240b2b65929af655cff05413de7e1db4efb99d1",
+    "imports": [
+      "fluidgym_rl.comparison.schema",
+      "importlib",
+      "inspect",
+      "json",
+      "numpy",
+      "pathlib",
+      "stable_baselines3",
+      "stable_baselines3.common.torch_layers",
+      "stable_baselines3.sac.policies",
+      "torch"
+    ],
+    "symbols": [
+      "read_config",
+      "sb3_audit",
+      "save_checkpoint",
+      "load_checkpoint"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/sac/training.py",
+    "sha256": "81106c3bb73bc02eeb9eea09e0efecd4ae1756d6c36ec05d3bb287aa8e9a4e55",
+    "imports": [
+      "contextlib",
+      "csv",
+      "dataclasses",
+      "fluidgym_rl.comparison.evaluate",
+      "fluidgym_rl.comparison.schema",
+      "fluidgym_rl.sac.runtime",
+      "json",
+      "math",
+      "numpy",
+      "os",
+      "pathlib",
+      "random",
+      "shutil",
+      "stable_baselines3.common.callbacks",
+      "time",
+      "torch",
+      "types",
+      "uuid",
+      "wandb"
+    ],
+    "symbols": [
+      "preserve_rng",
+      "GradientChecks",
+      "Tracking",
+      "append",
+      "evaluate_checkpoint",
+      "NominalCallback"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/safety.py",
+    "sha256": "d4e86a1a17d505dff6beb6a4c7995d034ed0bcca9aa9d24367e1ccde8bed93f9",
+    "imports": [
+      "__future__",
+      "fluidgym_rl.upstream",
+      "hashlib",
+      "json",
+      "os",
+      "pathlib"
+    ],
+    "symbols": [
+      "gate_dir",
+      "write_gate",
+      "missing_gates",
+      "full_training_blockers"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/status.py",
+    "sha256": "bce4c0083b9087c6be75c8db88016133d280735808aab382c9345b904e19bd82",
+    "imports": [
+      "__future__",
+      "json",
+      "pathlib"
+    ],
+    "symbols": [
+      "find_phase0_reports",
+      "phase0_status"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/tdmpc/__init__.py",
+    "sha256": "5668fafbd0f697950c8b07262ca0bb6c3302eff1d4263a64d8d0af679b1d1d1b",
+    "imports": [],
+    "symbols": []
+  },
+  {
+    "path": "src/fluidgym_rl/tdmpc/environment.py",
+    "sha256": "ba7cd541923609193588b0ae74c1f0794833e07e7fee0e4f7682258709616e87",
+    "imports": [
+      "__future__",
+      "fluidgym_rl.device",
+      "fluidgym_rl.environment_contract",
+      "fluidgym_rl.envs",
+      "fluidgym_rl.evalcontract",
+      "numpy",
+      "torch"
+    ],
+    "symbols": [
+      "CheckedEnv",
+      "make_env"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/tdmpc/evaluation.py",
+    "sha256": "7d7bf4caabd4992d9682724078bcf589c6178461e2f9c47a2f6b0208ed486438",
+    "imports": [
+      "dataclasses",
+      "fluidgym_rl.evalcontract",
+      "fluidgym_rl.tdmpc.runtime",
+      "json",
+      "numpy",
+      "pathlib",
+      "torch"
+    ],
+    "symbols": [
+      "Policy",
+      "ZeroPolicy",
+      "evaluate",
+      "save_checkpoint",
+      "load_checkpoint"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/tdmpc/runner.py",
+    "sha256": "4fefd9cb6eb0e206da9ea1774527d47bd47fab56632cd6926d07f08a3aa81b05",
+    "imports": [
+      "__future__",
+      "csv",
+      "fluidgym_rl.tdmpc.evaluation",
+      "json",
+      "math",
+      "numpy",
+      "pathlib",
+      "random",
+      "time",
+      "torch",
+      "types"
+    ],
+    "symbols": [
+      "append_csv",
+      "seed_all",
+      "finite_update",
+      "run_training"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/tdmpc/runtime.py",
+    "sha256": "d4fc07737e5aab24031e730ec87ec122d57d7883c1809645e5be784d40d70456",
+    "imports": [
+      "__future__",
+      "fluidgym_rl.environment_contract",
+      "fluidgym_rl.upstream",
+      "hashlib",
+      "importlib",
+      "json",
+      "os",
+      "pathlib",
+      "shutil",
+      "subprocess",
+      "sys",
+      "types",
+      "yaml"
+    ],
+    "symbols": [
+      "read_config",
+      "sha256",
+      "make_workcopy",
+      "load_algorithm",
+      "namespace"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/tdmpc/tracking.py",
+    "sha256": "95103a727f59106685a990cbd6baf3e88cfd68f5ca9cf1ad06746225f03302a7",
+    "imports": [
+      "json",
+      "os",
+      "pathlib",
+      "wandb"
+    ],
+    "symbols": [
+      "options",
+      "Tracker"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/tdmpc2_adapter.py",
+    "sha256": "23ca59707285e4874030d19d6f19995c4942ab0e334757a45ad2e2703e472534",
+    "imports": [
+      "__future__",
+      "fluidgym_rl.envs",
+      "gymnasium",
+      "numpy",
+      "torch"
+    ],
+    "symbols": [
+      "FluidGymTDMPC2Env",
+      "make_env"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/tdmpc2_checks.py",
+    "sha256": "69830a358d076e52debfe72616ec98d058f128f845643b044c89e9c3b32cd2dc",
+    "imports": [
+      "__future__",
+      "fluidgym_rl.evalcontract",
+      "hashlib",
+      "math",
+      "numpy"
+    ],
+    "symbols": [
+      "ReplayValidationError",
+      "NonFiniteLossError",
+      "check_losses",
+      "validate_stored_episodes",
+      "validate_sampled_batch",
+      "validate_actions",
+      "tensor_digest",
+      "state_digests",
+      "diff_digests"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/tdmpc2_runtime.py",
+    "sha256": "11376daf09a95cc9ce1341b312bbdc9116594d587fd088e15de0e452de98ccc1",
+    "imports": [
+      "__future__",
+      "common.parser",
+      "common.seed",
+      "copy",
+      "hydra",
+      "json",
+      "os",
+      "pathlib",
+      "sys",
+      "tdmpc2",
+      "torch"
+    ],
+    "symbols": [
+      "smoke_replay_config",
+      "default_overrides",
+      "compose_cfg",
+      "save_run_config",
+      "apply_run_config",
+      "load_agent",
+      "TDMPC2Policy"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/training_logging.py",
+    "sha256": "c826efe6e3e31cf3addeaaedf37b12685fd0d59d50576dc9ee2143d3947d6bfc",
+    "imports": [
+      "dataclasses",
+      "json",
+      "math",
+      "omegaconf",
+      "pathlib"
+    ],
+    "symbols": [
+      "wandb_config",
+      "scalar_metrics",
+      "make_logger_class"
+    ]
+  },
+  {
+    "path": "src/fluidgym_rl/upstream.py",
+    "sha256": "5a4d5a7f1cbd185f9e20bdb1c910d841d99e88b67adf849c6f38409d42cfbaec",
+    "imports": [
+      "__future__",
+      "filecmp",
+      "os",
+      "pathlib",
+      "shutil",
+      "subprocess"
+    ],
+    "symbols": [
+      "repo_root",
+      "third_party",
+      "lock",
+      "upstream_status",
+      "_changed_files",
+      "make_tdmpc2_workcopy"
+    ]
+  },
+  {
+    "path": "tests/test_adapter_contract.py",
+    "sha256": "574f73160b86b2ec9caea8e99411abbdd9a29ce4006c34abba26ccc65cabca2f",
+    "imports": [
+      "fluidgym_rl.tdmpc2_adapter",
+      "gymnasium",
+      "numpy",
+      "pytest"
+    ],
+    "symbols": [
+      "FakeFluidEnv",
+      "test_shapes_dtypes_and_spaces",
+      "test_truncation_is_done_but_not_terminated",
+      "test_true_termination_flag_preserved",
+      "test_scalar_metrics_pass_through_non_scalars_dropped",
+      "test_seeded_reset_is_reproducible",
+      "test_dict_obs_space_rejected",
+      "test_out_of_range_actions_are_clipped_to_bounds"
+    ]
+  },
+  {
+    "path": "tests/test_comparison.py",
+    "sha256": "bcbc4662b2bfa380ac5e2c92fc53c5047ba9f65b44deccaa8e537fb2fed5cba5",
+    "imports": [
+      "dataclasses",
+      "fluidgym_rl.comparison.audit",
+      "fluidgym_rl.comparison.evaluate",
+      "fluidgym_rl.comparison.report",
+      "fluidgym_rl.comparison.schema",
+      "fluidgym_rl.evalcontract",
+      "gymnasium.spaces",
+      "importlib.util",
+      "json",
+      "numpy",
+      "pandas",
+      "pathlib",
+      "tempfile",
+      "types",
+      "unittest"
+    ],
+    "symbols": [
+      "fixture",
+      "ComparisonTests"
+    ]
+  },
+  {
+    "path": "tests/test_environment_contract.py",
+    "sha256": "ad1a6aabc23572c1cba0a0f2b64864a05e8c55ffcf0965a9a9dbfee8156ab799",
+    "imports": [
+      "copy",
+      "fluidgym_rl.environment_contract",
+      "fluidgym_rl.tdmpc.environment",
+      "fluidgym_rl.tdmpc.runtime",
+      "hashlib",
+      "json",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "types",
+      "unittest",
+      "unittest.mock"
+    ],
+    "symbols": [
+      "EnvironmentContractTests"
+    ]
+  },
+  {
+    "path": "tests/test_evalcontract.py",
+    "sha256": "a20311c0ebfcb10afbe160a8cf51d26894bc56a163148bbb9a5c7554b60e2465",
+    "imports": [
+      "fluidgym_rl.evalcontract",
+      "gymnasium",
+      "json",
+      "numpy",
+      "pytest"
+    ],
+    "symbols": [
+      "FakeEnv",
+      "ConstPolicy",
+      "_run",
+      "test_official_protocol_first_episode_not_randomized_and_uses_test_split",
+      "test_seeded_protocol_uses_explicit_seeds",
+      "test_evaluation_is_deterministic_for_same_contract",
+      "test_actions_clipped_and_recorded_scalar_rewards_and_metrics",
+      "test_nonfinite_observation_and_action_fail_loudly",
+      "test_missing_metric_is_an_error_not_a_silent_skip",
+      "test_invalid_contract_rejected",
+      "test_run_dirs_never_overwritten",
+      "test_write_run_produces_required_files",
+      "_man",
+      "test_comparison_classes",
+      "test_reference_comparison_never_claims_reproduction"
+    ]
+  },
+  {
+    "path": "tests/test_fluidgym_smoke.py",
+    "sha256": "eeaff0ae128fbfdc772297b5ce0a4e4b93cfc0b4ba1c0997663c584c155f95c9",
+    "imports": [
+      "fluidgym_rl.envs",
+      "fluidgym_rl.tdmpc2_adapter",
+      "numpy",
+      "pytest"
+    ],
+    "symbols": [
+      "env",
+      "test_reset_step_shapes_finite",
+      "test_truncates_at_episode_length",
+      "test_same_seed_same_trajectory",
+      "test_tdmpc2_adapter_on_real_env"
+    ]
+  },
+  {
+    "path": "tests/test_milestone_report.py",
+    "sha256": "54948d435a666d6d26ee3355e3f566ef98653fabf75e0ac69e38f429421cfe45",
+    "imports": [
+      "pathlib",
+      "pytest",
+      "subprocess",
+      "sys"
+    ],
+    "symbols": [
+      "test_final_phase0_evidence_controls_recovery"
+    ]
+  },
+  {
+    "path": "tests/test_nominal_audit.py",
+    "sha256": "159416195ad8bed813aefc8b8d2b6a4481221686351acb618cff008a097219b4",
+    "imports": [
+      "fluidgym_rl.tdmpc.environment",
+      "fluidgym_rl.tdmpc2_adapter",
+      "gymnasium.spaces",
+      "numpy",
+      "types",
+      "unittest"
+    ],
+    "symbols": [
+      "FakeEnv",
+      "AuditTests"
+    ]
+  },
+  {
+    "path": "tests/test_official_sac.py",
+    "sha256": "a9963a2b2da015550adb5da6aab450e340ec06eb3264c6227e34b09032fb08df",
+    "imports": [
+      "fluidgym_rl.official_sac",
+      "gymnasium",
+      "numpy",
+      "pytest",
+      "zipfile"
+    ],
+    "symbols": [
+      "M",
+      "box",
+      "act",
+      "E",
+      "test_matching_contract_passes_and_marks_order_unverified",
+      "test_observation_dim_mismatch_diagnostic",
+      "test_structured_dict_observation_is_refused_not_flattened",
+      "test_action_bounds_and_normalization_artifacts_and_sb3_major_are_reported_together",
+      "test_missing_local_checkpoint_raises",
+      "test_inspect_zip_reads_metadata_without_unpickling",
+      "test_invalid_seed_and_repo_naming",
+      "test_sb3_policy_modes_and_dtype",
+      "test_published_reference_transcription_sanity"
+    ]
+  },
+  {
+    "path": "tests/test_pilot.py",
+    "sha256": "5451261ae6ffee4b8822884e8facbf68bf6bfb3b52d364fd8c0a105d4271c465",
+    "imports": [
+      "ast",
+      "fluidgym_rl.pilot",
+      "fluidgym_rl.training_logging",
+      "fluidgym_rl.upstream",
+      "hydra",
+      "importlib.util",
+      "json",
+      "os",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "types",
+      "unittest",
+      "unittest.mock"
+    ],
+    "symbols": [
+      "PilotTests",
+      "WorkerObservationTests"
+    ]
+  },
+  {
+    "path": "tests/test_report_safety_upstream.py",
+    "sha256": "76722d03e56c0be4ffabf7c1519cafbbf1210a7ae38b96d46b266d3407ec24dd",
+    "imports": [
+      "fluidgym_rl",
+      "fluidgym_rl.artifacts",
+      "fluidgym_rl.report",
+      "fluidgym_rl.upstream",
+      "json",
+      "numpy",
+      "os",
+      "pathlib",
+      "pytest",
+      "subprocess",
+      "sys",
+      "torch"
+    ],
+    "symbols": [
+      "test_report_statuses_and_visible_failures",
+      "test_all_pass_needed_for_passed_and_skips_are_incomplete",
+      "test_fatal_stops_and_marks_rest_skipped",
+      "test_full_training_blocked_by_default_and_needs_every_condition",
+      "test_train_full_script_refuses",
+      "test_phase0_without_cuda_is_visibly_not_passed",
+      "test_workcopy_applies_patch_and_leaves_upstream_untouched",
+      "test_artifact_verification"
+    ]
+  },
+  {
+    "path": "tests/test_sac_nominal.py",
+    "sha256": "6725fcc47ca3a2d9a4d3a3f7128344b3260d7095a44892e328b61d5c461f14fa",
+    "imports": [
+      "dataclasses",
+      "fluidgym_rl.comparison.evaluate",
+      "fluidgym_rl.comparison.schema",
+      "fluidgym_rl.evalcontract",
+      "fluidgym_rl.official_sac",
+      "fluidgym_rl.sac.environment",
+      "fluidgym_rl.sac.runtime",
+      "fluidgym_rl.sac.training",
+      "gymnasium",
+      "importlib.util",
+      "json",
+      "numpy",
+      "os",
+      "pathlib",
+      "random",
+      "stable_baselines3",
+      "stable_baselines3.common.env_checker",
+      "subprocess",
+      "sys",
+      "tarfile",
+      "tempfile",
+      "torch",
+      "types",
+      "unittest",
+      "unittest.mock"
+    ],
+    "symbols": [
+      "NativeFixture",
+      "SACTests"
+    ]
+  },
+  {
+    "path": "tests/test_status_and_device.py",
+    "sha256": "ff7fe5369a7baa8ae8a655fbc52f7daecc2cc140e4b4b7363cdf900b16db69a5",
+    "imports": [
+      "fluidgym_rl.device",
+      "fluidgym_rl.status",
+      "importlib.util",
+      "json",
+      "pathlib",
+      "pytest",
+      "sys",
+      "types"
+    ],
+    "symbols": [
+      "_report",
+      "test_missing_report_is_not_run_not_failed",
+      "test_passed_failed_invalid_reports",
+      "test_all_checks_passing_but_report_status_failed_is_not_passed",
+      "_Dev",
+      "_load_device_module",
+      "test_cuda_alias_equals_explicit_index_on_single_gpu",
+      "test_cpu_vs_cuda_and_distinct_indices_are_mismatches",
+      "test_alias_follows_current_device_so_real_mismatch_survives",
+      "test_alias_without_cuda_raises_instead_of_guessing",
+      "test_real_torch_cuda_alias_when_available"
+    ]
+  },
+  {
+    "path": "tests/test_tdmpc.py",
+    "sha256": "eb29e3ba38087e4f1cf415e0860f905218b8833c3f61809c747a3e02e857efac",
+    "imports": [
+      "copy",
+      "fluidgym_rl.device",
+      "fluidgym_rl.tdmpc.environment",
+      "fluidgym_rl.tdmpc.evaluation",
+      "fluidgym_rl.tdmpc.runner",
+      "fluidgym_rl.tdmpc.runtime",
+      "gymnasium.spaces",
+      "importlib.util",
+      "json",
+      "numpy",
+      "os",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "torch",
+      "unittest",
+      "unittest.mock"
+    ],
+    "symbols": [
+      "FakeEnv",
+      "ContractTests",
+      "AlgorithmTests"
+    ]
+  },
+  {
+    "path": "tests/test_tdmpc2_checks.py",
+    "sha256": "08d15dbc6236bd30d1843146bbcf9bff94bb4f6d65be141937bf220d4a8cc709",
+    "imports": [
+      "fluidgym_rl.tdmpc2_checks",
+      "numpy",
+      "pytest"
+    ],
+    "symbols": [
+      "test_finite_losses_pass_and_missing_or_nan_detected",
+      "_stored",
+      "test_stored_episodes_valid_and_invalid_variants",
+      "_batch",
+      "test_sampled_batch_detects_cross_episode_sequences_and_nan_leaks",
+      "test_planned_actions_must_be_legal",
+      "test_checkpoint_digests_roundtrip_and_detect_tampering"
+    ]
+  },
+  {
+    "path": "tests/test_tdmpc2_factory.py",
+    "sha256": "3fe6d73e6f5c51a5f435399286620ab6be05d8c2b3323b661fb3771140cffd39",
+    "imports": [
+      "ast",
+      "fluidgym_rl.upstream",
+      "pathlib",
+      "subprocess",
+      "tempfile",
+      "types",
+      "unittest"
+    ],
+    "symbols": [
+      "Config",
+      "NonForwardingWrapper",
+      "FactoryAssertions",
+      "FactoryEpisodeLengthTests",
+      "SuppliedSourceTests"
+    ]
+  },
+  {
+    "path": "tests/test_tdmpc2_meta.py",
+    "sha256": "fddafd54bd0ac796b05a77da0b40b2492e63e10bcdc0778530b1a288b4b428dc",
+    "imports": [
+      "copy",
+      "fluidgym_rl.upstream",
+      "importlib.util",
+      "pathlib",
+      "subprocess",
+      "tempfile",
+      "tensordict.nn",
+      "torch",
+      "unittest"
+    ],
+    "symbols": [
+      "EnsembleMoveTests"
+    ]
+  },
+  {
+    "path": "tests/test_tdmpc2_smoke_budget.py",
+    "sha256": "8c75ac385ece67bb6b47436446952051414850e5cd6603c46159456fe774c48e",
+    "imports": [
+      "fluidgym_rl.tdmpc2_runtime",
+      "types",
+      "unittest"
+    ],
+    "symbols": [
+      "SmokeReplayBudgetTests"
+    ]
+  },
+  {
+    "path": "tests/test_tdmpc_tracking.py",
+    "sha256": "0a4b4fb7b2825d1ba1a0eab1d9f21c90ff91f819c17e5cd2032b5770f725beef",
+    "imports": [
+      "fluidgym_rl.tdmpc.runtime",
+      "fluidgym_rl.tdmpc.tracking",
+      "importlib.util",
+      "json",
+      "os",
+      "pathlib",
+      "tempfile",
+      "types",
+      "unittest",
+      "unittest.mock"
+    ],
+    "symbols": [
+      "args",
+      "TrackingTests"
+    ]
+  }
+]

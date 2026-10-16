@@ -29,6 +29,7 @@ class Tee:
 def parser():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--config',type=Path,default=DEFAULT_CONFIG)
+    p.add_argument('--environment-config',type=Path,help='independent environment contract JSON; only nominal physics is executable')
     p.add_argument('--seed',type=int)
     p.add_argument('--output-root',type=Path,default=repo_root()/'results/tdmpc')
     p.add_argument('--device',default=None)
@@ -55,6 +56,7 @@ def run(args, data, out):
     from fluidgym_rl.tdmpc.environment import make_env, CONTRACT
     from fluidgym_rl.tdmpc.evaluation import Policy, ZeroPolicy, evaluate, load_checkpoint
     from fluidgym_rl.tdmpc.runner import run_training, seed_all
+    from fluidgym_rl.environment_contract import resolve_environment
     cfg=namespace(data)
     if args.checkpoint:
         sidecar=json.loads(args.checkpoint.with_suffix('.json').read_text())
@@ -85,11 +87,12 @@ def run(args, data, out):
                   requested_environment_steps=args.smoke_steps if args.mode=='smoke' else cfg.train_steps,
                   training_reset_protocol='seed=train_seed+episode_index, randomize=True; train split',
                   checkpoint_semantics='inference only: online+target weights')
+    manifest['environment_spec'] = resolve_environment(args.environment_config)
     manifest['local_source_hashes'] = {}
     if cfg.device.startswith('cuda'):
         manifest['gpu'] = dict(name=torch.cuda.get_device_name(cfg.device),device=cfg.device,capability=torch.cuda.get_device_capability(cfg.device))
     from fluidgym_rl.tdmpc.runtime import sha256
-    for p in [Path(__file__),*(repo_root()/'src/fluidgym_rl/tdmpc').glob('*.py')]:
+    for p in [Path(__file__),repo_root()/'src/fluidgym_rl/environment_contract.py',*(repo_root()/'src/fluidgym_rl/tdmpc').glob('*.py')]:
         manifest['local_source_hashes'][str(p.relative_to(repo_root()))]=sha256(p)
     with tempfile.TemporaryDirectory(prefix='fgrl_tdmpc_') as tmp:
         work=Path(tmp)/'upstream'
@@ -140,7 +143,7 @@ def run(args, data, out):
 
 def main(argv=None):
     args=parser().parse_args(argv)
-    data=read_config(args.config,seed=args.seed,device=args.device)
+    data=read_config(args.config,seed=args.seed,device=args.device,environment_config=args.environment_config)
     from fluidgym_rl.tdmpc.tracking import options
     data['tracking']=options(args)
     if args.print_config:

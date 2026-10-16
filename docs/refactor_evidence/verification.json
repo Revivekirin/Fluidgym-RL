@@ -1,0 +1,58 @@
+{
+  "status": "PASSED",
+  "protected_count": 551,
+  "protected_changed": [],
+  "protected_added_or_removed": [],
+  "resolved_nominal_config_equal": true,
+  "legacy_contract_equal": true,
+  "unchanged_adapter_methods": [
+    "reset",
+    "step",
+    "_obs",
+    "close",
+    "__getattr__"
+  ],
+  "unchanged_baseline_files": [
+    "configs/tdmpc/cylinderjet2d_easy.yaml",
+    "configs/sac_nominal.json",
+    "src/fluidgym_rl/tdmpc/runner.py",
+    "src/fluidgym_rl/tdmpc/evaluation.py",
+    "src/fluidgym_rl/tdmpc/tracking.py",
+    "src/fluidgym_rl/envs.py",
+    "src/fluidgym_rl/evalcontract.py",
+    "src/fluidgym_rl/comparison/audit.py",
+    "src/fluidgym_rl/comparison/__init__.py",
+    "src/fluidgym_rl/comparison/evaluate.py",
+    "src/fluidgym_rl/comparison/report.py",
+    "src/fluidgym_rl/comparison/schema.py",
+    "src/fluidgym_rl/sac/__init__.py",
+    "src/fluidgym_rl/sac/runtime.py",
+    "src/fluidgym_rl/sac/environment.py",
+    "src/fluidgym_rl/sac/training.py",
+    "src/fluidgym_rl/tdmpc2_runtime.py",
+    "src/fluidgym_rl/tdmpc2_adapter.py",
+    "src/fluidgym_rl/tdmpc2_checks.py"
+  ],
+  "syntax_files": 69,
+  "upstreams": {
+    "tdmpc": {
+      "path": "/tmp/fgrl-original-tdmpc",
+      "head": "f4d85eca7419039b71bab2234ffc8aca378dd313",
+      "status": ""
+    },
+    "tdmpc2": {
+      "path": "/tmp/fgrl-audit-tdmpc2",
+      "head": "e9f59321933cbc8e11a002b842adc7d4ffae8ff1",
+      "status": ""
+    },
+    "fluidgym": {
+      "path": "/tmp/fgrl-original-fluidgym",
+      "head": "50071140b73a2a917fb96d33522a769f903f8c27",
+      "status": ""
+    }
+  },
+  "head": "9179d75e871e956995fb4e83d09b50fcce408917",
+  "tests_before": "104 passed, 9 skipped, 20 subtests passed",
+  "tests_after": "112 passed, 9 skipped, 39 subtests passed",
+  "note": "CPU/synthetic checks only. Unsupported worker --help probe failed; see cli_checks.json. No GPU/remote/shift execution."
+}

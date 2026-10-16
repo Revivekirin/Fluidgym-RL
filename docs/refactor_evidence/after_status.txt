@@ -1,0 +1,26 @@
+ M .DS_Store
+ M scripts/tdmpc_train.py
+ M src/fluidgym_rl/tdmpc/environment.py
+ M src/fluidgym_rl/tdmpc/runtime.py
+?? configs/.DS_Store
+?? configs/environments/cylinderjet2d_nominal.json
+?? docs/DEPENDENCY_MAP.md
+?? docs/PHYSICAL_SHIFT_PREPARATION.md
+?? docs/REFACTOR_AUDIT.md
+?? docs/refactor_evidence/after_status.txt
+?? docs/refactor_evidence/after_tests.txt
+?? docs/refactor_evidence/before_status.txt
+?? docs/refactor_evidence/before_tests.txt
+?? docs/refactor_evidence/cli_checks.json
+?? docs/refactor_evidence/contract_before.json
+?? docs/refactor_evidence/nominal_before.json
+?? docs/refactor_evidence/protected_before.json
+?? docs/refactor_evidence/source_inventory.json
+?? docs/refactor_evidence/supporting_inventory.json
+?? docs/refactor_evidence/tree_after.txt
+?? docs/refactor_evidence/tree_before.txt
+?? docs/refactor_evidence/verification.json
+?? src/.DS_Store
+?? src/fluidgym_rl/environment_contract.py
+?? tests/.DS_Store
+?? tests/test_environment_contract.py

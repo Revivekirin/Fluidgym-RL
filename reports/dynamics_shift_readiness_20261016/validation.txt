@@ -1,0 +1,6 @@
+2026-10-16 local read-only evidence validation
+16 checkpoint hashes match; 16 CPU weight loads finite; TD-MPC best/final tensors equal.
+21 shared evaluations: result/checkpoint hashes match; reward mean recomputation max error 5.551115123125783e-17.
+2 validation selections match; 2 existing diagnostic manifests and checkpoint hashes match.
+pytest tests/test_environment_contract.py tests/test_evalcontract.py tests/test_nominal_audit.py tests/test_adapter_contract.py: 28 passed, 19 subtests passed in 0.49s.
+No CFD or new policy inference rollout executed.

@@ -3,15 +3,8 @@ from __future__ import annotations
 import numpy as np
 from fluidgym_rl.evalcontract import to_np, scalar
 
-CONTRACT = dict(observation='FlattenObservation: velocity only, sensor-major [vx,vy], 151 sensors',
-                normalization='none', frame_stack=1, actuator_state_augmented=False,
-                partial_observation='smoothed actuator memory is not observed',
-                reward='Cd_ref - mean_substep(Cd) - abs(mean_substep(Cl)); scale=1',
-                control_timestep=0.25, nominal_solver_dt=0.01, adaptive_cfl=0.8,
-                smoothing='upstream alpha=0.1 each solver step; no adapter changes',
-                upstream_fluidgym_sha='50071140b73a2a917fb96d33522a769f903f8c27',
-                abs_lift='mean over control steps of abs(control-interval mean Cl), not solver-substep mean abs Cl',
-                termination='unexpected physical termination rejected; horizon truncation bootstraps as upstream')
+# Compatibility export: historical manifests/imports keep the same dictionary.
+from fluidgym_rl.environment_contract import CONTRACT, validate_physics, validate_creation_kwargs
 
 
 class CheckedEnv:
@@ -27,9 +20,7 @@ class CheckedEnv:
             raise ValueError('episode horizon mismatch')
         if hasattr(env, 'cuda_device'):
             from fluidgym_rl.device import same_device
-            for key, expected in {'step_length':0.25, '_reynolds_number':100., '_lift_penalty':1., '_action_smoothing_alpha':0.1}.items():
-                if not np.isclose(float(getattr(env,key)), expected):
-                    raise ValueError(f'nominal physical contract mismatch: {key}')
+            validate_physics(env)
             if not same_device(env.cuda_device, cfg.device):
                 raise ValueError('simulator and learner device mismatch')
         self.t = 0
@@ -83,6 +74,7 @@ class CheckedEnv:
 
 
 def make_env(cfg, split='train', **kwargs):
+    validate_creation_kwargs(kwargs)
     import torch
     from fluidgym_rl.envs import make_fluid_env
     return CheckedEnv(make_fluid_env(cfg.task, mode=split, cuda_device=torch.device(cfg.device), **kwargs), cfg)
