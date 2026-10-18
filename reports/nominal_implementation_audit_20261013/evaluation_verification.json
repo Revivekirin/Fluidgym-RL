@@ -1,0 +1,505 @@
+[
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/reference/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "train",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc/test_best/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "test",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc/test_final/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "test",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc/val_0000/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc/val_0001/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc/val_0002/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/test_best/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "test",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/test_final/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "test",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0000/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0001/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0002/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0003/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0004/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0005/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0006/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0007/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0008/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0009/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0010/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0011/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  },
+  {
+    "path": "/Users/jihyekim/Desktop/Fluidgym-RL/results/nominal_comparison/20261013T061228Z/tdmpc2/val_0012/evaluation_manifest.json",
+    "cohort": "d7b825958fb5851c3e7a7e2d3a7bc8f026ec61903c935d5c5ae523ede807aae0",
+    "contract": {
+      "env_id": "CylinderJet2D-easy-v0",
+      "split": "val",
+      "n_episodes": 10,
+      "protocol": "seeded",
+      "base_seed": 0,
+      "flatten_observation": true,
+      "version": 1
+    },
+    "errors": {
+      "mean_reward_per_step": 0.0,
+      "episode_return": 0.0,
+      "episode_length": 0.0,
+      "drag": 0.0,
+      "lift": 0.0,
+      "abs_lift": 0.0,
+      "wall": 0.0,
+      "drag_reduction": 0.0
+    },
+    "hash_status": "passed"
+  }
+]

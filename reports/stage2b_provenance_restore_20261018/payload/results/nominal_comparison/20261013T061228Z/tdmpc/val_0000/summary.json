@@ -1,0 +1,65 @@
+{
+  "n_episodes": 10,
+  "mean_reward_per_step": {
+    "mean": 0.028861470812698832,
+    "std": 0.012549960257143628,
+    "median": 0.032837711996398865,
+    "iqm": 0.02969840591152509,
+    "min": 0.008582687040325254,
+    "max": 0.047824198752641676
+  },
+  "episode_return": {
+    "mean": 2.308917665015906,
+    "std": 1.0039968205714902,
+    "median": 2.6270169597119093,
+    "iqm": 2.375872472922007,
+    "min": 0.6866149632260203,
+    "max": 3.8259359002113342
+  },
+  "episode_length": {
+    "mean": 80.0,
+    "std": 0.0,
+    "median": 80.0,
+    "iqm": 80.0,
+    "min": 80.0,
+    "max": 80.0
+  },
+  "metrics_per_step_mean": {
+    "abs_lift": {
+      "mean": 0.1852816278737578,
+      "std": 0.00905010708568953,
+      "median": 0.18795692656640312,
+      "iqm": 0.18605356917366103,
+      "min": 0.16795654145353184,
+      "max": 0.1978527377854334
+    },
+    "drag": {
+      "mean": 3.1140124186873437,
+      "std": 0.009104567662756143,
+      "median": 3.1129667967557904,
+      "iqm": 3.1145327538251877,
+      "min": 3.1016802072525023,
+      "max": 3.125101885199547
+    },
+    "lift": {
+      "mean": 0.00917157165340768,
+      "std": 0.059632905388385185,
+      "median": 0.01693345277063827,
+      "iqm": 0.0072795519873617804,
+      "min": -0.0691041780388332,
+      "max": 0.09575887313549174
+    }
+  },
+  "action": {
+    "mean": -0.009319117106497288,
+    "std_within_episode": 0.2236943170428276,
+    "abs_max": 1.0,
+    "clipped_step_fraction": 0.0
+  },
+  "terminated_episodes": 0,
+  "truncated_episodes": 10,
+  "eval_wall_seconds": 662.1730307359248,
+  "drag_reduction_percent": 6.425145676695165,
+  "drag_reduction_status": "available: ratio of arithmetic means to measured uncontrolled training reference",
+  "claims_reproduction": false
+}

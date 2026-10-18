@@ -1,0 +1,41 @@
+{
+  "status": "prepared_for_user_execution",
+  "VERIFIED": {
+    "CPU_fixture_tests_passed": 11,
+    "stage1_evidence_files_verified": 784,
+    "adapter_body_outside_gain_at": "AST identical to verified Stage 1",
+    "protected_research_files_unchanged": 366,
+    "Physics_source_files_unchanged": 10,
+    "plan_only_launch": "passed without FluidGym import"
+  },
+  "INFERRED": "Stage 1/P1 evidence supports trying the fixed pilot under its runtime gates",
+  "UNRESOLVED": [
+    "actual Stage 2 CUDA restoration and native execution",
+    "S0/S2 real nominal-prefix equivalence",
+    "frozen-controller outcomes",
+    "model mismatch and history necessity"
+  ],
+  "actual_new_CFD_controls": 0,
+  "actual_frozen_policy_inference_calls": 0,
+  "optimizer_updates": 0,
+  "remote_execution_performed": false,
+  "limits": {
+    "runs": 12,
+    "controls_per_run": 80,
+    "CFD_controls": 960,
+    "external_watchdog_seconds": 2700,
+    "automatic_retries": 0
+  },
+  "test_log_sha256": "c24134143c4c5ded6bd67ba3b8e063f6981650bef8f2117780bca3b76dae3fab",
+  "code_hashes": {
+    "p1_support.py": "721d13c14365b1ef757fb310e389d0e58e4bdeac6838f85bc43f6619a351664a",
+    "run_stage2.py": "e56bde192a73c75489a73807b45aa0411250f42e0389ae2bd2e483f5d212aa9a",
+    "stage1_support.py": "1f9dc1b4df35dc6f844bbc2e822193661f3fbbd1090608fb250a89576370897c",
+    "adapter.py": "a67e155a650b50c9eef0959e49bc4837bdf8792689efa00353833498dd045233",
+    "test_stage2.py": "b6e2735137dee0655870cf7cfba97c5205a5f2a13512c3cec63a0b67c4b33f3c",
+    "stage1_adapter_reference.py": "f2624d70758633d4fed156cf50c49bf40328875286e2e13419054f4e732bfc50",
+    "frozen.py": "7889cd85dd58660ee7d711426f3f0a9c0c769c5aedb55656a1e11cbe174394c0",
+    "launch.py": "fda44943e326ec2803df7e296ecbb5f1983741dce9737c6b780f52c9e7d809e4"
+  },
+  "preservation_sha256": "adb73525ea668538942d3c933e127631d56434f3cb2eb419866796adf42bedec"
+}

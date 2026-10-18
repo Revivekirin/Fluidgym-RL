@@ -1,0 +1,1251 @@
+[
+  {
+    "boundary": 0,
+    "field": "b0_velocity",
+    "max_center_xy": [
+      -1.974589467048645,
+      -1.8899561762809753
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 0,
+    "field": "b0_pressure",
+    "max_center_xy": [
+      -1.974589467048645,
+      -1.8899561762809753
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 0,
+    "field": "b1_velocity",
+    "max_center_xy": [
+      -0.35157183557748795,
+      0.37536942958831787
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 0,
+    "field": "b1_pressure",
+    "max_center_xy": [
+      -0.35157183557748795,
+      0.37536942958831787
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 0,
+    "field": "b2_velocity",
+    "max_center_xy": [
+      0.37536942958831787,
+      -0.35157183557748795
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 0,
+    "field": "b2_pressure",
+    "max_center_xy": [
+      0.37536942958831787,
+      -0.35157183557748795
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 0,
+    "field": "b3_velocity",
+    "max_center_xy": [
+      -1.8919978737831116,
+      -1.974589467048645
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 0,
+    "field": "b3_pressure",
+    "max_center_xy": [
+      -1.8919978737831116,
+      -1.974589467048645
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 0,
+    "field": "b4_velocity",
+    "max_center_xy": [
+      2.020224690437317,
+      -1.888499677181244
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      445
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 0,
+    "field": "b4_pressure",
+    "max_center_xy": [
+      2.020224690437317,
+      -1.888499677181244
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      445
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b0_velocity",
+    "max_center_xy": [
+      -1.974589467048645,
+      -1.8899561762809753
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b0_pressure",
+    "max_center_xy": [
+      -1.974589467048645,
+      -1.8899561762809753
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b1_velocity",
+    "max_center_xy": [
+      -0.35157183557748795,
+      0.37536942958831787
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b1_pressure",
+    "max_center_xy": [
+      -0.35157183557748795,
+      0.37536942958831787
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b2_velocity",
+    "max_center_xy": [
+      0.37536942958831787,
+      -0.35157183557748795
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b2_pressure",
+    "max_center_xy": [
+      0.37536942958831787,
+      -0.35157183557748795
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b3_velocity",
+    "max_center_xy": [
+      -1.8919978737831116,
+      -1.974589467048645
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b3_pressure",
+    "max_center_xy": [
+      -1.8919978737831116,
+      -1.974589467048645
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b4_velocity",
+    "max_center_xy": [
+      2.020224690437317,
+      -1.888499677181244
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      445
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 1,
+    "field": "b4_pressure",
+    "max_center_xy": [
+      2.020224690437317,
+      -1.888499677181244
+    ],
+    "max_grid_yx": [
+      0,
+      0
+    ],
+    "max_abs": 0.0,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      445
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b0_velocity",
+    "max_center_xy": [
+      -0.5008653700351715,
+      0.11678542755544186
+    ],
+    "max_grid_yx": [
+      15,
+      36
+    ],
+    "max_abs": 2.682209014892578e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b0_pressure",
+    "max_center_xy": [
+      -0.8083489239215851,
+      0.30424098670482635
+    ],
+    "max_grid_yx": [
+      17,
+      27
+    ],
+    "max_abs": 2.9802322387695312e-06,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b1_velocity",
+    "max_center_xy": [
+      -0.056486496701836586,
+      0.5735170394182205
+    ],
+    "max_grid_yx": [
+      2,
+      10
+    ],
+    "max_abs": 3.5762786865234375e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b1_pressure",
+    "max_center_xy": [
+      -0.25184983387589455,
+      0.5558444261550903
+    ],
+    "max_grid_yx": [
+      3,
+      5
+    ],
+    "max_abs": 2.7418136596679688e-06,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b2_velocity",
+    "max_center_xy": [
+      1.8848747909069061,
+      -1.194242238998413
+    ],
+    "max_grid_yx": [
+      3,
+      34
+    ],
+    "max_abs": 2.384185791015625e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b2_pressure",
+    "max_center_xy": [
+      1.8388246595859528,
+      -1.1646219491958618
+    ],
+    "max_grid_yx": [
+      3,
+      33
+    ],
+    "max_abs": 1.8924474716186523e-06,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b3_velocity",
+    "max_center_xy": [
+      0.14929354563355446,
+      -0.4921548441052437
+    ],
+    "max_grid_yx": [
+      36,
+      16
+    ],
+    "max_abs": 2.514570951461792e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b3_pressure",
+    "max_center_xy": [
+      -0.46803176403045654,
+      -0.49971242994070053
+    ],
+    "max_grid_yx": [
+      31,
+      0
+    ],
+    "max_abs": 1.7285346984863281e-06,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b4_velocity",
+    "max_center_xy": [
+      11.242696762084961,
+      -0.5767155736684799
+    ],
+    "max_grid_yx": [
+      7,
+      228
+    ],
+    "max_abs": 2.384185791015625e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      445
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 2,
+    "field": "b4_pressure",
+    "max_center_xy": [
+      2.020224690437317,
+      0.6767155826091766
+    ],
+    "max_grid_yx": [
+      16,
+      0
+    ],
+    "max_abs": 1.6093254089355469e-06,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      445
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b0_velocity",
+    "max_center_xy": [
+      -1.4119467437267303,
+      -0.2528037875890732
+    ],
+    "max_grid_yx": [
+      9,
+      14
+    ],
+    "max_abs": 8.344650268554688e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b0_pressure",
+    "max_center_xy": [
+      -1.5277435183525085,
+      0.45427415519952774
+    ],
+    "max_grid_yx": [
+      15,
+      11
+    ],
+    "max_abs": 6.4373016357421875e-06,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b1_velocity",
+    "max_center_xy": [
+      0.42590300738811493,
+      0.9341686069965363
+    ],
+    "max_grid_yx": [
+      12,
+      18
+    ],
+    "max_abs": 9.5367431640625e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b1_pressure",
+    "max_center_xy": [
+      -1.8919978737831116,
+      2.0725894570350647
+    ],
+    "max_grid_yx": [
+      36,
+      0
+    ],
+    "max_abs": 3.3676624298095703e-06,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b2_velocity",
+    "max_center_xy": [
+      0.8565259575843811,
+      0.8137536197900772
+    ],
+    "max_grid_yx": [
+      23,
+      14
+    ],
+    "max_abs": 9.5367431640625e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b2_pressure",
+    "max_center_xy": [
+      0.5946759581565857,
+      -0.5569747984409332
+    ],
+    "max_grid_yx": [
+      0,
+      8
+    ],
+    "max_abs": 5.0067901611328125e-06,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      37
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b3_velocity",
+    "max_center_xy": [
+      0.5801841467618942,
+      -1.0380462110042572
+    ],
+    "max_grid_yx": [
+      21,
+      19
+    ],
+    "max_abs": 9.5367431640625e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b3_pressure",
+    "max_center_xy": [
+      0.48355861008167267,
+      -0.7776255160570145
+    ],
+    "max_grid_yx": [
+      26,
+      20
+    ],
+    "max_abs": 5.125999450683594e-06,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      37,
+      24
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b4_velocity",
+    "max_center_xy": [
+      19.979775428771973,
+      -0.013421395793557167
+    ],
+    "max_grid_yx": [
+      11,
+      444
+    ],
+    "max_abs": 7.37607479095459e-07,
+    "exceeding_cells": 0,
+    "grid_shape": [
+      24,
+      445
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid"
+  },
+  {
+    "boundary": 3,
+    "field": "b4_pressure",
+    "max_center_xy": [
+      19.979775428771973,
+      0.11342139728367329
+    ],
+    "max_grid_yx": [
+      12,
+      444
+    ],
+    "max_abs": 3.1620264053344727e-05,
+    "exceeding_cells": 722,
+    "grid_shape": [
+      24,
+      445
+    ],
+    "native_centers_definition": "arithmetic average of four saved vertices; not exact curved-cell centroid",
+    "exceedance_xy_min": [
+      18.523594856262207,
+      -1.888499677181244
+    ],
+    "exceedance_xy_max": [
+      19.979775428771973,
+      1.988499641418457
+    ],
+    "exceedance_grid_yx_min": [
+      0,
+      408
+    ],
+    "exceedance_grid_yx_max": [
+      23,
+      444
+    ],
+    "exceedances_by_x_index": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      4,
+      4,
+      10,
+      11,
+      13,
+      17,
+      19,
+      20,
+      22,
+      23,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    "exceedances_by_y_index": [
+      24,
+      25,
+      26,
+      27,
+      26,
+      29,
+      28,
+      28,
+      29,
+      29,
+      29,
+      30,
+      31,
+      31,
+      32,
+      33,
+      35,
+      35,
+      34,
+      33,
+      32,
+      32,
+      32,
+      32
+    ]
+  }
+]

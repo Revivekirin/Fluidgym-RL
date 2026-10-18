@@ -1,0 +1,315 @@
+{
+  "files_verified": 1349,
+  "native_array_hashes_verified": 408,
+  "time_boundaries": [
+    {
+      "observation": 0,
+      "clock_S0": {
+        "solver_time": 1.2099997997283936,
+        "solver_steps": 22,
+        "control_steps": 0
+      },
+      "clock_S2": {
+        "solver_time": 1.2099997997283936,
+        "solver_steps": 22,
+        "control_steps": 0
+      },
+      "rng_identity": true,
+      "native_differing_fields": []
+    },
+    {
+      "observation": 1,
+      "clock_S0": {
+        "solver_time": 1.4599995613098145,
+        "solver_steps": 47,
+        "control_steps": 1
+      },
+      "clock_S2": {
+        "solver_time": 1.4599995613098145,
+        "solver_steps": 47,
+        "control_steps": 1
+      },
+      "rng_identity": true,
+      "native_differing_fields": []
+    },
+    {
+      "observation": 2,
+      "clock_S0": {
+        "solver_time": 1.7099993228912354,
+        "solver_steps": 72,
+        "control_steps": 2
+      },
+      "clock_S2": {
+        "solver_time": 1.7099993228912354,
+        "solver_steps": 72,
+        "control_steps": 2
+      },
+      "rng_identity": true,
+      "native_differing_fields": [
+        "b0_velocity",
+        "b0_pressure",
+        "b1_velocity",
+        "b1_pressure",
+        "b1_boundary2_velocity",
+        "b2_velocity",
+        "b2_pressure",
+        "b3_velocity",
+        "b3_pressure",
+        "b3_boundary3_velocity",
+        "b4_velocity",
+        "b4_pressure",
+        "domain_velocityRHS",
+        "domain_velocityResult",
+        "domain_pressureRHS",
+        "domain_pressureRHSdiv",
+        "domain_pressureResult",
+        "memory"
+      ]
+    },
+    {
+      "observation": 3,
+      "clock_S0": {
+        "solver_time": 1.9599990844726562,
+        "solver_steps": 97,
+        "control_steps": 3
+      },
+      "clock_S2": {
+        "solver_time": 1.9599990844726562,
+        "solver_steps": 97,
+        "control_steps": 3
+      },
+      "rng_identity": true,
+      "native_differing_fields": [
+        "b0_velocity",
+        "b0_pressure",
+        "b1_velocity",
+        "b1_pressure",
+        "b1_boundary2_velocity",
+        "b2_velocity",
+        "b2_pressure",
+        "b3_velocity",
+        "b3_pressure",
+        "b3_boundary3_velocity",
+        "b4_velocity",
+        "b4_pressure",
+        "b4_boundary1_velocity",
+        "domain_velocityRHS",
+        "domain_velocityResult",
+        "domain_pressureRHS",
+        "domain_pressureRHSdiv",
+        "domain_pressureResult",
+        "memory"
+      ]
+    }
+  ],
+  "recorded_first_failed_gate": [
+    {
+      "field": "native_state3/b4_pressure",
+      "shape_equal": true,
+      "allclose": false,
+      "bitwise_equal": false,
+      "max_abs": 3.1620264053344727e-05,
+      "max_relative": 25.42222222222222,
+      "relative_denominator_floor": 1e-12,
+      "atol": 1e-05,
+      "rtol": 1e-05
+    }
+  ],
+  "first_recorded_difference": {
+    "boundary": "o0",
+    "native_fields_bitwise_equal": true,
+    "sensor_fields_differ": [
+      {
+        "boundary": 0,
+        "kind": "sensor",
+        "field": "velocity",
+        "shape": [
+          151,
+          2
+        ],
+        "dtype": "float32",
+        "elements": 302,
+        "sha_S0": "95d73575d31c9d5e82285c9cfea5545cc06d81e9d937d28c02d410c2f50feb8f",
+        "sha_S2": "246dcc4b8b8513a547952b2c2a7649231d92b8399799e5281b641b433d3d8d3a",
+        "bitwise_equal": false,
+        "max_abs": 2.384185791015625e-07,
+        "rms": 1.4752792665031385e-08,
+        "max_relative_floor_1e_12": 6.823802925841981e-07,
+        "max_symmetric_relative_floor_1e_5": 6.82379826941652e-07,
+        "near_zero_elements_below_1e_5": 0,
+        "near_zero_max_abs": 0.0,
+        "exceedance_count": 0,
+        "max_error_to_tolerance": 0.008126771458404807,
+        "mean_S0": 0.5624234143578847,
+        "mean_S2": 0.5624234141533869,
+        "mean_signed_difference": -2.044977755933408e-10,
+        "mean_subtracted_max_abs": 2.3821408132596916e-07,
+        "mean_subtracted_rms": 1.4751375260536937e-08
+      },
+      {
+        "boundary": 0,
+        "kind": "sensor",
+        "field": "pressure",
+        "shape": [
+          151
+        ],
+        "dtype": "float32",
+        "elements": 151,
+        "sha_S0": "4f6c26ba001fd683ad673c2854dd1e80ab3a8bfae0def1141c27292dfc93ac86",
+        "sha_S2": "bf5bde5016e180500081a5ca2c489bd208d43154ea772b8f004681a45bf7ca5f",
+        "bitwise_equal": false,
+        "max_abs": 1.1920928955078125e-07,
+        "rms": 1.3719447556696796e-08,
+        "max_relative_floor_1e_12": 1.1664509121296197e-07,
+        "max_symmetric_relative_floor_1e_5": 1.1664507760688625e-07,
+        "near_zero_elements_below_1e_5": 0,
+        "near_zero_max_abs": 0.0,
+        "exceedance_count": 0,
+        "max_error_to_tolerance": 0.005895662225248137,
+        "mean_S0": -0.1458940646080732,
+        "mean_S2": -0.14589406539753869,
+        "mean_signed_difference": -7.894654937137831e-10,
+        "mean_subtracted_max_abs": 1.1841982405706746e-07,
+        "mean_subtracted_rms": 1.3696714405111503e-08
+      },
+      {
+        "boundary": 0,
+        "kind": "sensor",
+        "field": "flat",
+        "shape": [
+          302
+        ],
+        "dtype": "float32",
+        "elements": 302,
+        "sha_S0": "2c5cc89b9ed027e6bc192abc08d790fa8369f981c8194ceed407a993a214e811",
+        "sha_S2": "4895ef88c04c98896563b8bc9847ac93d9feb6a0692cec6a4f15f44586f352f7",
+        "bitwise_equal": false,
+        "max_abs": 2.384185791015625e-07,
+        "rms": 1.4752792665031385e-08,
+        "max_relative_floor_1e_12": 6.823802925841981e-07,
+        "max_symmetric_relative_floor_1e_5": 6.82379826941652e-07,
+        "near_zero_elements_below_1e_5": 0,
+        "near_zero_max_abs": 0.0,
+        "exceedance_count": 0,
+        "max_error_to_tolerance": 0.008126771458404807,
+        "mean_S0": 0.5624234143578847,
+        "mean_S2": 0.5624234141533869,
+        "mean_signed_difference": -2.044977755933408e-10,
+        "mean_subtracted_max_abs": 2.3821408132596916e-07,
+        "mean_subtracted_rms": 1.4751375260536937e-08
+      }
+    ]
+  },
+  "additional_offline_failures": [
+    {
+      "boundary": 3,
+      "kind": "native",
+      "field": "b4_pressure",
+      "shape": [
+        1,
+        1,
+        24,
+        445
+      ],
+      "dtype": "float32",
+      "elements": 10680,
+      "sha_S0": "5f27f6c05874338671e6e05dce2ce4594adf566486c2c39b12920d8cedc683ab",
+      "sha_S2": "4c2765b75244c2a9a81bf8a42f14e94036b426088de47eb1cafaf2ca1d28142e",
+      "bitwise_equal": false,
+      "max_abs": 3.1620264053344727e-05,
+      "rms": 5.189338757925223e-06,
+      "max_relative_floor_1e_12": 25.42222222222222,
+      "max_symmetric_relative_floor_1e_5": 0.24926801105200214,
+      "near_zero_elements_below_1e_5": 2,
+      "near_zero_max_abs": 1.1688098311424255e-06,
+      "exceedance_count": 722,
+      "max_error_to_tolerance": 2.879244948541468,
+      "mean_S0": -0.015753171965218242,
+      "mean_S2": -0.015753717827026417,
+      "mean_signed_difference": -5.458618081715446e-07,
+      "mean_subtracted_max_abs": 3.107440224517318e-05,
+      "mean_subtracted_rms": 5.1605495473723136e-06
+    },
+    {
+      "boundary": 3,
+      "kind": "native",
+      "field": "domain_velocityRHS",
+      "shape": [
+        28464
+      ],
+      "dtype": "float32",
+      "elements": 28464,
+      "sha_S0": "3977902219ff8e69508167f976db796c5929759388bb8b166bf54973f4ab51cd",
+      "sha_S2": "2512e7acf673734b7a239afb074826dd78158d07be8cd15da7348c875ed9a991",
+      "bitwise_equal": false,
+      "max_abs": 0.0001068115234375,
+      "rms": 1.2660799010393333e-05,
+      "max_relative_floor_1e_12": 0.12013803750110559,
+      "max_symmetric_relative_floor_1e_5": 0.11587799235712735,
+      "near_zero_elements_below_1e_5": 1,
+      "near_zero_max_abs": 1.1587799235712737e-06,
+      "exceedance_count": 23,
+      "max_error_to_tolerance": 2.322261814632059,
+      "mean_S0": 52.79100450349495,
+      "mean_S2": 52.791003951841695,
+      "mean_signed_difference": -5.516532594551798e-07,
+      "mean_subtracted_max_abs": 0.00010625987017804481,
+      "mean_subtracted_rms": 1.2648775049897491e-05
+    },
+    {
+      "boundary": 3,
+      "kind": "native",
+      "field": "domain_pressureResult",
+      "shape": [
+        14232
+      ],
+      "dtype": "float32",
+      "elements": 14232,
+      "sha_S0": "211193ca05d737fdb01620169cc96f2a45d59747d097a20381ba915108d44b4d",
+      "sha_S2": "a0626faca6d180a61ed4587ec07bc43017763c32197f6db36e612e1b14686f28",
+      "bitwise_equal": false,
+      "max_abs": 3.1620264053344727e-05,
+      "rms": 4.657057184259502e-06,
+      "max_relative_floor_1e_12": 25.42222222222222,
+      "max_symmetric_relative_floor_1e_5": 0.24926801105200214,
+      "near_zero_elements_below_1e_5": 2,
+      "near_zero_max_abs": 1.1688098311424255e-06,
+      "exceedance_count": 722,
+      "max_error_to_tolerance": 2.879244948541468,
+      "mean_S0": 1.745771756997733e-09,
+      "mean_S2": 9.049835262538477e-10,
+      "mean_signed_difference": -8.407882307438853e-10,
+      "mean_subtracted_max_abs": 3.161942326511398e-05,
+      "mean_subtracted_rms": 4.657057108361265e-06
+    }
+  ],
+  "first_boundary_delivery_difference": {
+    "t": 1,
+    "outer": 24,
+    "gain_S0": 1.0,
+    "gain_S2": 1.0,
+    "clock_before_equal": true,
+    "clock_after_equal": true,
+    "accepted_increment_S0": 1,
+    "accepted_increment_S2": 1,
+    "memory_max_abs": 5.960464477539063e-08,
+    "boundary_top_velocity_measured_max_abs": 5.960464477539063e-08,
+    "boundary_top_flux_measured_max_abs": 1.862645149230957e-09,
+    "boundary_after_solver_top_velocity_measured_max_abs": 5.960464477539063e-08,
+    "boundary_after_solver_top_flux_measured_max_abs": 1.862645149230957e-09,
+    "boundary_bottom_velocity_measured_max_abs": 5.960464477539063e-08,
+    "boundary_bottom_flux_measured_max_abs": 1.862645149230957e-09,
+    "boundary_after_solver_bottom_velocity_measured_max_abs": 5.960464477539063e-08,
+    "boundary_after_solver_bottom_flux_measured_max_abs": 1.862645149230957e-09
+  },
+  "all_outer_clock_pairs_identical": true,
+  "accepted_increments_seen": [
+    [
+      1,
+      1
+    ]
+  ],
+  "CFD": 0,
+  "checkpoint_inference": 0,
+  "training": 0
+}

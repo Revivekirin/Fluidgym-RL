@@ -1,0 +1,11 @@
+observation,contrast,required_to_pass,shape_equal,max_abs,allclose,bitwise_equal
+0,same_rng_reset_state,True,True,0.0,True,True
+0,changed_rng_reset_state,False,True,0.07983773946762085,False,False
+0,same_rng_same_warm,True,True,0.0,True,True
+0,changed_rng_same_warm,False,True,0.07039332389831543,False,False
+0,same_rng_changed_valid_warm,False,True,0.05613356828689575,False,False
+1,same_rng_reset_state,True,True,0.0,True,True
+1,changed_rng_reset_state,False,True,0.0341930091381073,False,False
+1,same_rng_same_warm,True,True,0.0,True,True
+1,changed_rng_same_warm,False,True,0.003296464681625366,False,False
+1,same_rng_changed_valid_warm,False,True,0.019628018140792847,False,False

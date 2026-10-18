@@ -1,0 +1,27 @@
+{
+  "t": 27,
+  "t0": false,
+  "rng_before": {
+    "python": "58ae6fb433941c12f62693dbc475e5d07ed8e961a2ee47986acad525f9defd02",
+    "numpy": "cfc8fa3e6ff1a33ac06fe31ca7ce676899763e8503f1430e95d6fa052cf1b582",
+    "torch_cpu": "1ccf17250133dec5e96478acd63e13d728d0dbbabb30389415a302c6f872f81f",
+    "torch_cuda": [
+      "a1b6bb1ed7501560db073552d92beae2f9e813bd3da0c0913647e5f85beda44f"
+    ]
+  },
+  "rng_after": {
+    "python": "58ae6fb433941c12f62693dbc475e5d07ed8e961a2ee47986acad525f9defd02",
+    "numpy": "49d78d0a818bdbb2d062a3bd65c18a36876a6510a36375685e7087e81d4dc844",
+    "torch_cpu": "1ccf17250133dec5e96478acd63e13d728d0dbbabb30389415a302c6f872f81f",
+    "torch_cuda": [
+      "69faeb91b293deb5876236051222d6a2428e446ff02e6c28d2a42b7e9ae919f4"
+    ]
+  },
+  "warm_before_present": true,
+  "requested_action": [
+    -0.2821806073188782
+  ],
+  "clipped_action": [
+    -0.2821806073188782
+  ]
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "H1",
+    "source": "/Users/jihyekim/Desktop/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/envs/fluid_env.py",
+    "line": 507,
+    "hypothesis": "Reset/domain initialization mismatch",
+    "expected_signature": "Different loaded geometry/native fields at o0; different private RNG or domain identity.",
+    "evidence": "VERIFIED: saved o0/o1 native arrays and reset clocks agree exactly; domain 8 and seed agree. This mechanism is not supported for saved initialization. Unsaved internal state remains UNRESOLVED."
+  },
+  {
+    "id": "H2",
+    "source": "/Users/jihyekim/Desktop/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/simulation/extensions/resampling.cu",
+    "line": 300,
+    "hypothesis": "Floating-point atomic scatter during observation resampling",
+    "expected_signature": "Same native fields can produce last-bit resampled sensor differences without consuming planner RNG.",
+    "evidence": "INFERRED: strongest supported candidate for the earliest observation discrepancy. atomicAdd at 333/335 accumulates data/weights; normalization at 499\u2013527. o0/o1 native equality with unequal sensors fits. No isolated extraction repeat was performed; root cause UNRESOLVED."
+  },
+  {
+    "id": "H3",
+    "source": "/Users/jihyekim/Desktop/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/envs/cylinder/cylinder_env_base.py",
+    "line": 741,
+    "hypothesis": "Small policy differences propagate through smoothing and CFD",
+    "expected_signature": "Sensor differences, then planner/warm/action differences, then measured boundary differences, then native field differences.",
+    "evidence": "VERIFIED chronology fits; INFERRED propagation is plausible. No identical-action replay exists here, so contribution versus independent solver numerical variability is UNRESOLVED."
+  },
+  {
+    "id": "H4",
+    "source": "/Users/jihyekim/Desktop/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/simulation/pict/PISOtorch_simulation.py",
+    "line": 1840,
+    "hypothesis": "Pressure linear-solve sensitivity and reduction/convergence effects",
+    "expected_signature": "Small RHS differences can produce nonuniform pressure residuals; iteration counts or residual histories could differ.",
+    "evidence": "INFERRED compatible with o2/o3 RHS/pressure differences. UNRESOLVED: linear iterations/residual traces/fallback branch are not saved. Solver success does not imply equal numerical trajectories."
+  },
+  {
+    "id": "H5",
+    "source": "/Users/jihyekim/Desktop/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/simulation/pict/PISOtorch_simulation.py",
+    "line": 1922,
+    "hypothesis": "Uniform pressure gauge offset alone",
+    "expected_signature": "Demeaning would remove most pressure discrepancy.",
+    "evidence": "VERIFIED contradicted as a sufficient explanation: b4 demeaned maximum remains 3.10744e-5 versus 3.16203e-5. Source conditionally subtracts torch.mean; this is not evidence that reduction nondeterminism caused the failure."
+  },
+  {
+    "id": "H6",
+    "source": "/Users/jihyekim/Desktop/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/simulation/pict/PISOtorch_simulation.py",
+    "line": 2004,
+    "hypothesis": "Adaptive timestep branch divergence",
+    "expected_signature": "Different accepted increments or clocks near first divergence.",
+    "evidence": "VERIFIED no such signature in 75 paired outer calls: clocks match and each accepts one increment. Unsaved transient solver details cannot be reconstructed."
+  },
+  {
+    "id": "H7",
+    "source": "/Users/jihyekim/Desktop/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/envs/cylinder/cylinder_env_base.py",
+    "line": 273,
+    "hypothesis": "Advective outlet update / pressure coupling sensitivity",
+    "expected_signature": "Residual concentration near downstream outlet and subsequent outlet velocity differences.",
+    "evidence": "INFERRED spatially compatible: b4 residual lies at x\u224818.52\u201319.98; b4_boundary1_velocity differs at o3. PRE callback uses update_advective_boundaries(tol=5e-6). UNRESOLVED causality: no per-inner-solve outlet trace."
+  },
+  {
+    "id": "H8",
+    "source": "/Users/jihyekim/Desktop/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/simulation/extensions/cg_solver_kernel.cu",
+    "line": 93,
+    "hypothesis": "GPU norm/reduction and convergence threshold sensitivity",
+    "expected_signature": "Different convergence behavior or residual histories despite comparable RHS.",
+    "evidence": "UNRESOLVED: cuBLAS norm/sum/max operations are concrete numerical operations, not proof of nondeterministic execution. No residual/iteration evidence isolates them."
+  }
+]

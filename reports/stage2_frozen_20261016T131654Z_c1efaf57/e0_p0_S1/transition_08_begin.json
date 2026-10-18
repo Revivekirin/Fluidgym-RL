@@ -1,0 +1,18 @@
+{
+  "t": 8,
+  "requested_action": [
+    0.10469984263181686
+  ],
+  "clipped_action": [
+    0.10469984263181686
+  ],
+  "gain": 0.5,
+  "clock_before": {
+    "solver_time": 3.2099978923797607,
+    "solver_steps": 222,
+    "control_steps": 8
+  },
+  "memory_before": [
+    0.7862846851348877
+  ]
+}

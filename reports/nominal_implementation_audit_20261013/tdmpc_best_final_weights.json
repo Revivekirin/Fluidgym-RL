@@ -1,0 +1,10 @@
+{
+  "all_tensors_bitwise_equal": true,
+  "tensor_count": 76,
+  "file_hashes_different": true,
+  "note": "Different archive bytes do not imply different model parameters; planner_std sidecars also checked below",
+  "planner_stds": [
+    0.05000900000000001,
+    0.05000900000000001
+  ]
+}

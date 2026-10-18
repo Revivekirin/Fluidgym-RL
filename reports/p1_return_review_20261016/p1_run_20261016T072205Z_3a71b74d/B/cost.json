@@ -1,0 +1,6 @@
+{
+  "attempted_control_steps": 16,
+  "completed_control_steps": 16,
+  "solver_calls_including_resets": 484,
+  "solver_failures": 0
+}

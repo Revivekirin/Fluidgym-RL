@@ -1,0 +1,92 @@
+diff --git a/tdmpc2/envs/__init__.py b/tdmpc2/envs/__init__.py
+--- a/tdmpc2/envs/__init__.py
++++ b/tdmpc2/envs/__init__.py
+@@ -31,6 +31,11 @@
+ except:
+ 	make_mujoco_env = missing_dependencies
+ 
++try:
++	from fluidgym_rl.tdmpc2_adapter import make_env as make_fluidgym_env  # tasks named 'fluidgym-<EnvId>'
++except:
++	make_fluidgym_env = missing_dependencies
++
+ 
+ warnings.filterwarnings('ignore', category=DeprecationWarning)
+ 
+@@ -60,13 +65,16 @@
+ 	"""
+ 	Make an environment for TD-MPC2 experiments.
+ 	"""
+-	gym.logger.set_level(40)
++	if hasattr(gym.logger, "set_level"):
++		gym.logger.set_level(40)
++	else:
++		gym.logger.min_level = 40
+ 	if cfg.multitask:
+ 		env = make_multitask_env(cfg)
+ 
+ 	else:
+ 		env = None
+-		for fn in [make_dm_control_env, make_maniskill_env, make_metaworld_env, make_myosuite_env, make_mujoco_env]:
++		for fn in [make_dm_control_env, make_maniskill_env, make_metaworld_env, make_myosuite_env, make_mujoco_env, make_fluidgym_env]:
+ 			try:
+ 				env = fn(cfg)
+ 			except ValueError:
+@@ -74,6 +82,7 @@
+ 		if env is None:
+ 			raise ValueError(f'Failed to make environment "{cfg.task}": please verify that dependencies are installed and that the task exists.')
+ 		env = TensorWrapper(env)
++		env.max_episode_steps = env.unwrapped.max_episode_steps
+ 	try: # Dict
+ 		cfg.obs_shape = {k: v.shape for k, v in env.observation_space.spaces.items()}
+ 	except: # Box
+diff --git a/tdmpc2/common/layers.py b/tdmpc2/common/layers.py
+--- a/tdmpc2/common/layers.py
++++ b/tdmpc2/common/layers.py
+@@ -1,8 +1,17 @@
+ import torch
+ import torch.nn as nn
+ import torch.nn.functional as F
+-from tensordict import from_modules
++from tensordict import from_modules, TensorDict
++from inspect import signature
+ from copy import deepcopy
++
++
++# New TensorDict defaults preserve destination Parameter state, which breaks
++# the functional ensemble's autograd links. Retain upstream replacement semantics.
++_TO_MODULE_KWARGS = (
++    {"preserve_module_state": False}
++    if "preserve_module_state" in signature(TensorDict.to_module).parameters else {}
++)
+ 
+ 
+ class Ensemble(nn.Module):
+@@ -14,7 +23,7 @@
+ 		super().__init__()
+ 		# combine_state_for_ensemble causes graph breaks
+ 		self.params = from_modules(*modules, as_module=True)
+-		with self.params[0].data.to("meta").to_module(modules[0]):
++		with self.params[0].data.to("meta").to_module(modules[0], **_TO_MODULE_KWARGS):
+ 			self.module = deepcopy(modules[0])
+ 		self._repr = str(modules[0])
+ 		self._n = len(modules)
+@@ -22,8 +31,17 @@
+ 	def __len__(self):
+ 		return self._n
+ 
++	def _apply(self, fn, recurse=True):
++		# Keep the stateless meta template out of device/dtype traversal.
++		# Real weights live in params; restore registration for train/eval.
++		module = self._modules.pop("module")
++		try:
++			return super()._apply(fn, recurse=recurse)
++		finally:
++			self._modules["module"] = module
++
+ 	def _call(self, params, *args, **kwargs):
+-		with params.to_module(self.module):
++		with params.to_module(self.module, **_TO_MODULE_KWARGS):
+ 			return self.module(*args, **kwargs)
+ 
+ 	def forward(self, *args, **kwargs):

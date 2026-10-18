@@ -1,0 +1,769 @@
+{
+  "input_archive": "/Users/jihyekim/Desktop/Fluidgym-RL/reports/p0_p1_audit_20261016T063722Z/p0_p1_preflight_20261016T064547Z_5e9bfa8f.tar.gz",
+  "input_archive_sha256": "9331ff267da45239dfb98129dabd0020ee7e3046f82466d8be84272f106564ba",
+  "source_checks": [
+    {
+      "path": "__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "config.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/airfoil/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/airfoil/airfoil_env_2d.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/airfoil/airfoil_env_3d.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/airfoil/airfoil_env_base.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/airfoil/coords.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/airfoil/grid.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/cylinder/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/cylinder/cylinder_env_base.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/cylinder/grid.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/cylinder/jet_cylinder_env_2d.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/cylinder/jet_cylinder_env_3d.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/cylinder/rotating_cylinder_env_2d.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/fluid_env.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/parallel_env.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/rbc/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/rbc/rbc_env_2d.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/rbc/rbc_env_3d.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/rbc/rbc_env_base.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/tcf/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/tcf/grid.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/tcf/tcf_env.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/util/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/util/diff_tools.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/util/forces.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/util/obs_extraction.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/util/profiles.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "envs/util/visualization.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "integration/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "integration/gymnasium.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "integration/pettingzoo.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "integration/sb3/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "integration/sb3/eval_callback.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "integration/sb3/util.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "integration/sb3/vec_env.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "integration/torchrl.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "registry.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/extensions/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/helpers.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/PISOtorch_diff.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/PISOtorch_simulation.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/data/OpenFOAM_profile.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/data/TCF_tools.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/data/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/data/online_statistics.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/data/resample.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/data/shapes.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/data/torroja.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/util/GPU_info.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/util/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/util/domain_io.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/util/logging.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/util/memory_usage.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/util/output.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/util/outputVtk.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/pict/util/profiling.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "simulation/simulation.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "types.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "util/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "util/data_utils.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "util/helpers.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "wrappers/__init__.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "wrappers/action_noise.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "wrappers/flatten_obs.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "wrappers/fluid_wrapper.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "wrappers/obs_extraction.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "wrappers/sensor_noise.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    },
+    {
+      "path": "wrappers/util.py",
+      "archive_matches_report": true,
+      "matches_local_physics_pin": true
+    }
+  ],
+  "historical_source_differences": [
+    "envs/fluid_env.py",
+    "envs/util/__init__.py",
+    "envs/util/obs_extraction.py",
+    "simulation/pict/data/resample.py",
+    "simulation/pict/util/output.py"
+  ],
+  "historical_source_added": [
+    "envs/util/diff_tools.py"
+  ],
+  "domain_hash_mismatches": [],
+  "domain_compared_count": 91,
+  "checkpoint_mismatches": [],
+  "checkpoint_count": 16,
+  "existing_result_mismatches": [],
+  "existing_result_count": 132,
+  "recorded_version_differences": {},
+  "runtime": {
+    "status": "collected",
+    "python": "3.12.15 | packaged by Anaconda, Inc. | (main, Oct  1 2026, 20:20:25) [GCC 14.3.0]",
+    "executable": "/nfs4/jhkim/conda_envs/fluidgym-test/bin/python",
+    "cwd": "/nfs4/jhkim/repos/Fluidgym-Physics",
+    "repo": "/nfs4/jhkim/repos/Fluidgym-RL",
+    "cfd_steps": 0,
+    "training_updates": 0,
+    "git_head": {
+      "returncode": 0,
+      "stdout": "b291c6dd9fbbc048a860f9135de55fd9f489b256\n",
+      "stderr": ""
+    },
+    "git_status": {
+      "returncode": 0,
+      "stdout": "?? .venv/\n?? build/\n?? src/fluidgym_rl.egg-info/\n?? src/fluidgym_rl/upstream.py.bak\n?? third_party/\n",
+      "stderr": ""
+    },
+    "versions": {
+      "fluidgym": "0.1.2",
+      "torch": "2.9.1+cu126",
+      "numpy": "2.5.3",
+      "gymnasium": "1.4.0",
+      "hoptorch": "0.1.4",
+      "hydra-core": "1.3.2",
+      "omegaconf": "2.3.0",
+      "tensordict": "0.14.2",
+      "torchrl": "0.14.0"
+    },
+    "errors": [],
+    "fluidgym_distribution": {
+      "root": "/nfs4/jhkim/conda_envs/fluidgym-test/lib/python3.12/site-packages",
+      "direct_url": "{\"dir_info\": {\"editable\": true}, \"url\": \"file:///nfs4/jhkim/repos/Fluidgym-Physics/third_party/fluidgym\"}",
+      "installer": "pip\n"
+    },
+    "fluidgym_spec_origin": "/nfs4/jhkim/repos/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/__init__.py",
+    "source_hashes": {
+      "__init__.py": "6845a87c64a31340dffa542b7ff40e90247db0c3eea2baab015c20977e0f3f73",
+      "config.py": "fb9a47a75dfd905fc9d0237baff663dcc821430c03f180c015700b2cc8171282",
+      "envs/__init__.py": "c085a8cd223c07f8496b66c710806ac261a83b1f6307bc6627841c59f1a28fde",
+      "envs/airfoil/__init__.py": "cf46ffce781dd2020106747730e6856cb106dfb859cc35d4bef4d340a2a09a11",
+      "envs/airfoil/airfoil_env_2d.py": "49df7ad0c2cdd8b9cbda33f6a9f39f97c0daa1d52fd061faf0c58ca22aabb124",
+      "envs/airfoil/airfoil_env_3d.py": "11fe6442fb806d811de0c461b31a58cf27f7f0efea9cfb21a499a3e49ac21919",
+      "envs/airfoil/airfoil_env_base.py": "eb23d8235f4971f245090e5cec5d6e7559df6efc54a05a8e2a5e9b7c358b2534",
+      "envs/airfoil/coords.py": "5d78a09be1f9e5b382332f8328314e93831c011ae0daa99d175e231750d8c12d",
+      "envs/airfoil/grid.py": "d886bbd205b9e9b1a1d13b2f4700d1fe1d4f16a8201a3218dd00a9dd1ef52f81",
+      "envs/cylinder/__init__.py": "f959aa1127e86657dec40416f9b5a39f831d4d771de9e28a9ace493e9ceaf828",
+      "envs/cylinder/cylinder_env_base.py": "a1435769b85a608bf5c805d509aff756eb0513e028b8181b5b02c8d9f77c3aef",
+      "envs/cylinder/grid.py": "b28f8eaa555eddbd1987b44e461d2774517851abbbcd379c2b2cbfc0b3a33a2e",
+      "envs/cylinder/jet_cylinder_env_2d.py": "f07b4fdc4be826b98bcfc5c5e1e165be8c4e8fc91f78a7eae116f0bbc03bd926",
+      "envs/cylinder/jet_cylinder_env_3d.py": "479cbdc208adfab0b1abea2c40607ea55f0f971bb34e7a9ec18aa651b7923229",
+      "envs/cylinder/rotating_cylinder_env_2d.py": "64da509726bbe2d5a0630cb2fa0e06533980cdf0b44fbdb1a1d67a25ace19a18",
+      "envs/fluid_env.py": "50fe6b925ef5d7580d4177cd8db894abbf8510515fa2f7fca48894ea53c7a325",
+      "envs/parallel_env.py": "a0312ae07c5e128e493fd791ac6563ebb8f07d703f72123706f4ad5a684aa031",
+      "envs/rbc/__init__.py": "bb73ba3c1f34cf200734847caafcb1bd8e92f49d9f4055972be2a78271b06394",
+      "envs/rbc/rbc_env_2d.py": "1b17db31cea5e5c90cbc7ecfc03018dd2236963eb4037aba5568fef84851b750",
+      "envs/rbc/rbc_env_3d.py": "0e3e5979e923fe99ff60e87b3870e2704ef670954778ef978af0b60a0bb7412f",
+      "envs/rbc/rbc_env_base.py": "43187650e8f97532d9b10d5e682be9a48cfc1b08c27a1413f7b375bc523da359",
+      "envs/tcf/__init__.py": "e1672c74b871f2ff1754844af144ce1f497c1b9058a094a096d9288d628be1af",
+      "envs/tcf/grid.py": "72b129d2d7fb16d8ea9aba5a5e4ab1183e2060823961d4521de8e6e3435180f2",
+      "envs/tcf/tcf_env.py": "7e70747c37ce0737584f6ce61eb0068a7a9fec307d1da32e99a9ce9db82297a4",
+      "envs/util/__init__.py": "4796599532a44075d2f4583c3ec9fa774386990592bf31173d769e7519e5d70d",
+      "envs/util/diff_tools.py": "a3be5360fc1de273ac8eb5a6c396e85f6cab16a2215c92d3e9e28860b8edfebb",
+      "envs/util/forces.py": "0d1062c25dd5a5b9fd93030739f82048ee92c4e98bb183faf1e86175f8d73359",
+      "envs/util/obs_extraction.py": "c8947a8a848ea9ae8fda5a6e6939ee1fba7aa9e8fc40142510038c034154f303",
+      "envs/util/profiles.py": "11f3377383a62afe5886c2bbe8a08556cedfc4b98a3abc31d45d99e23902b5be",
+      "envs/util/visualization.py": "25f85e4e44a583c7a86d9440d8a2d619f3da9e8080467f100bc8e06f2de31bdb",
+      "integration/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integration/gymnasium.py": "3c2da05f76cd6cc49b999aa10fa3d7813ad5083d8ec998928d86e7ee40e61172",
+      "integration/pettingzoo.py": "3bfe0af46b8f3d87fd31b1a14b3cb762357bdddf3a15dd651ef86dee7fbb4337",
+      "integration/sb3/__init__.py": "11c24d4779d1516860c7dbbb3d1b2e3f9f63d1c813bd4ab3f5984371b760a9cd",
+      "integration/sb3/eval_callback.py": "5efecf870a34dce8c5ec1ade51d7516b5037a205bd0ff80849a91b440103ba52",
+      "integration/sb3/util.py": "e3a7a3294543b3b5168f7d9350875e8a85a194f28598258913c82d8c492b4d71",
+      "integration/sb3/vec_env.py": "d13e25006146f895ab2b1e547f86cf6e0f841b4b36b932f94d975a1164714b55",
+      "integration/torchrl.py": "fbf56da165e55dfe07a15fef3905e48c0db6745589f91c172a7ff487a0d77bed",
+      "registry.py": "71eddf60238ae3c044bba1bd10c9fcc0b03bc93e51e6827a93bd014fe26d97e4",
+      "simulation/__init__.py": "8973c13f70351e7eab1a7a987320c6d5c8b0d45bca2623d22e14ba852d446d1f",
+      "simulation/extensions/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "simulation/helpers.py": "4daace8178964bd03bca864a551fd6897dc65791d184a7e38b95fd78ba069749",
+      "simulation/pict/PISOtorch_diff.py": "936421c6e9fff74a41ac821584666a52e48ffbf79e3026bda0b6d9042f91cce3",
+      "simulation/pict/PISOtorch_simulation.py": "e62d1a713de51814d7850ddbd0cefa0aefb381c77d9e62b780761b1085e688af",
+      "simulation/pict/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "simulation/pict/data/OpenFOAM_profile.py": "57943120715b71ec3c68e74cbb02d0eebbe305f77cfb9efcc1ede3fdc529bf31",
+      "simulation/pict/data/TCF_tools.py": "474aed9e655ea477fabf6d4abb793cf6b8d7b6c03ef353b7a10d8b3625a33acb",
+      "simulation/pict/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "simulation/pict/data/online_statistics.py": "1b7bd51fd90ee6021187da2e9ebc73a774bcc2af25578f738f38e36d5c046ae6",
+      "simulation/pict/data/resample.py": "25b8a930fdc5fbc9e1ab01f302ef4933781e6ad70bed9a38d06b0620155c2d99",
+      "simulation/pict/data/shapes.py": "3f5f24b82b3ff91692cc38e0a91ea8b72820e304285244cb38bb0cb8015a50f1",
+      "simulation/pict/data/torroja.py": "2bea52628003e043df4da33b5fbcf105c62f723cc5f357b9badb4b305721daad",
+      "simulation/pict/util/GPU_info.py": "1dea2bbe87288c86c9c59ff9f2936db1c50a6d9c28d485a969b1e4e39976eb34",
+      "simulation/pict/util/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "simulation/pict/util/domain_io.py": "798942a2d9423f393f633065e42c3a9d5e7c9e05049e79f2c8386006703dd7c9",
+      "simulation/pict/util/logging.py": "d754e82058945889a902f2a7e6dfb5f5508084458b46885c44eb827c75ec79e9",
+      "simulation/pict/util/memory_usage.py": "0b8b7b49a40eb53b3d7d4f0c6f006203f4deff8110dfa01858faf29ec8747067",
+      "simulation/pict/util/output.py": "4be49b85908fcce34dca4554102946b30e39c195c1fae25248c78f1090318486",
+      "simulation/pict/util/outputVtk.py": "e4da52aab69f46eb5a144a15e561032a76b975e522e8cef1c4c358e46f5a2689",
+      "simulation/pict/util/profiling.py": "a74bd2618b8fd9163ef2e1d1b3414290c32b8226fc8c2b3cfbd37b1a91a59e0b",
+      "simulation/simulation.py": "420d25c920723d75d5a37def661c62f754e1701d8ded307950ab1cafae279b5d",
+      "types.py": "509ae345af324e176441610c6781a4d1400a09b99cee5aa1f7bbc70c0a63818a",
+      "util/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "util/data_utils.py": "b55be87c46eccbeb5ca1f3ba7197cbd3f18b8cde9cc65e7a2580994cf7056ae8",
+      "util/helpers.py": "e03b861c8e33108bd71c64bfdb8e7d663ee8903dd16c6717269c6608f01e37a1",
+      "wrappers/__init__.py": "9d0de2f350fbe8ebb654684c407c83558f820ce16835a5b8d48bf183820bd43c",
+      "wrappers/action_noise.py": "d386f85c153cfc89ff20745c64a74da2ebee1fb3123e19098a468a0f32e0ef67",
+      "wrappers/flatten_obs.py": "85b2d3640f11e18a29e1a60e9d8f86b500aa31556394d6655fb19ff9d670b0c4",
+      "wrappers/fluid_wrapper.py": "502fd8b356604cfc38c065408ecc5483018d8a876bfbbb348eb6d7ed0343fd5c",
+      "wrappers/obs_extraction.py": "45550eeed52fe8d8a21a62fa52b9e150053dc04468f12b0e4a6bb9faececaa40",
+      "wrappers/sensor_noise.py": "c464f941d3ef6c3f6b822ff584bf8c846d4e44988e87882b8203c02c4078e99b",
+      "wrappers/util.py": "8ece15ab9b99c0d209c1a2d35569a4887b1a2cc8ba0eda1f4b1615936d81321e"
+    },
+    "package_binary_hashes": {
+      "/nfs4/jhkim/repos/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/simulation/extensions/PISOtorch.cpython-312-x86_64-linux-gnu.so": "294edfc263cd57a7d4da0aeea72e76abcba3c586901511bac703659717ea2bea"
+    },
+    "torch": {
+      "version": "2.9.1+cu126",
+      "cuda_build": "12.6",
+      "cuda_available": true,
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "cuda_matmul_allow_tf32": false
+    },
+    "import_probe": {
+      "returncode": 0,
+      "stdout": "{\"fluidgym_file\": \"/nfs4/jhkim/repos/Fluidgym-Physics/third_party/fluidgym/src/fluidgym/__init__.py\", \"initial_domains_path\": \"/home/jhkim/.local/share/FluidGym/initial_domains\"}\n",
+      "stderr": ""
+    },
+    "gpu": {
+      "returncode": 0,
+      "stdout": "NVIDIA GeForce RTX 3090, GPU-bb034a2b-4990-a388-df88-b25dc08e3ee6, 535.171.04, 24576 MiB, 3 MiB\n",
+      "stderr": ""
+    },
+    "checkpoints": {
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/final.pt": "865b6fffb7c9bf80e0a5ae1aa861711cb38fd10f5a4e79ebbdce14253f6f90ff",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_12000.pt": "25ff524150f0df80b6152301dd8844ded6944dded3652cbfb47b4010b5e3fa3f",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_16000.pt": "6fe0e9cf6efd39d87d8199e06e5fb2116c739f96949cd6dc9f85e3db850ca762",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_20000.pt": "6af12c5d9e7c3915e9adf32d266a7ae11ee371909cbf80f0bcfa70acc2dcb0ba",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_24000.pt": "18b4e35bd5cbaca8c693bea998265b6dae45cbf8f739d227389fd43b5de2d5f0",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_28000.pt": "c6cf2a286c24607e22345da4c618795b70cab24478234b420822435c9b89ce84",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_32000.pt": "75a8b35d0280150ed4047587ecd0bd467e9dce973241e43e95cda39dc116fb19",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_36000.pt": "b17fc4c26508ac12272ea7f9f3b5431c9f3b23e997735ce549eab9b2a48487e6",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_4000.pt": "7c745870b20861974de007282a0b831539c16be8c4fc173144fec1f97951e1fc",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_40000.pt": "492184f09fa244b963607f77b97af0b7324a1272a92c30013c28eba5233983f4",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_44000.pt": "825ae5e1fed69dad532357a3326156acc65733cf926bb3ae5ab851f20f4cf3c3",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_48000.pt": "6d136fe26b516dc2958136b7ed5ed84c97d67a5316402e7bb470b4a6f44019ec",
+      "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_8000.pt": "d6393b65673809cb190e21c8b67f94f89e75d9148d3b7e6921a21c05a64439af",
+      "results/tdmpc_full/20261012T060719Z_full/checkpoints/best.pt": "1405b10e3601f987500d0c25575d64c7db85f4a7de6f9e6e5f1a724327239a0b",
+      "results/tdmpc_full/20261012T060719Z_full/checkpoints/final.pt": "48ec36ffd30b760c6f13e0c039d5ef6d57be0c348896d9cd2be18aa9961e00e4",
+      "results/tdmpc_full/20261012T060719Z_full/checkpoints/latest.pt": "81585e852000cacb4ae02bff8627ee0e9b1a6df4da979f672f9a952eaae9ab21"
+    },
+    "existing_evaluation_files": {
+      "results/nominal_comparison/20261013T061228Z/original_audit.json": "b135fc8a6642dc11c57449c059a681e3fca991aabcf54529995f9635c7a8fe79",
+      "results/nominal_comparison/20261013T061228Z/dashboard_20261013T103505537028Z/comparison.csv": "13622cc6ddc8b9cbe1eff80867e0ec48b6d45fa62ce3b72b9bb7f39dc3e4b6c2",
+      "results/nominal_comparison/20261013T061228Z/dashboard_20261013T103505537028Z/metric_mapping.csv": "bf5e710ef96e73de1b775d52ff1cf2b91a26022b819bbe58e909de1c9c9bf1a6",
+      "results/nominal_comparison/20261013T061228Z/dashboard_20261013T103505537028Z/report_manifest.json": "c1d11d3fcf2ace57c414d2c27c93779416be9afd82c9029c87f8c11c0d56c3f8",
+      "results/nominal_comparison/20261013T061228Z/dashboard_20261013T103505537028Z/seed_summary.csv": "04a7a9e1535f8f44fffadd987cfca43909400a2e3fb039192e6cd4beb5edf7b7",
+      "results/nominal_comparison/20261013T061228Z/reference/episodes.csv": "b144da65db591f3093aff92cdda210ed377be95b89e85b75457ac8ef5b9c7997",
+      "results/nominal_comparison/20261013T061228Z/reference/evaluation_manifest.json": "dd0246b7d8fd7bf83c7b0d9571889962e752d93abc6b1a395d82c94e2e5c75a6",
+      "results/nominal_comparison/20261013T061228Z/reference/resolved_config.yaml": "01f3b8dd6827a211ef41801f520bd1699f8979dfa752a8180fd5363221b6a127",
+      "results/nominal_comparison/20261013T061228Z/reference/run_manifest.json": "8dcf69709f58d3b601483063adae42502a68279c5c2e56cc9e274d3f36b95da8",
+      "results/nominal_comparison/20261013T061228Z/reference/summary.json": "9522328fb240ff2ce7d3e18728e58d02e0296c887268abc0df10f594a7f6ddae",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/selection.json": "9323c684f325eb08a5f1ddc1bd4016e066ca8c0f3049c3ead5a42ec17724c3f9",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/suite_manifest.json": "dc39de7600c42394e186b34b2c398ffe422a994fea73d387771d9624d0be0bd0",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/selection.json": "552800ba3e89a85eeabd74ad93169e14ba96c49e80791f1471a0f6ca635240ce",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/suite_manifest.json": "ea9be866b25693600e6e25e17deb5d96efbcf1b00c1b3c3e161f702d1fa56b38",
+      "results/nominal_comparison/20261013T061228Z/restore_best/20261013T061241Z_verify/resolved_config.yaml": "9e86509fc65323662243c0f1ec4be16b1a76749ef44a80c6aac8c2bc8ebbec2f",
+      "results/nominal_comparison/20261013T061228Z/restore_best/20261013T061241Z_verify/run_manifest.json": "ab93b3b2223442358327160a34356dd7769abf2e06b002af4bd1c28fd9602f77",
+      "results/nominal_comparison/20261013T061228Z/restore_best/20261013T061241Z_verify/summary.json": "6dfae8822a87004ff101f7c7c31eed7709bd20414f385ce0f3111a3a483444fe",
+      "results/nominal_comparison/20261013T061228Z/restore_final/20261013T061250Z_verify/resolved_config.yaml": "9e86509fc65323662243c0f1ec4be16b1a76749ef44a80c6aac8c2bc8ebbec2f",
+      "results/nominal_comparison/20261013T061228Z/restore_final/20261013T061250Z_verify/run_manifest.json": "c4493be020dc6a1dc263ca9290278d61e8bcf9cec23168e0e42ea4f14e4ff256",
+      "results/nominal_comparison/20261013T061228Z/restore_final/20261013T061250Z_verify/summary.json": "a2987ffffc87062a81d6b6b8bfd9cc9dd557f5cb04ed114be79efa99d0ff77a6",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_best/episodes.csv": "bdda31983a9d8726e8c4542b909eee8a8b74f14b55e952392c3ea4193262761d",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_best/evaluation_manifest.json": "a982e7ab87a3a5cef15134428c0a7338e2bce9a6b2be050e5fdd9a5136638dc3",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_best/resolved_config.yaml": "c65f84ed5c7e5bf153dd582ed59f8161e1f8f192b74069183910bcc9c35cd948",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_best/run_manifest.json": "eb68e98739d3ba37642e5f13b7e283b4db9c8a1b1b623d3f614ff2a040ec0fdd",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_best/summary.json": "22e75c45aee147ff4105d0f99b71508c2ef97552d6c835f0d1fa4610026c63ce",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_final/episodes.csv": "9c0dc904adb8e1d14021ef252ad7f6cda5a2c498bffabbc0c718b3cfdeac3a62",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_final/evaluation_manifest.json": "1d9a0e0fa8baa0118f9f7065a76c5dc2580401de0dd01b2fbe6cb7854ccfba0d",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_final/resolved_config.yaml": "c65f84ed5c7e5bf153dd582ed59f8161e1f8f192b74069183910bcc9c35cd948",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_final/run_manifest.json": "cf7e91ff9f49ec2ff074c58596cac7644832c981a7d14624f4245a506a0d3038",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/test_final/summary.json": "54c7d9eb7ee98c0179e3cb1eb8d4e4933209637c1738319b877b7e4a7ff84c19",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0000/episodes.csv": "bf544470daacd3c5e2d4d6dc6b763059c870c58f339b62f42b9025a358b1320f",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0000/evaluation_manifest.json": "8137cbe7072aa37709e308ae26d37b047fb8013f43f5f7ff2796570fdf908116",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0000/resolved_config.yaml": "ba22537ad735631c8a1c8568a7d0e525f52b49bd86bab2578ca7561ebe715656",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0000/run_manifest.json": "cf95943ffb0c222922fe015c5c6056f57729591c97df3fa042eab90d28a4dfbd",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0000/summary.json": "b1d43bb5c894804dacbb5149bfc3861eed9fa95d08d147a593a389b7ff4d3461",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0001/episodes.csv": "6c88fce1186e26b9c8328423637286d28331a7811a0a64ee4cdcb67073c164ed",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0001/evaluation_manifest.json": "3fd98f9b00669f3c5cba460a0781e3ac9b26b656aafa7cc15b42e27dc21ed703",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0001/resolved_config.yaml": "ba22537ad735631c8a1c8568a7d0e525f52b49bd86bab2578ca7561ebe715656",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0001/run_manifest.json": "4fbae52d3134f5ea547fb2ec3c8c9d92a527cfbe8d52581edbeb46dd6d689f26",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0001/summary.json": "50efd00c16bc46e3effda5d163b39792a9275c0f960bf43bd6e815a7d647a8cc",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0002/episodes.csv": "e3bf097e8085251f4b28e3cc99b7e7689b337fadee376763ff89d09984223cfc",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0002/evaluation_manifest.json": "aa9ada3e9d4e5f923544b0dc1c7746dc2e7f0adea5783651d3f390d68768389e",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0002/resolved_config.yaml": "ba22537ad735631c8a1c8568a7d0e525f52b49bd86bab2578ca7561ebe715656",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0002/run_manifest.json": "46b44d4c92d3eef040dce4c214756871b1c25c713d78a03d15c8ae012ec44c8a",
+      "results/nominal_comparison/20261013T061228Z/tdmpc/val_0002/summary.json": "64a4f7a5ea45cc1f3ff5638424885d034eb8f0ffb3db7cc76d50cca9ac1746ef",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_best/episodes.csv": "f69e73cb43c8ea6d896b3d0eeb08835d466824aa7db76a63b553e85aa0c02bd7",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_best/evaluation_manifest.json": "67484defe1df89cafc4a38540b21550882bb903fc8f2ced787a9aea8e21be2f9",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_best/resolved_config.yaml": "a073d35bd8c5fb3c7f68eb50b4f592951ffc4254a8585ef02623adab4c7797e0",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_best/run_manifest.json": "8bb123b85cbcc08cf3c23dd2c92ce9470bddcb9325691914faa3193e1cebf8b3",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_best/summary.json": "1c1c077e6989f1a61a4aae9ff0c622fcd8a27f27e08960818b07e381ff18adf9",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_final/episodes.csv": "265d0c3d89c8368251d05aee1e8d4c88e8ab9699359d148dff9e9a685c716bed",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_final/evaluation_manifest.json": "ba8c29041910d199be327da6118abe3449358ea825bb2b292c2e3f9fb1000114",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_final/resolved_config.yaml": "d106c4eb57f6894b18077240dc178c904228f5a840a852440521714ad652d5e4",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_final/run_manifest.json": "72ed3ab06dd06d3857601db43527e58fff7e28f8fee5768d9784345f6a6146a5",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/test_final/summary.json": "b1690919d3e2f69b204c66116ea7cc348bc90da7d97c64ceb0ce87805f0fb9e2",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0000/episodes.csv": "6702aed49e7b692c4b75cdad774bdcf7807391c612b36ddfce7a2e2b37e46c75",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0000/evaluation_manifest.json": "4b9c5602c5dca1f52303d9d6a4630c1f5ac54270f1ba79dc3a16da225721191f",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0000/resolved_config.yaml": "92248cb19c6d26607e8a08ba6196a1aa9b04b0a3da2bb3a102b8a15c8b59d06d",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0000/run_manifest.json": "23145dc0ca6170a81712eb19b58ac59b72750dcd0e6b57293c649b434eae0e6a",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0000/summary.json": "6280745342e4c3ebd6d8dda527abd435c6951a522e519759637f1fd2c75b566e",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0001/episodes.csv": "36d9c5725ab5cf50d15fbb9d341436eb53e8bfe817ee52e0f235a33e7aa0e7e9",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0001/evaluation_manifest.json": "1cebdc06dac03c5bd986ecb69869468b6e7f1632e2fe1b6206a38987f7723cc0",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0001/resolved_config.yaml": "a091af7b727d085c26195e783569b3f63b440c99ed3884edb9693f655d374108",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0001/run_manifest.json": "95670b5cfe89f47018c42cb65c18ab221696a6f3b2972fa7ff182a27a322a909",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0001/summary.json": "36ea296431f5506ba2e442de6bc8ab03e26bfda06bdbf001136475e5494c77db",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0002/episodes.csv": "4e15f04de353a0487ed30b23c78be95feda76aacbd8e1abda065451a6fc51ee5",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0002/evaluation_manifest.json": "274db2b907165e4a67c296fbd719b1630ee15f4ef302d4f470606905f51b9233",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0002/resolved_config.yaml": "b5d57e061046ef79d05c8e20291482c3234d0e664c0d556fc7fabf53054f59f7",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0002/run_manifest.json": "61b430234f82a998ac74e73cb25c51380125ff8974c75d45b90fbc3b866d0ac3",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0002/summary.json": "225747c93dac17fd8aacef2bc5c111f2347f1a4ea94e8a2d79fc2c9ff2ffb9cc",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0003/episodes.csv": "3a7fbe0c0557e0fe6ee49589d89c33c07bb5db6455a111483bcb0e151748e637",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0003/evaluation_manifest.json": "3db80996a86356020a5e1321b1e85dd2084b5c4d8e567802d5b22fafe3298947",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0003/resolved_config.yaml": "8be1341e3849e776365c186fcedbdeed4a2772b8268b0e7d8bdc9f6a85612a2d",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0003/run_manifest.json": "491dd09b17868dad4790a2e42416cce221b2a672583e6abfc1ab68a032ca4c8d",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0003/summary.json": "0551c676847c445b80a70eed256c2b9631500dfcfe0f4d500dd797b6e65b6ab7",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0004/episodes.csv": "7ea41495d9527b468bd515e13634a23ba09cc6c0c030774bacbb29c7011ef3e7",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0004/evaluation_manifest.json": "85c8f475ba5bda724c8c93c593c8b88f219a8bc2cc9a70f1c5fb38b189089aff",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0004/resolved_config.yaml": "b5b07c439f8f774aaefc8406218d4ea6c61b2fae66a8daa7b162676a8186e370",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0004/run_manifest.json": "d54f251e153de70718fb1143b30f3ccb92d6695ccca2cc0a624080674154939d",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0004/summary.json": "6916901ab5cb1d0241ee6c49923e8cbcae32ff11dc95c38af0f4cba19197c3ef",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0005/episodes.csv": "e96637ad9d554adf730eff4cb560eb0ed708d3e2c1f978b48f9a7e76f63fcd0c",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0005/evaluation_manifest.json": "1121a2d6efadb382db7903e3b72703d4b7b92f1019fc71b43bb784808d6f6a04",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0005/resolved_config.yaml": "4ac24e2a0270cb0543358cf0bfab5035f3d823fbcd6016d714da8cd91fcd36c2",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0005/run_manifest.json": "c6e80aa7612c85eb86bc8d0c5d8304fde35fae5a380801276019e07dc248005e",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0005/summary.json": "70994017c58137635a439c0154c50b8575a43348f36d4115743741db9ac1e09e",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0006/episodes.csv": "68ff21851c86815672a6ff3fad077f1551219d69ad3fffee4526f71eea632631",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0006/evaluation_manifest.json": "d79aa2225503171419b923dd5646ceddbd4dbe848e370346bd7ba271b835bf31",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0006/resolved_config.yaml": "c3552bcc3e18f6cedc6882f647711ed92bf95545886343c0c45db1705cca5039",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0006/run_manifest.json": "ddc220ef567fc016d4ebd175aeae7add07f7a546dee96233045b7fc932c92270",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0006/summary.json": "c904559ea45750566be7f650a4a997979e06ba3d720960e636fe806b88c8ee89",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0007/episodes.csv": "512baa344437a0142f142a2c888700dbe8c0667941513c54eb8dec5237729783",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0007/evaluation_manifest.json": "b35e7e1c8f3107f131768f8c934714b8ad681d09015bf6bbf24ebceeecf719bd",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0007/resolved_config.yaml": "e2cc86dcfabf0bfaaa6bd7e3d7971c89892f1710defa10ecdc3d87047c3629c7",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0007/run_manifest.json": "6a4c79a5e5056e13247b9e63e550da91c8ff9f4aa9ae9174c3ce46caaebce86a",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0007/summary.json": "ffbc0a01e4252d9d45039704a6d5f309d0d4c9f4e42cd987e51c8636c47a38e7",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0008/episodes.csv": "e0ec89400ce363af2d828b13fdbe1789b1ee9a12a7aeafaa0eed93b947e6a717",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0008/evaluation_manifest.json": "c117f741534dd12ff281502e39aad7cd6126fb7f64b0ed860b8d37590cccee02",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0008/resolved_config.yaml": "4a28b493d1489472a2157668463408737f99676a12c57da3728505ac30a1b672",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0008/run_manifest.json": "66fe8fb285973d2d2fcbcb4b7bf1347743de8f454d662142b9791c8b2537b775",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0008/summary.json": "097ce79332d2c6c2cd3840ea98b809fa02c4bd870532ece7c7b15f454632fb7f",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0009/episodes.csv": "bff3798c96e63a05d5626238e047339bf1027db05a0d96fb3719bcdde22846d8",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0009/evaluation_manifest.json": "91ac7ffd501e36795f10f5682d63b55a256a143a9c915a6d729fe14fced7af15",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0009/resolved_config.yaml": "677ee79627c465219299b5ea3cc68c8c9bb80f5ae87811920839eb1d6eb7145f",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0009/run_manifest.json": "26a377a83da0f8a473baf1f6873ed8b61ef5d44cbf643546b03051e126f6c058",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0009/summary.json": "0cf7e4cd77b48a7cfd1d03779b5c57d875b3137534e04a52818db6ad09dd6dd7",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0010/episodes.csv": "b0e691e582d9585e05d0290aaa0286e6fcbcc9a48cde3eecc6368957a89e578e",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0010/evaluation_manifest.json": "0c39d9b2622dd6801a94263b560b1bea9e70fcfdc8a8aea358324f6fbe11fcef",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0010/resolved_config.yaml": "74dda072c3c4e33e6429401c38415ce72770836e6efe707119f3abaea43bfaac",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0010/run_manifest.json": "c88657a2ec8ec98b7eaa2939cebbdee11355f52769df7f232bcd361cb84d8359",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0010/summary.json": "1382a3a725aaef4ee5e19e217bf0b6cfca942bf426853c3f6b754b084bb85a26",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0011/episodes.csv": "1d66707aff17509155f9b008cd0335010700ab4114e1d9f3ce48d11038f9a3db",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0011/evaluation_manifest.json": "36c9d3f621989ec89543cd947facaf5705f6238d7ce32030055a5f9ce9b47409",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0011/resolved_config.yaml": "60796b58ad9f0163e1ac890a9ecd0f4e66fa101e07dcc133148dd780befab228",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0011/run_manifest.json": "82b779e2cebc2d38d26aea82c4aa13379492a6a3fd1abf532bb358649b5195e3",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0011/summary.json": "50d15cc1d132e7f2b4e5a5b26680772582eba97c8ae754a98fe1f892c9bc8d98",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0012/episodes.csv": "4e8c54f5496563bd0632bb3c2b3d88f5e5c481c27ebc747f7ede45e9d271dcde",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0012/evaluation_manifest.json": "1b7fa62fa946ffe8d32fe0c8836ccf4ba7ba3be8a5d8af9d344b5ee8e14f7d61",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0012/resolved_config.yaml": "3d40d29121c17b794e561a92c22c4042df557846e52247f532eea3e2d8d92e08",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0012/run_manifest.json": "b65e499c44d20c2449dcc3475f81ab7400d11e19aaaf059ad3ec308f0bbc16ed",
+      "results/nominal_comparison/20261013T061228Z/tdmpc2/val_0012/summary.json": "d72a930afc357b30668ebd74a6c33390c8cb28ee4073bacb84d71fb3e008fc85",
+      "results/nominal_diagnostics/20261013T111711Z/plan44/resolved_config.yaml": "a4f4f35270308023e1066cf6350b7b90d0ee78d14f8a9b3dd75bf8a41dc6dd01",
+      "results/nominal_diagnostics/20261013T111711Z/plan44/episodes.csv": "049e1bb4b67d093ff0f14f9269eae3b052b6dfab4ead83078c39bf2ac8b08830",
+      "results/nominal_diagnostics/20261013T111711Z/plan44/summary.json": "b0f0b54214a9b8982213139c346f66c8d7b395524dd029d12eecdb6a941dc2c0",
+      "results/nominal_diagnostics/20261013T111711Z/plan44/run_manifest.json": "c4e17966eacd3ed019342c088b42e2dd9da475f0e5b282c8b2edc8247966a144",
+      "results/nominal_diagnostics/20261013T111711Z/plan44/action_latencies.json": "969db486594bbafbd1a387cd5000f183426415418ad235028a03955f0a9e2cbd",
+      "results/nominal_diagnostics/20261013T111711Z/plan44/diagnostic_manifest.json": "22cf5b83865672962b5624453d7402e5d6c3fb15d31a940f1d6fb5d76c3a322c",
+      "results/nominal_diagnostics/20261013T111711Z/actor44/resolved_config.yaml": "b6a1ad49d7f4d193b23a27ae1cc8bcd97f4ea2de9bea8a07deb80b904649ac09",
+      "results/nominal_diagnostics/20261013T111711Z/actor44/episodes.csv": "fe16c73ce9b2dee7f0455998443ac37ef27c6a4c3220696ae4341040a4b55029",
+      "results/nominal_diagnostics/20261013T111711Z/actor44/summary.json": "00977e002b5bd7edca2818ee23aafebfc6533719ef16885b677caba2d1897a79",
+      "results/nominal_diagnostics/20261013T111711Z/actor44/run_manifest.json": "c11a8a5a8b03174a778fe86e0330d41a5d2b350bf4690273b5d565aec4fc6f8e",
+      "results/nominal_diagnostics/20261013T111711Z/actor44/action_latencies.json": "aa4cda08364863eb319ac80fe5c9831bfb980a7e42c01ad7a16be36ee79cde49",
+      "results/nominal_diagnostics/20261013T111711Z/actor44/diagnostic_manifest.json": "52e1161d3352992b1c43161f7b1a6a6a28bbb6a83de2b6ad7d060504badddea3"
+    },
+    "requested_domain_root": "/home/jhkim/.local/share/FluidGym/initial_domains/cylinder_2D_Re100_Res24",
+    "domain_files": {
+      "0/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "0/test.npz": "26142c1302ed2c850a7adcc2cfa70cf70c6862e9945b94c66a76d3e80a4cc84e",
+      "0/test_uncontrolled_episode.csv": "969ce342e7875c16b8b0b98134e0fcc0c9d3ea60f3cda5aeeb2d91c889f53593",
+      "0/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "0/train.npz": "3654f18143edc5de31fffdf82a940d1de0cc0322fce0af3b0c9d45389c64c503",
+      "0/train_uncontrolled_episode.csv": "c00926e2edbd72165f724efdd8228220f61f817722aff586922318a410f19768",
+      "0/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "0/val.npz": "6dc8a134eebe999119f9b02c336e7f838dfec6d95946fb796ff54cadcc66da66",
+      "0/val_uncontrolled_episode.csv": "8f500e55fa7252b4067b9ad732e6777c14dc5b0a9bdd7dd9ae63f617594ea360",
+      "1/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "1/test.npz": "54cc1854aaee25d5af20a5709f6d063c7e79cc87510067e1f681a0a510decacc",
+      "1/test_uncontrolled_episode.csv": "b0050ac3890d6fff469a4f4253d4a15811033588fda449436df036301895af79",
+      "1/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "1/train.npz": "12c9bbe3a95fdcd245147ee76783264523aeab8f3e07d4c9eb0d878826e40d05",
+      "1/train_uncontrolled_episode.csv": "c5ce44d0e92daa97d61e31e57adb13dd6b6f8c679c1de61f42145d36411b7caa",
+      "1/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "1/val.npz": "cfe7012ff040e590dae2f742071ae44435d4d4103013761d941ca9ca6873e5fc",
+      "1/val_uncontrolled_episode.csv": "1e6ff3743c722d3b04b2841c04e3ae33fd12224fd1f7fd13ba6612385bae4fb6",
+      "2/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "2/test.npz": "98cea720559299ac2bdd908a79b0b81c25afe905ed376850f0f70e0b2bbc75d9",
+      "2/test_uncontrolled_episode.csv": "6364b327942171d99f72c356595143b03e07c74945c056ce691e56ccd51072fe",
+      "2/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "2/train.npz": "40aae27ef41a9041d616c8946789b1f14095d4ef382035c2719cf5c5bae6d089",
+      "2/train_uncontrolled_episode.csv": "279f7c78cc7b2d86f46768b32ba9544b7dc4060f38f5484ae8ecfcfc4c0ab8d9",
+      "2/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "2/val.npz": "290284387e6962bbc968c3ced6e44b7ad2ebabce6a328ff74aef2c2efaa01634",
+      "2/val_uncontrolled_episode.csv": "e586891d0294484cb14abcbf021fb39fc81316d7235bee471e902ad674440915",
+      "3/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "3/test.npz": "d7543b95efbb5050aa396c330edf79d74f651b594ab58442912a16a38421a7fb",
+      "3/test_uncontrolled_episode.csv": "0098c52fd638546abc3f429b11af7058e2cb950c0901d0ecb93ca24dcb2dc063",
+      "3/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "3/train.npz": "10e4d1cded44a4b53b6fdf32fe6d73dc934b90f1137f9ac658f6635c8fc5efbe",
+      "3/train_uncontrolled_episode.csv": "20940376306fb14073893fe3bb7cdc306d1bb6c72a7092ba9e867f08fc10fd9f",
+      "3/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "3/val.npz": "8947e8347c9673cbb47169b44d80cc80ecb47230870abb1d4629b5aa471f2957",
+      "3/val_uncontrolled_episode.csv": "99a7d6499cc01ff74932163f73cc77ff46d5221e53abc3453f3c7c143bbb7d21",
+      "4/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "4/test.npz": "0bb83b5821e513a99a36d0c07a070bef08d6e68554e5bac20081b36ee09f7383",
+      "4/test_uncontrolled_episode.csv": "11974535afab34981af979b0acf2e9fe947caa46a35ce6fdf8de8e3607e82350",
+      "4/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "4/train.npz": "619fb948343277e765cc7f6f7c39e6083da3009a0dee1a76d512f9ac2fce833a",
+      "4/train_uncontrolled_episode.csv": "3203923d4f23bece0dddc10b4be1152c0dca341843ffc8f62db9ca00f201843f",
+      "4/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "4/val.npz": "b3089f90508b82c28ae2bb844f66dbf759649acf372cddcc4ed484a8832c7021",
+      "4/val_uncontrolled_episode.csv": "53bd60259e4163695086d9e00d0e2bcc364378db5a45fa5c2a8b5dd720ec42fd",
+      "5/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "5/test.npz": "2f8205fd35c156652696226b8ca7958a6a58d32033baf74bcbda38c46a7060a8",
+      "5/test_uncontrolled_episode.csv": "ba9bf7e473a603b6e66fb2d13f347cef613c862f09a2985193cbe2fe81908d7f",
+      "5/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "5/train.npz": "29c98b189329e0a02fd1cbba3d07836a7fd73135073539483fba0eab4ef10c72",
+      "5/train_uncontrolled_episode.csv": "7d86b5cf6bcb03ffcf650b80640fc4c9592100a203861414f7f9d352f40ec589",
+      "5/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "5/val.npz": "25423dd4b9f8fcd708359abe247270f600b56f76da77da8b732e318d7dfb3cfd",
+      "5/val_uncontrolled_episode.csv": "171f3e7567d4ef927180d33e2749c3123774bf2acccf3b06617d8d79886115b3",
+      "6/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "6/test.npz": "6c1a712d7c768ae420419544939818b86bb857e92ac08644940e606ae808cae9",
+      "6/test_uncontrolled_episode.csv": "691fc5c55c918c7f1b94bd3da6fb52f9b68f0195f3700c92b9329333da86afd7",
+      "6/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "6/train.npz": "8faa214c250ed80f3ca0aec2934ed484fbd6ab148730ab6c2ff7f9eb0b4a4df6",
+      "6/train_uncontrolled_episode.csv": "d7f40c2410fabc63a845deb31db6d4b066a9165c09b5e5dde9de7ddb2eec1248",
+      "6/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "6/val.npz": "f5dde216db54f496fbf407d82d72ae8dd7712cb92b18bbc5e8027237483e2ce3",
+      "6/val_uncontrolled_episode.csv": "827527d9cf43a59eae98950fc33dc2e8afbbc46fd40761d21448a5aa79abf2f5",
+      "7/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "7/test.npz": "4ae9a9cfea66c1831a6f9fedb0d54b6b863079a1f69edb2b191295904de2cfb1",
+      "7/test_uncontrolled_episode.csv": "38173e866fb4af0b8ef096b8bac2392e9e4b358f2d1d23da312c3399e073c13b",
+      "7/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "7/train.npz": "bb310c643f649c9a424678364f53456f2c45f1fae1da33915ef6ff93b4fc4795",
+      "7/train_uncontrolled_episode.csv": "7843b09e10f8a81069a109a4533450f072555f90cf0dcfb47c13268de8863df9",
+      "7/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "7/val.npz": "9291202c2ee0415de31d836b7b5dd8c7d9479a746b428c6dd00d865c0326d686",
+      "7/val_uncontrolled_episode.csv": "9fa2e9e0f8a0ab1b9011f5e4587e001c5afdd5c07b9e79dc5976c2bf432aeae0",
+      "8/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "8/test.npz": "6c05b6ad3051da65d039f8a1a4b955bd36b473b6cd8a9f4a7079131a16fddac4",
+      "8/test_uncontrolled_episode.csv": "b76f41d579f28e37d7702a8c1fbd66e1c8c1dbded4d291a4a2f951382e60b377",
+      "8/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "8/train.npz": "5d6823609e093e55a86b791acdd803d21609795138d8cdda75107b77e13a6993",
+      "8/train_uncontrolled_episode.csv": "48fe9907fcc342207221ffc3b39623f7ca59563a684a6bbed3f1832e31c61fe3",
+      "8/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "8/val.npz": "0e9b079869e57660fc600d529a7df1ca83209b1d6eb491261c90312a7d6b3c52",
+      "8/val_uncontrolled_episode.csv": "727cc0c971c767331d97d7801c8269a93f96fca8a0bb9a7986f579ab314a3ba9",
+      "9/test.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "9/test.npz": "6642d25311257b2a1023ccf9c90d30e5eba21cf709c7d36b16996ef65a495774",
+      "9/test_uncontrolled_episode.csv": "78175583929061bcbc7db42e8224152f8e54c360c18996eac3843b05771d55b5",
+      "9/train.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "9/train.npz": "9d4737d809634cef373590978c7510f0b1d594a9dca1649b710042e7e75f88e4",
+      "9/train_uncontrolled_episode.csv": "2a6329167803b10356ec3b0a9cf7f2b70b1c43934812dd7f8379d6b5d4667c1b",
+      "9/val.json": "463aef7b5dbcfb5a5f748bdcb672485c4cf3f1161d2f9d94ba0b172cd9339c9b",
+      "9/val.npz": "dfb1102ca3d3a054ba867b3ab3ec3f5f1fd4589ec09d6806049abf800782639b",
+      "9/val_uncontrolled_episode.csv": "f372bb2dd0136617b62435a76101cccc1044c8a601eda553531308986086d3ff",
+      "domain_statistics.json": "23595381243aa935ecccdbda411f045e7fc452417b136b7e38e1a8bafc19f020"
+    },
+    "data_available": true,
+    "elapsed_seconds": 13.163520128466189
+  },
+  "P1_A": "NOT_RUN",
+  "P1_B": "NOT_RUN",
+  "P1_C": "BLOCKED: current FluidGym source is different from historical evaluation source; do not silently rebaseline",
+  "new_cfd_steps": 0
+}

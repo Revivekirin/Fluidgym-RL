@@ -1,0 +1,16 @@
+{
+  "split": "val",
+  "episodes": 2,
+  "simulator_steps": 160,
+  "mode": "actor",
+  "horizon": "saved",
+  "env_seeds": [
+    0,
+    1
+  ],
+  "planner_seeds": [
+    0,
+    1
+  ],
+  "execution_requested": false
+}

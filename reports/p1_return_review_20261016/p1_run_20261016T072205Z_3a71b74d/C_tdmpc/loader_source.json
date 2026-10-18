@@ -1,0 +1,26 @@
+{
+  "upstream_url": "https://github.com/nicklashansen/tdmpc",
+  "upstream_sha": "f4d85eca7419039b71bab2234ffc8aca378dd313",
+  "license": "MIT",
+  "patch_sha256": "ffc9aab87a54e7245c90a517a71102f967791b8bdb7951536635ed5a80c60aa6",
+  "source_hashes": {
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/cfg.py": "5a98fc9b28029b7b09c389b960fa3ee493042ef6be92557814d766050cd9024b",
+    "src/env.py": "e41ff7dd8274ca8058403c5a5a003b04d89da7cca5ff1ddddb2a382c68ba05e5",
+    "src/logger.py": "cc88a1be1c122901eb8aa871456152d1a838a73a0e061161b111e5d1bfb6b05f",
+    "src/train.py": "031199d745b0cbb47b0f4b98dc08237728385aca78708cf922708423c0c4a1a1",
+    "src/algorithm/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/algorithm/helper.py": "2e5a9dcae30085b38d669b84c0575f6db0c9f4909fbae91e429713d0a009d051",
+    "src/algorithm/tdmpc.py": "1d6141df69f9cdad8e53178a86f9a6d5b09992230369bf973fd5cedd23630ca6"
+  },
+  "patched_hashes": {
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/cfg.py": "5a98fc9b28029b7b09c389b960fa3ee493042ef6be92557814d766050cd9024b",
+    "src/env.py": "e41ff7dd8274ca8058403c5a5a003b04d89da7cca5ff1ddddb2a382c68ba05e5",
+    "src/logger.py": "cc88a1be1c122901eb8aa871456152d1a838a73a0e061161b111e5d1bfb6b05f",
+    "src/train.py": "031199d745b0cbb47b0f4b98dc08237728385aca78708cf922708423c0c4a1a1",
+    "src/algorithm/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/algorithm/helper.py": "43fb63f7427ec65754b07c0e74c2444581ebb3db0130a71db27337d677f171d9",
+    "src/algorithm/tdmpc.py": "532db5dc5f5c36217a1bec993f52aaa6b5c28895a758465f676a5184dc8d9f36"
+  }
+}
