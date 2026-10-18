@@ -1,0 +1,588 @@
+{
+  "clock": {
+    "solver_time": 16.71028709411621,
+    "solver_steps": 1572,
+    "control_steps": 62
+  },
+  "rng": {
+    "global": {
+      "python": "58ae6fb433941c12f62693dbc475e5d07ed8e961a2ee47986acad525f9defd02",
+      "numpy": "3c6b7e92056afb7fb6240c3976dfbe0d5c0704541bf0331172f42a45e8fc6ebc",
+      "torch_cpu": "1ccf17250133dec5e96478acd63e13d728d0dbbabb30389415a302c6f872f81f",
+      "torch_cuda": [
+        "5e7d499a4ca371e4e1445b86fa7ddc1f69f88562e3a92686427118f9a45bc068"
+      ]
+    },
+    "env_numpy": {
+      "bit_generator": "PCG64",
+      "state": {
+        "state": 80186449399738619878794082838194943960,
+        "inc": 87136372517582989555478159403783844777
+      },
+      "has_uint32": 0,
+      "uinteger": 2735729615
+    },
+    "env_torch_cpu": "c39834fcd58553405b2fce1e7f0b9b9ec5dc99c1dcd9e2efeb0a76fc0e6bd91c",
+    "env_torch_cuda": "53b87889a3c66d52ad0d2c1abe92f87f0dcf5faf9c2d87545cd8f7ec35439afb"
+  },
+  "tensors": {
+    "b0_velocity": {
+      "sha256": "2809998b9d8cd914e5a8fdcef4efbfb8d07f2bea1b8d345de8ebbc8d2d63e747",
+      "shape": [
+        1,
+        2,
+        24,
+        37
+      ],
+      "dtype": "float32"
+    },
+    "b0_pressure": {
+      "sha256": "f86ec29d44c4c11492bacbfb3eee285c103da126e13be5def51d9e1d5e531556",
+      "shape": [
+        1,
+        1,
+        24,
+        37
+      ],
+      "dtype": "float32"
+    },
+    "b0_vertexCoordinates": {
+      "sha256": "5444e31a0768f3102c552ecffb2ed91fbc90e3c1f98d2c60c6e8bbfca1d1c560",
+      "shape": [
+        1,
+        2,
+        25,
+        38
+      ],
+      "dtype": "float32"
+    },
+    "b0_transform": {
+      "sha256": "a866610d32b8652cc680b0ceff316d73e1ac10777cc2742de7610a1dd8f243d1",
+      "shape": [
+        1,
+        24,
+        37,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b0_faceTransform": {
+      "sha256": "bda2790bd10803448ee43db351627f4948983b7d400a5b3a04ddb671f112718e",
+      "shape": [
+        1,
+        2,
+        25,
+        38,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b0_boundary0_velocity": {
+      "sha256": "476d885857df43697ee3191f8343a3e4f1862469670f8a1f5f8c8bc07d71b7a3",
+      "shape": [
+        1,
+        2,
+        24,
+        1
+      ],
+      "dtype": "float32"
+    },
+    "b0_boundary0_transform": {
+      "sha256": "d9c42f279f34a7a1fe620be07f2d34ec2b139d5fb2b0aaf104b271a791c94452",
+      "shape": [
+        1,
+        24,
+        1,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b0_boundary1_velocity": {
+      "sha256": "a44c5ea784128af132ffff43b9ad0b0a5483f0d66d5e651cf5047bda9a1b76d4",
+      "shape": [
+        1,
+        2,
+        24,
+        1
+      ],
+      "dtype": "float32"
+    },
+    "b0_boundary1_transform": {
+      "sha256": "7c21c734fa954a7e8d61da1bfd3d447bd2e3c13503ef6224a1bb508633f6b268",
+      "shape": [
+        1,
+        24,
+        1,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b1_velocity": {
+      "sha256": "76b63352c30c32944768d6ea02a51dc5450d58f39f518b5385ac10851dbcf8f1",
+      "shape": [
+        1,
+        2,
+        37,
+        24
+      ],
+      "dtype": "float32"
+    },
+    "b1_pressure": {
+      "sha256": "87a069a02237e59483ca968976b2b96c65b3ea3e12a5eaae8b8d49041d020b64",
+      "shape": [
+        1,
+        1,
+        37,
+        24
+      ],
+      "dtype": "float32"
+    },
+    "b1_vertexCoordinates": {
+      "sha256": "2b93e68f554223ef25854cfc6fad79a93a0beceb440de63b49130254d2a4750c",
+      "shape": [
+        1,
+        2,
+        38,
+        25
+      ],
+      "dtype": "float32"
+    },
+    "b1_transform": {
+      "sha256": "ed9e2731298a85b1dc3e96bf4fdb7c0f0874ef2ef6c9bc772bc75ce443810f35",
+      "shape": [
+        1,
+        37,
+        24,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b1_faceTransform": {
+      "sha256": "5c618dd60ab45effc125ad13dc46236f2d65babc080355a75cd3623af9e441ce",
+      "shape": [
+        1,
+        2,
+        38,
+        25,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b1_boundary2_velocity": {
+      "sha256": "bd2de15254be7d0406e171e7255504a59d6fa5b7d008b3199ee69f4d7fc98922",
+      "shape": [
+        1,
+        2,
+        1,
+        24
+      ],
+      "dtype": "float32"
+    },
+    "b1_boundary2_transform": {
+      "sha256": "ed94c445d4b41ad0a924c9443e0905ad15bdea7b9e07a4d4ce08f22ec86cd12d",
+      "shape": [
+        1,
+        1,
+        24,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b1_boundary3_velocity": {
+      "sha256": "44f6d0c2736f6c5f490acd20bd8268042d9ad5f42a7faa95285116dd8bd9e786",
+      "shape": [
+        1,
+        2
+      ],
+      "dtype": "float32"
+    },
+    "b1_boundary3_transform": {
+      "sha256": "d6c094349154a4d70bdd1d958b72ac06b93fa3a2cab9d476ad41fac4f7b901dc",
+      "shape": [
+        1,
+        1,
+        24,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b2_velocity": {
+      "sha256": "20c7da9184ea3aaf6d2059f7ee990abb41367f026810b4a47b54fffa1a8438c6",
+      "shape": [
+        1,
+        2,
+        24,
+        37
+      ],
+      "dtype": "float32"
+    },
+    "b2_pressure": {
+      "sha256": "9fe0c43d8429d66b688d945dc247c7b0c14e0e2b600bf9f91af9edd39db32ad5",
+      "shape": [
+        1,
+        1,
+        24,
+        37
+      ],
+      "dtype": "float32"
+    },
+    "b2_vertexCoordinates": {
+      "sha256": "d379b98a82fd94852bbe16afecace529ba763fb807ee85e97fc8029bfb9ccfc1",
+      "shape": [
+        1,
+        2,
+        25,
+        38
+      ],
+      "dtype": "float32"
+    },
+    "b2_transform": {
+      "sha256": "478b0593a4295c5b8ae74a0f628bf5d7b7a59872b7ede9ada20d90a920cd88c5",
+      "shape": [
+        1,
+        24,
+        37,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b2_faceTransform": {
+      "sha256": "ed9ee4dae8905c2d1b4c9d9efb2ed012c75f011556a20560d6a11cc96352562a",
+      "shape": [
+        1,
+        2,
+        25,
+        38,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b2_boundary0_velocity": {
+      "sha256": "39b03afe0c14b57bd2134d2e559376574c8978741f50b303b96203c744542130",
+      "shape": [
+        1,
+        2,
+        24,
+        1
+      ],
+      "dtype": "float32"
+    },
+    "b2_boundary0_transform": {
+      "sha256": "f4d4ad412f3e8dd9ac1b7d7b8858e9109b46c766bb9d3ee734526d28cb570016",
+      "shape": [
+        1,
+        24,
+        1,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b3_velocity": {
+      "sha256": "c4c46fa166b6c19cdf63a6ec6ebf937d91a2ecc75ce5c4cff5e986550cfda90f",
+      "shape": [
+        1,
+        2,
+        37,
+        24
+      ],
+      "dtype": "float32"
+    },
+    "b3_pressure": {
+      "sha256": "5426226a744f5771446d645d8f57a77a652c075b5394f5afbe43a9b26da4e54c",
+      "shape": [
+        1,
+        1,
+        37,
+        24
+      ],
+      "dtype": "float32"
+    },
+    "b3_vertexCoordinates": {
+      "sha256": "eea6f07ed08a7bbcd482c91440787415ac14056a84d57a213973172add79437e",
+      "shape": [
+        1,
+        2,
+        38,
+        25
+      ],
+      "dtype": "float32"
+    },
+    "b3_transform": {
+      "sha256": "f2f440a0cc5093bee887ad919dc8ff7d664c70ba085439c643126e19ccd46086",
+      "shape": [
+        1,
+        37,
+        24,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b3_faceTransform": {
+      "sha256": "c84c4d14df967b1bccd9a24af0f169ab7684db2f188613dc7b4b5252da26b589",
+      "shape": [
+        1,
+        2,
+        38,
+        25,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b3_boundary2_velocity": {
+      "sha256": "44f6d0c2736f6c5f490acd20bd8268042d9ad5f42a7faa95285116dd8bd9e786",
+      "shape": [
+        1,
+        2
+      ],
+      "dtype": "float32"
+    },
+    "b3_boundary2_transform": {
+      "sha256": "a1adc03efeb9156a79940f504023025768f77bbd0e351e180a1102cafb82b958",
+      "shape": [
+        1,
+        1,
+        24,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b3_boundary3_velocity": {
+      "sha256": "59236e0fccc0785b568afd9c136e29d921f14f22a2a31e8065cb141328916f3f",
+      "shape": [
+        1,
+        2,
+        1,
+        24
+      ],
+      "dtype": "float32"
+    },
+    "b3_boundary3_transform": {
+      "sha256": "71413b114ddd0bba1c5c343112eec3bae737413d17563caff0d21f19a1ba72c0",
+      "shape": [
+        1,
+        1,
+        24,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b4_velocity": {
+      "sha256": "297931321b2fda2f51155fbc07ae805ac1dcb5936f7c7dfc331d41b8ea36b498",
+      "shape": [
+        1,
+        2,
+        24,
+        445
+      ],
+      "dtype": "float32"
+    },
+    "b4_pressure": {
+      "sha256": "30689042ba6f9d33c9a211d6effb668eda189ee096e5afa98e24cb78f906f543",
+      "shape": [
+        1,
+        1,
+        24,
+        445
+      ],
+      "dtype": "float32"
+    },
+    "b4_vertexCoordinates": {
+      "sha256": "9aecd8881a44e6ccbbbc94ab7e7e47f6b801e7281d1dedca033420c4556fe816",
+      "shape": [
+        1,
+        2,
+        25,
+        446
+      ],
+      "dtype": "float32"
+    },
+    "b4_transform": {
+      "sha256": "8c0c9af112cb012c44fe37c1eb2360fe6991098116237debd562b51a2b4fb573",
+      "shape": [
+        1,
+        24,
+        445,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b4_faceTransform": {
+      "sha256": "73e2c46f5f6b8b362f3ebdc13af64fa25d6585a5d0f1a4c887ef4e2227e19109",
+      "shape": [
+        1,
+        2,
+        25,
+        446,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b4_boundary1_velocity": {
+      "sha256": "d4fd2326a24825ed4fcf4da4185ac1481388be5b90b3899e63d401ded63408a8",
+      "shape": [
+        1,
+        2,
+        24,
+        1
+      ],
+      "dtype": "float32"
+    },
+    "b4_boundary1_transform": {
+      "sha256": "aca8451b03d542acbbd46afa70a57099ea6c21c362cfcab9c70f5efa2c3d62b2",
+      "shape": [
+        1,
+        24,
+        1,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b4_boundary2_velocity": {
+      "sha256": "44f6d0c2736f6c5f490acd20bd8268042d9ad5f42a7faa95285116dd8bd9e786",
+      "shape": [
+        1,
+        2
+      ],
+      "dtype": "float32"
+    },
+    "b4_boundary2_transform": {
+      "sha256": "710d0e7d6dfda9fb145cde8cb1be649621e1e590c8bddd09f751de42cd6082fd",
+      "shape": [
+        1,
+        1,
+        445,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "b4_boundary3_velocity": {
+      "sha256": "44f6d0c2736f6c5f490acd20bd8268042d9ad5f42a7faa95285116dd8bd9e786",
+      "shape": [
+        1,
+        2
+      ],
+      "dtype": "float32"
+    },
+    "b4_boundary3_transform": {
+      "sha256": "c95fc24795e565b428545b2bf5cb9399619e81aa25397e95843084ed00c66945",
+      "shape": [
+        1,
+        1,
+        445,
+        9
+      ],
+      "dtype": "float32"
+    },
+    "domain_velocityRHS": {
+      "sha256": "4ca67dda10b46d74150f52f83b7bf7c7f702bc41a92df034d3978292de287d2d",
+      "shape": [
+        28464
+      ],
+      "dtype": "float32"
+    },
+    "domain_velocityResult": {
+      "sha256": "93cc464621da9af4bfe6712197f623dc179e3c3bb8dd0be3d344e8d5686967e1",
+      "shape": [
+        28464
+      ],
+      "dtype": "float32"
+    },
+    "domain_pressureRHS": {
+      "sha256": "7622b861659dbb3a354dffe7f1a04b5690bd9db355749a244c0a9b1d4675cdfa",
+      "shape": [
+        28464
+      ],
+      "dtype": "float32"
+    },
+    "domain_pressureRHSdiv": {
+      "sha256": "bae1b9e54c9f51badd970cea56e28a9ccd55eb11e948ca7145aca49c7afcaba5",
+      "shape": [
+        14232
+      ],
+      "dtype": "float32"
+    },
+    "domain_pressureResult": {
+      "sha256": "b2f6cbfae8e6d60ae4869348fd9b7780d1cf93d3ec371dc9cfba29d66d267285",
+      "shape": [
+        14232
+      ],
+      "dtype": "float32"
+    },
+    "memory": {
+      "sha256": "c6b3b810a7733eaeb4cf7e7031d18d5345bb24e5cca12ed38de489b28f7ad5dd",
+      "shape": [
+        1
+      ],
+      "dtype": "float32"
+    }
+  },
+  "inventory": {
+    "b0_viscosity": "unavailable_or_unallocated",
+    "b0_boundary0_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b0_boundary0_type": "BoundaryType.FIXED",
+    "b0_boundary1_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b0_boundary1_type": "BoundaryType.FIXED",
+    "b0_boundary2_velocity": "unavailable_or_unallocated",
+    "b0_boundary2_velocityType": "unavailable_or_unallocated",
+    "b0_boundary2_transform": "unavailable_or_unallocated",
+    "b0_boundary2_type": "BoundaryType.CONNECTED",
+    "b0_boundary3_velocity": "unavailable_or_unallocated",
+    "b0_boundary3_velocityType": "unavailable_or_unallocated",
+    "b0_boundary3_transform": "unavailable_or_unallocated",
+    "b0_boundary3_type": "BoundaryType.CONNECTED",
+    "b1_viscosity": "unavailable_or_unallocated",
+    "b1_boundary0_velocity": "unavailable_or_unallocated",
+    "b1_boundary0_velocityType": "unavailable_or_unallocated",
+    "b1_boundary0_transform": "unavailable_or_unallocated",
+    "b1_boundary0_type": "BoundaryType.CONNECTED",
+    "b1_boundary1_velocity": "unavailable_or_unallocated",
+    "b1_boundary1_velocityType": "unavailable_or_unallocated",
+    "b1_boundary1_transform": "unavailable_or_unallocated",
+    "b1_boundary1_type": "BoundaryType.CONNECTED",
+    "b1_boundary2_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b1_boundary2_type": "BoundaryType.FIXED",
+    "b1_boundary3_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b1_boundary3_type": "BoundaryType.FIXED",
+    "b2_viscosity": "unavailable_or_unallocated",
+    "b2_boundary0_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b2_boundary0_type": "BoundaryType.FIXED",
+    "b2_boundary1_velocity": "unavailable_or_unallocated",
+    "b2_boundary1_velocityType": "unavailable_or_unallocated",
+    "b2_boundary1_transform": "unavailable_or_unallocated",
+    "b2_boundary1_type": "BoundaryType.CONNECTED",
+    "b2_boundary2_velocity": "unavailable_or_unallocated",
+    "b2_boundary2_velocityType": "unavailable_or_unallocated",
+    "b2_boundary2_transform": "unavailable_or_unallocated",
+    "b2_boundary2_type": "BoundaryType.CONNECTED",
+    "b2_boundary3_velocity": "unavailable_or_unallocated",
+    "b2_boundary3_velocityType": "unavailable_or_unallocated",
+    "b2_boundary3_transform": "unavailable_or_unallocated",
+    "b2_boundary3_type": "BoundaryType.CONNECTED",
+    "b3_viscosity": "unavailable_or_unallocated",
+    "b3_boundary0_velocity": "unavailable_or_unallocated",
+    "b3_boundary0_velocityType": "unavailable_or_unallocated",
+    "b3_boundary0_transform": "unavailable_or_unallocated",
+    "b3_boundary0_type": "BoundaryType.CONNECTED",
+    "b3_boundary1_velocity": "unavailable_or_unallocated",
+    "b3_boundary1_velocityType": "unavailable_or_unallocated",
+    "b3_boundary1_transform": "unavailable_or_unallocated",
+    "b3_boundary1_type": "BoundaryType.CONNECTED",
+    "b3_boundary2_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b3_boundary2_type": "BoundaryType.FIXED",
+    "b3_boundary3_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b3_boundary3_type": "BoundaryType.FIXED",
+    "b4_viscosity": "unavailable_or_unallocated",
+    "b4_boundary0_velocity": "unavailable_or_unallocated",
+    "b4_boundary0_velocityType": "unavailable_or_unallocated",
+    "b4_boundary0_transform": "unavailable_or_unallocated",
+    "b4_boundary0_type": "BoundaryType.CONNECTED",
+    "b4_boundary1_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b4_boundary1_type": "BoundaryType.FIXED",
+    "b4_boundary2_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b4_boundary2_type": "BoundaryType.FIXED",
+    "b4_boundary3_velocityType": "BoundaryConditionType.DIRICHLET",
+    "b4_boundary3_type": "BoundaryType.FIXED",
+    "not_captured": "Domain C/A/P sparse system storage, packed pointer tensors, hidden C++ caches and unexposed flux-history buffers; no full-state replay claim"
+  },
+  "full_state_identity": "UNRESOLVED: hidden C++/solver caches and unexposed flux-history buffers are not certified"
+}

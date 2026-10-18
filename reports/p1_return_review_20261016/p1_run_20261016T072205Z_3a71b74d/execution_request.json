@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/tmp/fgrl-p1-20261016/run_p1.py",
+    "--repo",
+    "/nfs4/jhkim/repos/Fluidgym-RL",
+    "--execute"
+  ],
+  "script_sha256": "027a0271bc3f91a37c73c4a186240cc63011499e949dbea2e3976651863824a3",
+  "expected_sha256": "68a94923fdf7ea85c6787a382d7cef4461b88a6c0bd4e486167e1835a6518589",
+  "started_utc": "2026-10-16T07:22:05.431965+00:00",
+  "B_budget": 16,
+  "C_budget": 1600
+}

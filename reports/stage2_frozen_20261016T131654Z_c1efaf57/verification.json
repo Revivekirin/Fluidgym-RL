@@ -1,0 +1,44 @@
+{
+  "execution_status": "failed",
+  "classification": "UNRESOLVED complete acceptance; see exact failure status",
+  "maximum_controls": 960,
+  "watchdog_seconds": 2700,
+  "automatic_retries": 0,
+  "weight_checks": {
+    "e0_p0_S0": {
+      "expected": "527326aff25cc67106e0297c71aee13b249d076486dcd2a35462732f1060926d",
+      "actual": "527326aff25cc67106e0297c71aee13b249d076486dcd2a35462732f1060926d"
+    },
+    "e0_p0_S1": {
+      "expected": "527326aff25cc67106e0297c71aee13b249d076486dcd2a35462732f1060926d",
+      "actual": "527326aff25cc67106e0297c71aee13b249d076486dcd2a35462732f1060926d"
+    },
+    "e0_p0_S2": {
+      "expected": "527326aff25cc67106e0297c71aee13b249d076486dcd2a35462732f1060926d",
+      "actual": "527326aff25cc67106e0297c71aee13b249d076486dcd2a35462732f1060926d"
+    }
+  },
+  "prefix_gate_required_pairs": 4,
+  "stage1_gate": {
+    "status": "VERIFIED",
+    "path": "/nfs4/jhkim/repos/Fluidgym-RL/reports/stage1_pilot_20261016T124327Z_f587f185",
+    "files_verified": 784,
+    "manifest_sha256": "2dd881c982b84beee73af9d67752c04b92e10f7ffb18723bc70eca40af38d621"
+  },
+  "cost": {
+    "attempted_controls": 163,
+    "completed_controls": 163,
+    "runs_started": 3,
+    "runs_completed": 2,
+    "control_outer_calls": 4075,
+    "reset_outer_calls": 63,
+    "control_accepted_increments": 4075,
+    "reset_accepted_increments": 63,
+    "initial_counter_offsets": 3,
+    "observed_solver_entries": 4138,
+    "solver_failures": 0,
+    "optimizer_updates": 0,
+    "worker_wall_seconds": 195.12821842357516
+  },
+  "model_error_history_claims": "UNRESOLVED; not measured by this pilot"
+}

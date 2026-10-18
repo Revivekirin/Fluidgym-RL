@@ -1,0 +1,282 @@
+[
+  {
+    "episode": 0,
+    "seed": 0,
+    "rng_after_reset": {
+      "python": "58ae6fb433941c12f62693dbc475e5d07ed8e961a2ee47986acad525f9defd02",
+      "numpy": "f6190a4ba0e5ae87642cfef611cbc82e08c7c6038ee4c2b69c7495b394f3f24e",
+      "torch_cpu": "1ccf17250133dec5e96478acd63e13d728d0dbbabb30389415a302c6f872f81f",
+      "torch_cuda": [
+        "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "58ae6fb433941c12f62693dbc475e5d07ed8e961a2ee47986acad525f9defd02",
+      "numpy": "317c365e6e2007c415439221256308c7d107f9e5055e0dc96a00ce48678dd743",
+      "torch_cpu": "1ccf17250133dec5e96478acd63e13d728d0dbbabb30389415a302c6f872f81f",
+      "torch_cuda": [
+        "fceca91ced5896612963ef2d264e256017f58d8a46bad52d7827dedd41e17cc9"
+      ]
+    }
+  },
+  {
+    "episode": 1,
+    "seed": 1,
+    "rng_after_reset": {
+      "python": "95d9970691287f085063e90cc11c16fa228ad3243dc9fe01e2b9b865a290dec5",
+      "numpy": "16e1cf30947eea5acae1b7828c22c2c94932a643de6fe99020501156f3c50674",
+      "torch_cpu": "f5defda135ec2e0d1513e6979390f58397d31a904d5f6540f8b88ae64d1decc1",
+      "torch_cuda": [
+        "4cbbd8ca5215b8d161aec181a74b694f4e24b001d5b081dc0030ed797a8973e0"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "95d9970691287f085063e90cc11c16fa228ad3243dc9fe01e2b9b865a290dec5",
+      "numpy": "935d8676489262574d5dcf88caf528e50a33d7a517d6a86dc3bbbc7f7161eee2",
+      "torch_cpu": "f5defda135ec2e0d1513e6979390f58397d31a904d5f6540f8b88ae64d1decc1",
+      "torch_cuda": [
+        "f9940922966b85e833e87cfc958638758bf0ff77e678322fc7a374945f8b869e"
+      ]
+    }
+  },
+  {
+    "episode": 2,
+    "seed": 2,
+    "rng_after_reset": {
+      "python": "b5c68ef98b04b8e566426cdb872faf999c435477bc69ca33b36aee76fcd7d935",
+      "numpy": "deea41acc3ff9a6ebfcf31166d89e73ce563bb2794c68e55489bffe5a399094a",
+      "torch_cpu": "0f9cd7b642a3f8f641c5e992f17138b2d094db4d56cc2329b3be2c794ddc79ad",
+      "torch_cuda": [
+        "b1535c7783ea8829b6b0cf67704539798b4d16c39bf0bfe09494c5d9f12eee30"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "b5c68ef98b04b8e566426cdb872faf999c435477bc69ca33b36aee76fcd7d935",
+      "numpy": "b7970660b2d5fddad701f125d693c7c69d40b08bde6d77d2909f5fd9cb315212",
+      "torch_cpu": "0f9cd7b642a3f8f641c5e992f17138b2d094db4d56cc2329b3be2c794ddc79ad",
+      "torch_cuda": [
+        "9cbb8991d8d82d7153cbb1be2e83feb0ba1007cd572f835404099018bc15fda7"
+      ]
+    }
+  },
+  {
+    "episode": 3,
+    "seed": 3,
+    "rng_after_reset": {
+      "python": "fe449143f19929bd24f9bb278573ab9baea7fd7506ca1d99af4b380fcdae940b",
+      "numpy": "cfbe1f542b3f9711ac9fe5b6a9c3cda761b2901015edd9a7892e546369b5469c",
+      "torch_cpu": "76fe321e2dc1dfdec62a274bcedbeea2727be2e2972f97e728e07e0345c21ede",
+      "torch_cuda": [
+        "59d5966c96af7ecad5c9d2918d6582d102b2c67f6b765ea28ac24371ab4f93be"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "fe449143f19929bd24f9bb278573ab9baea7fd7506ca1d99af4b380fcdae940b",
+      "numpy": "08e29e477d3f2587878a96f4267dda991cf504e6e4fadf7ace666d296b84e2cb",
+      "torch_cpu": "76fe321e2dc1dfdec62a274bcedbeea2727be2e2972f97e728e07e0345c21ede",
+      "torch_cuda": [
+        "712cdbe274f660d1c2c44dd4215e50fe310d2063f2ff06f5cf3d2dee380634f0"
+      ]
+    }
+  },
+  {
+    "episode": 4,
+    "seed": 4,
+    "rng_after_reset": {
+      "python": "b5a24dbdd2fb6747e89e2b570edf3d6b4788f7e26102e5a58fa060c36fa9aa55",
+      "numpy": "82136fe82d544263823d1c8a230977109cfc77770cf2851bdcca542185775fe6",
+      "torch_cpu": "de87e86bf2a7b448b35cba75c461560b4b6aa93e7843008c930221dee4551e0f",
+      "torch_cuda": [
+        "6b6f14e6af2627186bf8a55e474dcf6ef3f6ce81af560da871ec51eb670171a9"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "b5a24dbdd2fb6747e89e2b570edf3d6b4788f7e26102e5a58fa060c36fa9aa55",
+      "numpy": "6eed3e0f14d341ff63c7dd0d7898ab86c9bb6209ea63bdd8d833c623876ffb0e",
+      "torch_cpu": "de87e86bf2a7b448b35cba75c461560b4b6aa93e7843008c930221dee4551e0f",
+      "torch_cuda": [
+        "4005c923385bde0c6a9dc3f50d01b9a25dc62619e9f7ff6c1d95aa687134d8f2"
+      ]
+    }
+  },
+  {
+    "episode": 5,
+    "seed": 5,
+    "rng_after_reset": {
+      "python": "1d33540456f072bdec7998ba831509e554481fa1b235f88d48972ce8312490c7",
+      "numpy": "96d74b180ecd01c0f5b34c7324c789476a6c1d51a26b801af20107e7b4166b6c",
+      "torch_cpu": "f4ef6f460154679cfe881f5d260e16f8ed904898fabc025c755a71e2692eb75c",
+      "torch_cuda": [
+        "966a28d35016032ee27b1860df4a9b16b6c007da76b2e4f94e7526e31c48959b"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "1d33540456f072bdec7998ba831509e554481fa1b235f88d48972ce8312490c7",
+      "numpy": "eb225b0b43923a309c06bb0c29e5d08e659b1c18dafbdf7069abddbb877a1a6f",
+      "torch_cpu": "f4ef6f460154679cfe881f5d260e16f8ed904898fabc025c755a71e2692eb75c",
+      "torch_cuda": [
+        "506cbba1ab0022feb0c04b38b706ecc57def5e2ea32d03f8b3cbc0b5cf0fd477"
+      ]
+    }
+  },
+  {
+    "episode": 6,
+    "seed": 6,
+    "rng_after_reset": {
+      "python": "40119b35d94263aedf49d13150131c0d2b475136cfef81c9b1e81f7afbb2caf8",
+      "numpy": "22ae435ee0393e0b9f50bbb2e94937163ca0da696c99233d3154cf6a3074331c",
+      "torch_cpu": "9e15eceb1ce9d2c2ffe7bcc8fa3155c1445def059cdd06b5429093164db849a7",
+      "torch_cuda": [
+        "5e9a5de4a59a7c3c9ba8846060ba77ab402e3088658aa705e1a64e796f6cd5cf"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "40119b35d94263aedf49d13150131c0d2b475136cfef81c9b1e81f7afbb2caf8",
+      "numpy": "fa09a712966a2637189c8291eebdcc190d575ccbea109cc7c9f43a424592da06",
+      "torch_cpu": "9e15eceb1ce9d2c2ffe7bcc8fa3155c1445def059cdd06b5429093164db849a7",
+      "torch_cuda": [
+        "fa117025d2c0048b21ee1db47238bd336de61005282f4cefc59429b065b18472"
+      ]
+    }
+  },
+  {
+    "episode": 7,
+    "seed": 7,
+    "rng_after_reset": {
+      "python": "c1693c705a34f033b08db87465a1cc70c293aabd85a464d191cfc33fb0d4f20c",
+      "numpy": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "torch_cpu": "daf9268b18e87b0267a6ad240c6093eb98fe6f03872986bd31a497ba5ea2371a",
+      "torch_cuda": [
+        "76108f84396dc2d72ce275fdb0e0ef37b229b2898bf5a31d576fea11a766a42b"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "c1693c705a34f033b08db87465a1cc70c293aabd85a464d191cfc33fb0d4f20c",
+      "numpy": "ec16511957d6cd84d35687d8fc3b4872367fcd9af4087590e4f8ced5d864b5f0",
+      "torch_cpu": "daf9268b18e87b0267a6ad240c6093eb98fe6f03872986bd31a497ba5ea2371a",
+      "torch_cuda": [
+        "03a5617c14441de4ab160910c7ab4e7b8cebbf2762db67a120343c7fd2aa9a86"
+      ]
+    }
+  },
+  {
+    "episode": 8,
+    "seed": 8,
+    "rng_after_reset": {
+      "python": "666b0d6c059df0ba177b6ab42bf4db5238d112ce6483b2ed6a75bca456d97514",
+      "numpy": "dcab1716ce025d167aa5d7edc53ea59d0d39003c1549e861536ebad885241444",
+      "torch_cpu": "f5bc3c574db9dc1e49dee6f3d77ea1914debd5135176a482f8df48d4ce3c7a62",
+      "torch_cuda": [
+        "85b724e3f6e2dd2648a696595eb637b234dcecc5cb770a5afbf0926341ebdfb4"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "666b0d6c059df0ba177b6ab42bf4db5238d112ce6483b2ed6a75bca456d97514",
+      "numpy": "68aee93456fb75a8487299e81d1e034d5f18f1591a67742cbde1c87566caf0a3",
+      "torch_cpu": "f5bc3c574db9dc1e49dee6f3d77ea1914debd5135176a482f8df48d4ce3c7a62",
+      "torch_cuda": [
+        "6a80c5b140284908f5e6d489d98fc0907b81d4b1675db981d49c35c0caf15939"
+      ]
+    }
+  },
+  {
+    "episode": 9,
+    "seed": 9,
+    "rng_after_reset": {
+      "python": "3a59f73a399da6b9e66a1a27b1112c843f456cc3d169cc1f72e264b71672bc49",
+      "numpy": "b678c876b2d4bcd25274feeaa65445f4f87f8641e69fee3ebf64a9f8972ea63d",
+      "torch_cpu": "10eeb496e28bee1ad2783148861fc25e1c0056e679c03f93a8c46d765d5e3697",
+      "torch_cuda": [
+        "d6370cab1c1a5afabb4e1b3d6e68a55fc8a8b6150d719d3f1e66c3fb4676c56c"
+      ]
+    },
+    "runtime_flags": {
+      "matmul_precision": "highest",
+      "deterministic_algorithms": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "tf32": false
+    },
+    "warm_start_note": "native t0=True on first action; previous mean ignored",
+    "rng_after_final_action": {
+      "python": "3a59f73a399da6b9e66a1a27b1112c843f456cc3d169cc1f72e264b71672bc49",
+      "numpy": "f100a4b5a92c4e4de4c642af1d89ceef8fd16718635766f70195a86f033283d1",
+      "torch_cpu": "10eeb496e28bee1ad2783148861fc25e1c0056e679c03f93a8c46d765d5e3697",
+      "torch_cuda": [
+        "6a73b86423660905e77be3d2c64058e20f199e9260e3ca8ad005777ff3887e3a"
+      ]
+    }
+  }
+]

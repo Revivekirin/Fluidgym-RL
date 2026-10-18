@@ -1,0 +1,24 @@
+{
+  "scope": "current-pinned-environment replication, not exact historical software replay",
+  "algorithm": "tdmpc2",
+  "checkpoint": {
+    "checkpoint": "results/tdmpc2_full/20261008T124249Z_4be46ae7/upstream/models/step_44000.pt",
+    "step": 44000,
+    "selection": "results/nominal_comparison/20261013T061228Z/tdmpc2/selection.json",
+    "historical": "results/nominal_comparison/20261013T061228Z/tdmpc2/test_best",
+    "training_run": "results/tdmpc2_full/20261008T124249Z_4be46ae7"
+  },
+  "checkpoint_sha256": "825ae5e1fed69dad532357a3326156acc65733cf926bb3ae5ab851f20f4cf3c3",
+  "selection_sha256": "552800ba3e89a85eeabd74ad93169e14ba96c49e80791f1471a0f6ca635240ce",
+  "frozen_model_hash": "48ef11645964ec94df7620cf7686fccf41abf159bd451a21a483ba31420fd59d",
+  "contract": {
+    "env_id": "CylinderJet2D-easy-v0",
+    "split": "test",
+    "n_episodes": 10,
+    "protocol": "seeded",
+    "base_seed": 0,
+    "flatten_observation": true,
+    "version": 1
+  },
+  "solver_failures": 0
+}

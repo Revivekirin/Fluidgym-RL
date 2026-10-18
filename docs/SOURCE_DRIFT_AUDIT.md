@@ -1,5 +1,8 @@
 # P0 Source drift audit — 2026-10-16
 
+> 최신 상태(2026-10-16): 사용자 실행 P1-B/A/C가 모두 완료되었으며 반환 자료의 로컬 재검증 222개가 통과했다. 아래 과거 NOT RUN/BLOCKED 문구는 실행 전 상태다. 현재 판정은 [P0/P1 최종 평가](../reports/p1_return_review_20261016/P0_P1_FINAL_ASSESSMENT.md)를 참조한다. Current-pinned replication이며 historical binary equivalence는 미검증이다.
+
+
 VERIFIED는 로컬 소스/기록 확인, INFERRED는 조건부 해석, UNRESOLVED는 실행 증거 부재를 뜻한다. 사용자 지시에 따라 원격 실행은 수행하지 않았다. 새 CFD/학습/파일 교체 없음.
 
 ## 정확한 소스 확보

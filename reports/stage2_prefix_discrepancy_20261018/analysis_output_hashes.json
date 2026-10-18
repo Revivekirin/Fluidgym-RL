@@ -1,0 +1,16 @@
+{
+  "STAGE2_PREFIX_DISCREPANCY_ANALYSIS.md": "407e25683c9dee2967309cafc208ab1b546c171f3f8ef0cd31dcf0bf32e87d2b",
+  "action_planner_chronology.json": "69e4f9f60f841bc8b91375aa19d01f5d4c4d363b26762066d4141b8331280841",
+  "analyze_saved.py": "f0f20846eee38ed8d43fa4dad9f1a8cb4200b35450367619796e2067b769c3f3",
+  "comparison.csv": "8f0cbe875dee2b6d24ab8a22c8bf0e66f15980529d678dcd0fe548d93ba975bd",
+  "comparison.json": "436cda74ec370e01eec6098fe5adba510ae8236cabfcd2b94229876720d969fb",
+  "inventory.json": "3e6cea3802111c90fdceb764a4eaa872363f8ad9eb4d7e2403cb0f1953b482b4",
+  "outer_actuation_comparison.json": "d2e3841772ce86f8423993efa80205f50f2a6bf82c545f064ed393d77da32e2c",
+  "source_hashes.json": "d0089d517362c4cefeec14dbb02b3c0b62b003b01911ffda59ec8cba33282e7b",
+  "source_hypotheses.csv": "95cdd4b8f78035f7e2204dd6a15fcd8ca5a801862a00db8cbe2072922e332653",
+  "source_hypotheses.json": "5cb38c713df5d3fc6d5ae7ef01d2ef267ba7d8294b2180599c17576b1cd72c77",
+  "source_pin_verification.json": "9d52dbbf47096cd57211aac1b3b467ac3966f3f628e0c1d66cb9d62264af6ecf",
+  "spatial_localization.json": "e241e684c8825e18b62e3b45fd1de4559956748f0477ecd5f0a85877e87be80c",
+  "verification.json": "d554caab1eeeac08d7edf3b9638b934b7f0fb96e0b44d35c05d1834be1611bc0",
+  "write_report.py": "1234f40da7f86298b692c90be415d021c80848406e3a2c6dfb78a7c4c5ead0a4"
+}

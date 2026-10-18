@@ -1,5 +1,8 @@
 # Physics–RL compatibility — 2026-10-16
 
+> 최신 상태(2026-10-16): 사용자 실행 P1-B/A/C가 모두 완료되었으며 반환 자료의 로컬 재검증 222개가 통과했다. 아래 과거 NOT RUN/BLOCKED 문구는 실행 전 상태다. 현재 판정은 [P0/P1 최종 평가](../reports/p1_return_review_20261016/P0_P1_FINAL_ASSESSMENT.md)를 참조한다. Current-pinned replication이며 historical binary equivalence는 미검증이다.
+
+
 PHYSICS_TO_RL_HANDOFF.md를 읽고 기록된 RL contract와 대조했다. full physical equivalence는 UNRESOLVED다.
 
 | Handoff 조건 | 상태 | 근거 / 제한 |

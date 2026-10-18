@@ -1,0 +1,283 @@
+# P0_P1_FINAL_ASSESSMENT
+
+Overall execution: passed.
+
+Completed control steps from passed stages: P1-B=16, P1-C=1600. For failures, cost.json is authoritative for partial/attempted steps. Reset/internal solver calls are separate.
+
+VERIFIED: no checkpoint selection, training, physics/source replacement or upstream algorithm changes requested by this runner. Protected bytes rechecked per worker and after the run.
+
+UNRESOLVED: exact historical software replay. Current pinned source differs from historical wheel; numerical repeatability is not physical accuracy.
+
+Priorities after reviewing the evidence: resolve any failed gate first; inspect per-episode current-minus-historical differences; quantify the stated sampling and IC limits before nominal model/planning interpretation. No broader transition logger, new metric, physical shift or representation analysis was implemented.
+
+Stage statuses:
+```json
+{
+  "B": {
+    "status": "passed",
+    "control_steps": 16,
+    "solver_calls_including_resets": 484,
+    "tolerance": {
+      "atol": 1e-05,
+      "rtol": 1e-05
+    },
+    "trials": 4,
+    "scope": "numerical reproducibility on one seeded randomized TEST IC, not physical accuracy",
+    "measured_actuator": "runtime private smoothing memory and actual _apply_action argument; no independent boundary flux measurement",
+    "wall_seconds": 24.973549526184797,
+    "peak_torch_cuda_allocated_bytes": 26510336
+  },
+  "A_tdmpc": {
+    "status": "passed",
+    "algorithm": "tdmpc",
+    "control_steps": 0,
+    "planner_calls": 22,
+    "observations": 2,
+    "frozen_model_hash": "1906aa73b83aeb86c3ec6eb626640a0ec49b099da734043c43113297c2677fa4",
+    "contrasts": [
+      {
+        "observation": 0,
+        "contrast": "same_rng_reset_state",
+        "required_to_pass": true,
+        "shape_equal": true,
+        "max_abs": 0.0,
+        "allclose": true,
+        "bitwise_equal": true
+      },
+      {
+        "observation": 0,
+        "contrast": "changed_rng_reset_state",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.06956702470779419,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 0,
+        "contrast": "same_rng_same_warm",
+        "required_to_pass": true,
+        "shape_equal": true,
+        "max_abs": 0.0,
+        "allclose": true,
+        "bitwise_equal": true
+      },
+      {
+        "observation": 0,
+        "contrast": "changed_rng_same_warm",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.028591692447662354,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 0,
+        "contrast": "same_rng_changed_valid_warm",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.0003319978713989258,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 1,
+        "contrast": "same_rng_reset_state",
+        "required_to_pass": true,
+        "shape_equal": true,
+        "max_abs": 0.0,
+        "allclose": true,
+        "bitwise_equal": true
+      },
+      {
+        "observation": 1,
+        "contrast": "changed_rng_reset_state",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.0526452362537384,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 1,
+        "contrast": "same_rng_same_warm",
+        "required_to_pass": true,
+        "shape_equal": true,
+        "max_abs": 0.0,
+        "allclose": true,
+        "bitwise_equal": true
+      },
+      {
+        "observation": 1,
+        "contrast": "changed_rng_same_warm",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.04451659321784973,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 1,
+        "contrast": "same_rng_changed_valid_warm",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.051204293966293335,
+        "allclose": false,
+        "bitwise_equal": false
+      }
+    ],
+    "rng_sources": [
+      "Python global",
+      "NumPy legacy global",
+      "Torch CPU",
+      "Torch CUDA all devices"
+    ],
+    "limitations": [
+      "Gaussian candidates/prior/Q subsampling/elite selection share RNG streams; not independently varied",
+      "Compiled planner intermediate candidates not exposed; no hooks or graph changes used",
+      "Different RNG or memory need not change the selected action",
+      "Finite outputs and repeatability do not establish prediction accuracy"
+    ],
+    "wall_seconds": 10.14728597458452,
+    "peak_torch_cuda_allocated_bytes": 25067520
+  },
+  "A_tdmpc2": {
+    "status": "passed",
+    "algorithm": "tdmpc2",
+    "control_steps": 0,
+    "planner_calls": 22,
+    "observations": 2,
+    "frozen_model_hash": "48ef11645964ec94df7620cf7686fccf41abf159bd451a21a483ba31420fd59d",
+    "contrasts": [
+      {
+        "observation": 0,
+        "contrast": "same_rng_reset_state",
+        "required_to_pass": true,
+        "shape_equal": true,
+        "max_abs": 0.0,
+        "allclose": true,
+        "bitwise_equal": true
+      },
+      {
+        "observation": 0,
+        "contrast": "changed_rng_reset_state",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.07983773946762085,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 0,
+        "contrast": "same_rng_same_warm",
+        "required_to_pass": true,
+        "shape_equal": true,
+        "max_abs": 0.0,
+        "allclose": true,
+        "bitwise_equal": true
+      },
+      {
+        "observation": 0,
+        "contrast": "changed_rng_same_warm",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.07039332389831543,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 0,
+        "contrast": "same_rng_changed_valid_warm",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.05613356828689575,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 1,
+        "contrast": "same_rng_reset_state",
+        "required_to_pass": true,
+        "shape_equal": true,
+        "max_abs": 0.0,
+        "allclose": true,
+        "bitwise_equal": true
+      },
+      {
+        "observation": 1,
+        "contrast": "changed_rng_reset_state",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.0341930091381073,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 1,
+        "contrast": "same_rng_same_warm",
+        "required_to_pass": true,
+        "shape_equal": true,
+        "max_abs": 0.0,
+        "allclose": true,
+        "bitwise_equal": true
+      },
+      {
+        "observation": 1,
+        "contrast": "changed_rng_same_warm",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.003296464681625366,
+        "allclose": false,
+        "bitwise_equal": false
+      },
+      {
+        "observation": 1,
+        "contrast": "same_rng_changed_valid_warm",
+        "required_to_pass": false,
+        "shape_equal": true,
+        "max_abs": 0.019628018140792847,
+        "allclose": false,
+        "bitwise_equal": false
+      }
+    ],
+    "rng_sources": [
+      "Python global",
+      "NumPy legacy global",
+      "Torch CPU",
+      "Torch CUDA all devices"
+    ],
+    "limitations": [
+      "Gaussian candidates/prior/Q subsampling/elite selection share RNG streams; not independently varied",
+      "Compiled planner intermediate candidates not exposed; no hooks or graph changes used",
+      "Different RNG or memory need not change the selected action",
+      "Finite outputs and repeatability do not establish prediction accuracy"
+    ],
+    "wall_seconds": 25.859337966889143,
+    "peak_torch_cuda_allocated_bytes": 66411520
+  },
+  "C_tdmpc": {
+    "status": "passed",
+    "algorithm": "tdmpc",
+    "control_steps": 800,
+    "attempted_control_steps": 800,
+    "solver_calls_including_resets": 20199,
+    "solver_failures": 0,
+    "mean_reward_per_step": 0.037778737819753584,
+    "interpretation": "contract/restoration/completion passed; reward difference is not a failure or robustness result",
+    "wall_seconds": 662.2734932536259,
+    "peak_torch_cuda_allocated_bytes": 30677504
+  },
+  "C_tdmpc2": {
+    "status": "passed",
+    "algorithm": "tdmpc2",
+    "control_steps": 800,
+    "attempted_control_steps": 800,
+    "solver_calls_including_resets": 20199,
+    "solver_failures": 0,
+    "mean_reward_per_step": -0.07674576454097407,
+    "interpretation": "contract/restoration/completion passed; reward difference is not a failure or robustness result",
+    "wall_seconds": 661.0049646273255,
+    "peak_torch_cuda_allocated_bytes": 66411520
+  }
+}
+```

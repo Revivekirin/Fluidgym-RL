@@ -1,0 +1,28 @@
+{
+  "rl_allowed": {
+    "src/fluidgym_rl/envs.py": [
+      "2b457d8ccfedffc9cc8e5bd2353c96dd4a0e2b8beb97c8896586dc882155ff6b"
+    ],
+    "src/fluidgym_rl/tdmpc/environment.py": [
+      "1520948385168aabd2c06e4403d1544da77412b159a71725accf83021197e257",
+      "ba7cd541923609193588b0ae74c1f0794833e07e7fee0e4f7682258709616e87"
+    ],
+    "src/fluidgym_rl/environment_contract.py": [
+      "f59146e7fe4117a85ea80443a310d036574414b3d1535ad50d8e503d847c1bda"
+    ],
+    "src/fluidgym_rl/device.py": [
+      "56f446a5b26bc6154c705c114ca389bd0d0db770a2db50ce12809d06a336ab6a"
+    ],
+    "src/fluidgym_rl/evalcontract.py": [
+      "37c2cef2bdceec2e88ace9215fb740707462bef8be4875f9f6b8d768095ceaa1"
+    ],
+    "src/fluidgym_rl/comparison/evaluate.py": [
+      "bf25d677d242e687de69528cc72c1c953e96f200d933b93f5fc95229cc8ff0c6"
+    ]
+  },
+  "cpp_sources": {
+    "simulation/extensions/PISOtorch.cpp": "a05c4f88d932d00cf824f9ded1bbf5f88ea320d6e8a919160af400f71387c0c1",
+    "simulation/extensions/domain_structs.cpp": "1534085d9ace915dc3c6eebb2ff30ebfb6519c1fb68f3184b19a917149f79f6c",
+    "simulation/extensions/PISO_multiblock_cuda.h": "32ad614180c904324107faa6c37daada397068d3da814fb1a9ea78468a267c52"
+  }
+}

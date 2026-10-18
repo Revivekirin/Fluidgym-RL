@@ -1,0 +1,360 @@
+{
+  "parameters": {
+    "task": "CylinderJet2D-easy-v0",
+    "modality": "state",
+    "action_repeat": 1,
+    "discount": 0.99,
+    "episode_length": 80,
+    "train_steps": 50000,
+    "iterations": 6,
+    "num_samples": 512,
+    "num_elites": 64,
+    "mixture_coef": 0.05,
+    "min_std": 0.05,
+    "temperature": 0.5,
+    "momentum": 0.1,
+    "batch_size": 512,
+    "max_buffer_size": 50000,
+    "horizon": 20,
+    "reward_coef": 0.5,
+    "value_coef": 0.1,
+    "consistency_coef": 2,
+    "rho": 0.5,
+    "kappa": 0.1,
+    "lr": 0.001,
+    "std_schedule": "linear(0.5,0.05,50000)",
+    "horizon_schedule": "linear(1,20,50000)",
+    "per_alpha": 0.6,
+    "per_beta": 0.4,
+    "grad_clip_norm": 10,
+    "seed_steps": 100,
+    "update_freq": 2,
+    "tau": 0.01,
+    "enc_dim": 256,
+    "mlp_dim": 512,
+    "latent_dim": 50,
+    "seed": 1,
+    "eval_freq": 4000,
+    "eval_episodes": 10,
+    "save_freq": 4000,
+    "device": "cuda:0",
+    "obs_shape": [
+      302
+    ],
+    "action_dim": 1
+  },
+  "environment_steps": 50000,
+  "planner_std": 0.05000900000000001,
+  "sha256": "1405b10e3601f987500d0c25575d64c7db85f4a7de6f9e6e5f1a724327239a0b",
+  "probe": [
+    [
+      -0.0392746701836586,
+      0.007717486005276442,
+      0.037557248026132584,
+      -0.03537638485431671,
+      -0.0403202548623085,
+      0.047679752111434937,
+      0.05787196755409241,
+      -0.030799994245171547,
+      -0.06786910444498062,
+      0.021602757275104523,
+      -0.023888612166047096,
+      0.03400617837905884,
+      0.06255125254392624,
+      -0.01767917163670063,
+      0.011050328612327576,
+      -0.0580810084939003,
+      -0.09653538465499878,
+      -0.0058397408574819565,
+      0.005421733483672142,
+      0.08896841108798981,
+      -0.060811445116996765,
+      -0.009959503076970577,
+      -0.044491253793239594,
+      -0.011419014073908329,
+      -0.0810769721865654,
+      0.025776293128728867,
+      -0.13648372888565063,
+      0.05637187510728836,
+      0.05846016854047775,
+      -0.04427805170416832,
+      0.04478303715586662,
+      -0.02356693521142006,
+      0.05363011732697487,
+      0.01580796390771866,
+      -0.05838920921087265,
+      -0.10868790000677109,
+      0.05843335762619972,
+      -0.05720677226781845,
+      -0.10533209145069122,
+      0.04504651203751564,
+      -0.008705602958798409,
+      0.013392183929681778,
+      0.013895435258746147,
+      0.01728665828704834,
+      0.10854168236255646,
+      0.059950269758701324,
+      0.15792644023895264,
+      -0.03865645080804825,
+      0.019103392958641052,
+      0.006273029372096062
+    ]
+  ],
+  "semantics": "inference only: online+target model weights; no optimizer/replay/RNG resume",
+  "provenance": {
+    "algorithm": "tdmpc",
+    "repository_sha": "be4478f494a5bc4d4f6de3550c28fa90d81b588f",
+    "repository_dirty": true,
+    "versions": {
+      "python": "3.12.15",
+      "torch": "2.9.1+cu126",
+      "cuda_runtime": "12.6",
+      "fluidgym": "0.1.2",
+      "gymnasium": "1.4.0",
+      "numpy": "2.5.3",
+      "wandb": "0.30.0"
+    },
+    "environment_contract": {
+      "observation": "FlattenObservation: velocity only, sensor-major [vx,vy], 151 sensors",
+      "normalization": "none",
+      "frame_stack": 1,
+      "actuator_state_augmented": false,
+      "partial_observation": "smoothed actuator memory is not observed",
+      "reward": "Cd_ref - mean_substep(Cd) - abs(mean_substep(Cl)); scale=1",
+      "control_timestep": 0.25,
+      "nominal_solver_dt": 0.01,
+      "adaptive_cfl": 0.8,
+      "smoothing": "upstream alpha=0.1 each solver step; no adapter changes",
+      "upstream_fluidgym_sha": "50071140b73a2a917fb96d33522a769f903f8c27",
+      "abs_lift": "mean over control steps of abs(control-interval mean Cl), not solver-substep mean abs Cl",
+      "termination": "unexpected physical termination rejected; horizon truncation bootstraps as upstream"
+    },
+    "seed": 1,
+    "parameter_provenance": {
+      "task": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Table 8"
+      },
+      "modality": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "action_repeat": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "discount": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "episode_length": {
+        "classification": "FluidGym-specific adaptation",
+        "source": "pinned environment contract / explicit harness choice; seed and evaluation cadence not exact reproduction claims"
+      },
+      "train_steps": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Table 8"
+      },
+      "iterations": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "num_samples": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "num_elites": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "mixture_coef": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "min_std": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "temperature": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "momentum": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "batch_size": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "max_buffer_size": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "horizon": {
+        "classification": "Unresolved",
+        "source": "Table 7 specifies planning schedule up to 20; original upstream uses one horizon for planning cap and fixed learner unroll. Set both to 20; independent learner horizon not reported."
+      },
+      "reward_coef": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "value_coef": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "consistency_coef": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "rho": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "kappa": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "lr": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "std_schedule": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "horizon_schedule": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "per_alpha": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "per_beta": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "grad_clip_norm": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "seed_steps": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "update_freq": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "tau": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "enc_dim": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "mlp_dim": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "latent_dim": {
+        "classification": "paper specified",
+        "source": "arXiv:2601.15015v2 Appendix D.2 Table 7"
+      },
+      "seed": {
+        "classification": "FluidGym-specific adaptation",
+        "source": "CLI override"
+      },
+      "eval_freq": {
+        "classification": "FluidGym-specific adaptation",
+        "source": "pinned environment contract / explicit harness choice; seed and evaluation cadence not exact reproduction claims"
+      },
+      "eval_episodes": {
+        "classification": "FluidGym-specific adaptation",
+        "source": "pinned environment contract / explicit harness choice; seed and evaluation cadence not exact reproduction claims"
+      },
+      "save_freq": {
+        "classification": "FluidGym-specific adaptation",
+        "source": "pinned environment contract / explicit harness choice; seed and evaluation cadence not exact reproduction claims"
+      },
+      "device": {
+        "classification": "FluidGym-specific adaptation",
+        "source": "CLI override"
+      },
+      "obs_shape": {
+        "classification": "FluidGym-specific adaptation",
+        "source": "pinned environment contract / explicit harness choice; seed and evaluation cadence not exact reproduction claims"
+      },
+      "action_dim": {
+        "classification": "FluidGym-specific adaptation",
+        "source": "pinned environment contract / explicit harness choice; seed and evaluation cadence not exact reproduction claims"
+      }
+    },
+    "evaluation_selection": "validation only; test evaluations require separate CLI invocation",
+    "run_id": "20261012T060719Z_full",
+    "mode": "full",
+    "tracking": {
+      "mode": "online",
+      "project": "fluidgym-rl",
+      "entity": null,
+      "group": "tdmpc-nominal-full",
+      "tags": [
+        "tdmpc",
+        "nominal",
+        "seed1"
+      ]
+    },
+    "requested_environment_steps": 50000,
+    "training_reset_protocol": "seed=train_seed+episode_index, randomize=True; train split",
+    "checkpoint_semantics": "inference only: online+target weights",
+    "local_source_hashes": {
+      "scripts/tdmpc_train.py": "d0555236c29dc59a8420ac1506619b3172cb6f3c9c2a1c3a9005c67de95c8069",
+      "src/fluidgym_rl/tdmpc/__init__.py": "5668fafbd0f697950c8b07262ca0bb6c3302eff1d4263a64d8d0af679b1d1d1b",
+      "src/fluidgym_rl/tdmpc/evaluation.py": "7d7bf4caabd4992d9682724078bcf589c6178461e2f9c47a2f6b0208ed486438",
+      "src/fluidgym_rl/tdmpc/runtime.py": "7240a86280e8e0a038b446f98d4a2929cd592f2de533eee7bed3d5858cc4ab89",
+      "src/fluidgym_rl/tdmpc/environment.py": "1520948385168aabd2c06e4403d1544da77412b159a71725accf83021197e257",
+      "src/fluidgym_rl/tdmpc/runner.py": "4fefd9cb6eb0e206da9ea1774527d47bd47fab56632cd6926d07f08a3aa81b05",
+      "src/fluidgym_rl/tdmpc/tracking.py": "95103a727f59106685a990cbd6baf3e88cfd68f5ca9cf1ad06746225f03302a7"
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3090",
+      "device": "cuda:0",
+      "capability": [
+        8,
+        6
+      ]
+    },
+    "upstream": {
+      "upstream_url": "https://github.com/nicklashansen/tdmpc",
+      "upstream_sha": "f4d85eca7419039b71bab2234ffc8aca378dd313",
+      "license": "MIT",
+      "patch_sha256": "ffc9aab87a54e7245c90a517a71102f967791b8bdb7951536635ed5a80c60aa6",
+      "source_hashes": {
+        "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/cfg.py": "5a98fc9b28029b7b09c389b960fa3ee493042ef6be92557814d766050cd9024b",
+        "src/env.py": "e41ff7dd8274ca8058403c5a5a003b04d89da7cca5ff1ddddb2a382c68ba05e5",
+        "src/logger.py": "cc88a1be1c122901eb8aa871456152d1a838a73a0e061161b111e5d1bfb6b05f",
+        "src/train.py": "031199d745b0cbb47b0f4b98dc08237728385aca78708cf922708423c0c4a1a1",
+        "src/algorithm/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/algorithm/helper.py": "2e5a9dcae30085b38d669b84c0575f6db0c9f4909fbae91e429713d0a009d051",
+        "src/algorithm/tdmpc.py": "1d6141df69f9cdad8e53178a86f9a6d5b09992230369bf973fd5cedd23630ca6"
+      },
+      "patched_hashes": {
+        "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/cfg.py": "5a98fc9b28029b7b09c389b960fa3ee493042ef6be92557814d766050cd9024b",
+        "src/env.py": "e41ff7dd8274ca8058403c5a5a003b04d89da7cca5ff1ddddb2a382c68ba05e5",
+        "src/logger.py": "cc88a1be1c122901eb8aa871456152d1a838a73a0e061161b111e5d1bfb6b05f",
+        "src/train.py": "031199d745b0cbb47b0f4b98dc08237728385aca78708cf922708423c0c4a1a1",
+        "src/algorithm/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/algorithm/helper.py": "43fb63f7427ec65754b07c0e74c2444581ebb3db0130a71db27337d677f171d9",
+        "src/algorithm/tdmpc.py": "532db5dc5f5c36217a1bec993f52aaa6b5c28895a758465f676a5184dc8d9f36"
+      }
+    },
+    "installed_environment_source_hashes": {
+      "fluidgym.wrappers.flatten_obs": "85b2d3640f11e18a29e1a60e9d8f86b500aa31556394d6655fb19ff9d670b0c4",
+      "fluidgym.envs.cylinder.cylinder_env_base": "a1435769b85a608bf5c805d509aff756eb0513e028b8181b5b02c8d9f77c3aef"
+    }
+  }
+}

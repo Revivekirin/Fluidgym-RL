@@ -1,0 +1,19 @@
+{
+  "classification": "VERIFIED local software preparation only",
+  "unchanged_reused_files": {
+    "adapter.py": true,
+    "frozen.py": true,
+    "stage1_support.py": true,
+    "p1_support.py": true,
+    "expected.json": true,
+    "source_gate.json": true,
+    "frozen_reference.json": true
+  },
+  "original_stage2_files_verified": 1349,
+  "prior_analysis_files_verified": 14,
+  "CFD_controls": 0,
+  "real_checkpoint_inference_calls": 0,
+  "training_updates": 0,
+  "plan_only_launch": "passed",
+  "remote_execution": "NOT RUN"
+}
