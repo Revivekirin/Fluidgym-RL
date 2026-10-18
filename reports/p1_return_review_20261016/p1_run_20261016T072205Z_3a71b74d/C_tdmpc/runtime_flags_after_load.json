@@ -1,7 +1,0 @@
-{
-  "matmul_precision": "highest",
-  "deterministic_algorithms": false,
-  "cudnn_benchmark": false,
-  "cudnn_deterministic": false,
-  "tf32": false
-}

@@ -1,5 +1,0 @@
-{
-  "status": "verified",
-  "checkpoint": "/Users/jihyekim/Desktop/Fluidgym-RL/results/tdmpc_full/20261012T060719Z_full/checkpoints/best.pt",
-  "check": "fresh-process inference probe"
-}

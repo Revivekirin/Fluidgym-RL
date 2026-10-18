@@ -1,8 +1,0 @@
-......s.......s.s....................s....s..........  [100%]
-=========================== short test summary info ============================
-SKIPPED [1] tests/test_tdmpc.py:97: remote_required: real FluidGym CUDA creation, CFD episode and CUDA aliases; run --mode validate then --mode smoke
-SKIPPED [1] tests/test_tdmpc2_factory.py:61: pinned TD-MPC2 checkout unavailable
-SKIPPED [1] tests/test_tdmpc2_meta.py:15: Torch and TensorDict required
-SKIPPED [1] tests/test_pilot.py:135: Hydra not installed
-SKIPPED [1] tests/test_pilot.py:97: pinned upstream checkout unavailable
-48 passed, 5 skipped, 18 subtests passed in 3.87s

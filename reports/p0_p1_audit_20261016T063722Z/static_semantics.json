@@ -1,8 +1,0 @@
-{
-  "nondifferentiable_resampler_body_ast_equal_excluding_docstring": true,
-  "numeric_equivalence_executed": false,
-  "current_server_runtime_verified": false,
-  "P1_A": "NOT_RUN: no native observation or matching runtime locally",
-  "P1_B": "NOT_RUN: user executes remote",
-  "P1_C": "NOT_RUN: user executes remote"
-}
